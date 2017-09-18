@@ -1,1 +1,3 @@
-A timetable generator redevelopment project
+# Genzter
+
+A timetable generator redevelopment project.
