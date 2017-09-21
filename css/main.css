@@ -18,6 +18,8 @@ html, body{
 
 #title{
 	text-align: center;
+	font-size: 4rem;
+
 }
 #about li{
 	margin-top: 2%;
