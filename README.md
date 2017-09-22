@@ -2,7 +2,7 @@
 
 Team Name: Genzter
 
-Team Members: Mohamed Bengezi, Amit Binu
+Team Members: Mohamed Bengezi, Amit Binu, Sachin Samarasinghe
 
 This project is a reimplementation of https://github.com/ash47/TimetableGenerator 
 
