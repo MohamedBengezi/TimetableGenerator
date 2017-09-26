@@ -1,0 +1,26 @@
+html, body{
+	margin: 0;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	background: #eaeaea;
+	overflow: auto;
+}
+
+#about{
+	background: #aaaaaa;
+	width: 70%;
+	padding: 3%;
+	margin: 5% auto;
+	border-radius:5px;
+	font-size: 1.5rem;
+}
+
+#title{
+	text-align: center;
+	font-size: 4rem;
+
+}
+#about li{
+	margin-top: 2%;
+}
