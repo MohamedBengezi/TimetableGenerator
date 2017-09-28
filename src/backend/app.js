@@ -7,9 +7,9 @@ var bodyParser = require('body-parser');
 var url = require('url');
 var request = require('request');
 
-
 var index = require('./routes/index');
 var users = require('./routes/users');
+var checkCourse = require('./routes/checkCourse');
 
 var app = express();
 
@@ -23,11 +23,45 @@ request('https://www.timetablegenerator.io/api/v2/school/mcmaster', function (er
     console.log('Got the data');
     realData = JSON.parse(body);
     console.log(realData.name);
-    app.locals.dataSet  =realData;
+    startProgram()
   }
 })
 
+var courseIDs = [];
+function startProgram() {
+    app.locals.dataSet  =realData;
 
+    for(var key in realData.timetables[2017][6].courses){
+
+        try{
+            var deptandCourse = realData.timetables[2017][6].courses[key].code.split(' ');
+            var courseName = deptandCourse[0] + '-'+ deptandCourse[1];
+            courseIDs.push(courseName);
+        }
+
+        catch (Excpetion){
+            console.log("DataSet Error -- beans -- ");
+            console.log(Excpetion);
+        }
+    }
+
+    for (var key in realData.timetables[2017][13].courses){
+
+        try{
+            var deptandCourse = realData.timetables[2017][13].courses[key].code.split(' ');
+            var courseName = deptandCourse[0] + '-'+ deptandCourse[1];
+            console.log(realData.timetables[2017][13].courses[key]);
+            courseIDs.push(courseName);
+        }
+
+        catch (Excpetion){
+            console.log("DataSet Error -- beans -- ");
+            console.log(Excpetion);
+        }
+    }
+    app.locals.courseids = courseIDs;
+    module.exports.macCourses = courseIDs;
+}
 // view engine setup
 
 app.set('views', path.join(__dirname, 'views'));
@@ -43,13 +77,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
-
+app.use('/check',checkCourse);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
+
+
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -62,4 +98,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+module.exports = app ;
+
+
