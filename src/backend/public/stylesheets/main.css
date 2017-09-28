@@ -24,3 +24,47 @@ html, body{
 #about li{
     margin-top: 2%;
 }
+
+#inputBox{
+    margin:auto;
+    margin-left: 15%;
+}
+
+#input{
+    width:100%;
+}
+
+#oneline{
+    display:inline-flex;
+    width: 100%;
+}
+
+#add{
+    margin-left: 2%;
+}
+
+.topSpace{
+    margin-top: 10px;
+}
+
+#error{
+    color: red;
+    font-size: 1.5rem;
+    margin: 0;
+    margin-left: 20px;
+}
+
+.datalist2{
+    height: 50px !important;
+    max-height: 80px !important;
+    display: block !important;
+}
+
+.ui-autocomplete {
+    max-height: 200px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+    /* add padding to account for vertical scrollbar */
+    padding-right: 20px;
+}
