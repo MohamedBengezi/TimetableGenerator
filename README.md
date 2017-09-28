@@ -12,3 +12,11 @@ Doc - Documentation for the project
 Code - Implementation
 ProjectSchedule - The projected schedule of the project
 ReferenceMaterial - Materials used for reference
+
+## How to run this application ?
+
+	* Download the code 
+
+	* Run the 'Run.bat' file
+
+	* Open 'http://localhost:3000/' in your browser.
