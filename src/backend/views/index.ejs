@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TimeTable Generator</title>
-    <link rel="stylesheet" type="text/css" href="/stylesheets/animate.css">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+      <title>TimeTable Generator</title>
+      <link rel="stylesheet" type="text/css" href="/stylesheets/animate.css">
+      <link rel="stylesheet" type="text/css" href="/stylesheets/animate.min.css">
+      <link rel="stylesheet" type="text/css" href="/stylesheets/jquery-ui.css">
+      <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+      <script src="/javascripts/jquery.js"></script>
+      <script src="/javascripts/jquery-ui.js"></script>
+      <script src="/javascripts/main.js"></script>
   </head>
   <body>
   <h1 id="title" class="animated tada">Timetable Generator</h1>
@@ -12,13 +16,34 @@
   <div id="about">
     <ul>
       <li>
-        Give the course codes of your  <%= dataSet.name %> classes.
+          Enter the course codes of your  <%= dataSet.name %> classes.
       </li>
       <li>
-        We will generate one or more timetables for you.
+        This website will generate one or more timetables for you.
       </li>
     </ul>
+  </div>
+
+  <div id="inputBox">
+      <h2>Add the course codes below</h2>
+
+
+
+      <div id="oneline">
+          <div class="ui-widget">
+              <input type="text" name="courses" list="courseID" id="input"  placeholder="e.g) ECON-1BB3">
+          </div>
+
+
+          <button id="add">Add</button>
+          <h5 id="error"></h5>
+      </div>
+
+      <div id="output">
+      </div>
 
   </div>
+
+
   </body>
 </html>
