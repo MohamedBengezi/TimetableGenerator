@@ -45,10 +45,11 @@
             <depend id="0" type="2" difference="0" hardness="Rubber"/>
         </task>
         <task id="0" name="Development Plan" color="#6666ff" shape="1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1" meeting="false" start="2017-09-26" duration="5" complete="80" webLink="https%3A%2F%2Fwww.sharelatex.com%2Fproject%2F59cadc8b7bd11d5822ac256d" expand="true"/>
-        <task id="9" name="Demo For PoC" color="#66ff99" meeting="false" start="2017-10-02" duration="5" complete="0" priority="2" expand="true"/>
-        <task id="12" name="SRS" color="#ff9999" meeting="false" start="2017-10-03" duration="4" complete="0" expand="true">
-            <task id="17" name="Functional Requirements" color="#8cb6ce" meeting="false" start="2017-10-03" duration="2" complete="0" expand="true"/>
-            <task id="18" name="Non-Functional requirements" color="#8cb6ce" meeting="false" start="2017-10-04" duration="3" complete="0" expand="true"/>
+        <task id="9" name="Demo For PoC" color="#66ff99" meeting="false" start="2017-10-03" duration="4" complete="0" priority="2" expand="true">
+            <task id="12" name="SRS" color="#ff9999" meeting="false" start="2017-10-03" duration="4" complete="0" expand="true">
+                <task id="17" name="Functional Requirements" color="#8cb6ce" meeting="false" start="2017-10-03" duration="2" complete="0" expand="true"/>
+                <task id="18" name="Non-Functional requirements" color="#8cb6ce" meeting="false" start="2017-10-04" duration="3" complete="0" expand="true"/>
+            </task>
         </task>
         <task id="15" name="Implementation" color="#000000" meeting="false" start="2017-10-07" duration="26" complete="5" expand="true"/>
     </tasks>
@@ -57,7 +58,15 @@
         <resource id="1" name="Amit" function="Default:0" contacts="" phone=""/>
         <resource id="2" name="Sachin" function="Default:0" contacts="" phone=""/>
     </resources>
-    <allocations/>
+    <allocations>
+        <allocation task-id="3" resource-id="0" function="Default:1" responsible="true" load="50.0"/>
+        <allocation task-id="0" resource-id="0" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="9" resource-id="0" function="Default:0" responsible="false" load="33.0"/>
+        <allocation task-id="3" resource-id="1" function="Default:0" responsible="false" load="25.0"/>
+        <allocation task-id="9" resource-id="1" function="Default:0" responsible="true" load="34.0"/>
+        <allocation task-id="3" resource-id="2" function="Default:0" responsible="false" load="25.0"/>
+        <allocation task-id="9" resource-id="2" function="Default:0" responsible="false" load="33.0"/>
+    </allocations>
     <vacations/>
     <previous/>
     <roles roleset-name="Default"/>
