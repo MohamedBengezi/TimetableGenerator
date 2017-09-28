@@ -25,9 +25,9 @@
 
 \title{Software Development Plan: Revision 0}
 \author{Group 2 - Genzter \\
-		\\ Binu, Amit - binua - ENTER STUDENT NUMBER
+		\\ Binu, Amit - binua - 400023175
 		\\ Bengezi, Mohamed - bengezim - 400021279
-		\\ Samarasinghe, Sachin - samarya - ENTER STUDENT NUMBER
+		\\ Samarasinghe, Sachin - samarya - 001430998
 		\\ September 29, 2017
 		\\Professor: Dr. Bokhari
 		\\ Lab: L01}
@@ -112,4 +112,39 @@ Mohamed Bengezi & - Documentation Lead \newline - Designer \newline - Developer 
 
 \newpage
 \section{Git Workflow Plan}
+ASK TA ABOUT
+
+\newpage
+\section{Proof of Concept}
+\subsection{Technical Feasibility}
+This project is a feasible undertaking, because the idea in itself is a simple one. Although there will be a slight learning curve with respect to some of the technology involved, the implementation of the project is viable. All group members are technically equipped in regards to a majority of the technologies required. As for required hardware, there are many school resources available in addition to our own computers and laptops, all of which are well equipped to run the required software. 
+
+\subsection{Identification of Risks}
+In general, the implementation will mostly include incorporating user input with information retrieval from the JSON file that contains the course data. One part of the implementation that poses the biggest challenge is generating timetables that contain no conflicts, in an efficient manner. This is a challenge because it will be difficult to keep track of each time slot that is taken. With normal timetable generators, the user manually fills in the schedule, but with this one, the schedules will be generated automatically. \\
+
+Testing will not be difficult. We will manually create a set of schedules that do not contain any conflicts, and use them as a benchmark against the generated set of schedules. This will be done repeatedly, with different courses selected for each set of tests. \\
+
+As for required libraries and technologies, installation will not be difficult at all, seeing as all are free and work with the software environment that we have setup. Portability will not be a concern, seeing as the project will be hosted on the web, and so any user with access to internet will not have any issues using the project.
+
+\newpage
+\subsection{Demonstration Plan}
+For the demonstration plan, we will develop an algorithm that takes in two courses, and generates a set of viable (no conflicts) timetables. This will infer the viability of developing a similar algorithm for 5 or 6 courses.
+\section{Technology}
+The programming languages used will be HTML, JavaScript, and CSS. More specifically, we will be using Node.js primarily for the back-end of the project. As for the IDE, we will be working with JetBrains WebStorm, which is specifically designed for Node.js projects. The testing framework used will be \href{https://mochajs.org/}{Mocha}. Mocha is "a feature-rich JavaScript test framework running on Node.js and in the browser, making asynchronous testing simple and fun" \cite{1}. In regards to documentation, all documentation will be written and compiled in \LaTeX , and the resulting PDF will be used.
+\section{Coding Style}
+This project will be using the \href{https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Coding_Style}{Mozilla coding style}.
+\section{Project Schedule}
+The project schedule will be included in the GanttProject file. It will be regularly updated, and include all milestones. 
+
+
+
+\begin{thebibliography}{9}
+\bibitem{1} 
+Mocha Framework.
+\textit{Mocha JS Homepage}
+\url{https://mochajs.org/}
+
+
+ 
+\end{thebibliography}
 \end {document}
