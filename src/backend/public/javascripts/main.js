@@ -29,6 +29,8 @@ $(document).ready(function () {
         }
 
     });
+
+
     $.ajax({
         url:'/getlink',
         type:"POST"
