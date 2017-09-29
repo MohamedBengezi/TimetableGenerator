@@ -1,5 +1,20 @@
+
+<script src="javascripts/jquery.js"></script>
 <ul>
     <% value.forEach(function (course) { %>
-    <li class="topSpace"> <%= course %></li>
+    <li class="course <%= course %>"> <button class="remove" value=<%= course %>>Remove </button> <%= course %>  </li>
     <%})%>
 </ul>
+
+<script>
+    $('.remove').click(function () {
+        console.log('Clicked remove button');
+        var className = '.' + ($(this).val());
+
+        $.ajax({
+            url:"/check/remove/"+$(this).val(),
+            type: "POST"
+        });
+        $(className).remove();
+    });
+</script>
