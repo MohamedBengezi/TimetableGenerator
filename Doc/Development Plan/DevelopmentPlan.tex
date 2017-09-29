@@ -5,6 +5,7 @@
 \usepackage{amsfonts}
 \usepackage{listings}
 \usepackage{hyperref}
+\usepackage{tabto}
 
 \hypersetup{colorlinks=true,
     linkcolor=blue,
@@ -66,22 +67,16 @@
 \newpage
 \section{Introduction}
 \subsection{Purpose}
-The purpose of the Software Development Plan is to gather all information necessary to control the project. It describes the approach to the development of the software and is the top-level plan generated and used by managers to direct the development effort.
-
-The following people use the Software Development Plan:
-
-·         The project manager uses it to plan the project schedule and resource needs, and to track progress against the schedule.
-
-·         Project team members use it to understand what they need to do, when they need to do it, and what other activities they are dependent upon.
+\tab The purpose of this Software Development Plan is to compile all information that is imperative to the development and completion of the project. Included in this document are the team meeting plans, communication plans, member roles, proof of concept, among other documents. This document will continually be revisited and revised. As the project develops and matures, much of the information in this document will change, and as such, it will need continued maintenance.
 
 \newpage
 
 \section{Team Meeting Plan}
 \subsection{Details of Meetings}
-Meetings will occur 3 times a week. Two of these meetings will take place during the lab section. The third meeting will take place on Wednesday's, at Thode library, after classes. During each meeting, members will rotate filling the position of Meeting Chair. the Meeting Chair will be in charge of writing the agenda for that meeting, which is discussed below.
+Meetings will occur 3 times a week. Two of these meetings will take place during the lab section. The third meeting will take place on Wednesday's, at Thode library, after classes. This meeting will be used primarily for technical work, such as implementation and testing.  During each meeting, members will rotate filling the position of Meeting Chair. the Meeting Chair will be in charge of writing the agenda for that meeting, which is discussed below. 
 
 \subsection{Meeting Agendas}
-As stated above, agendas will be completed by the meeting chair. Meeting agendas will be included in the Meeting Minutes, which will be completed during meeting. This is the \href{run:./docs/MeetingMinutesTemplates.pdf}{Meeting Minutes Template} we will be using. We will also include a summary of decisions made during the meeting, as well as who needs to do what next. The meetings will follow Harvard guidelines, which were discussed in class.
+As stated above, agendas will be completed by the meeting chair. Meeting agendas will be included in the Meeting Minutes, which will be completed during meetings. This is the \href{run:./docs/MeetingMinutesTemplates.pdf}{Meeting Minutes Template} we will be using. We will also include a summary of decisions made during the meeting, as well as who needs to do what next. The meetings will follow Harvard guidelines, which were discussed in class.
 
 \section{Team Communication Plan}
 The team will primarily use a Facebook group chat to communicate, but will also exchange emails as well as phone numbers.
@@ -90,8 +85,7 @@ The group chat will be used if any issues come up outside of meetings, or if any
 \newpage
 
 \section{Team Member Roles}
-Team member roles will vary, but the following table can provide a general description of each member's current roles. DECIDE 
-WHO DOES WHAT
+Team member roles will vary, but the following table can provide a general description of each member's current roles. 
 \begin{table}[h]
 \begin{center}
 \begin{tabular}{ | c | p{65mm} |  }
@@ -102,7 +96,7 @@ Mohamed Bengezi & - Documentation Lead \newline - Designer \newline - Developer 
 \hline
  Amit Binu & - Development Lead \newline - Designer \newline - Documentation assistance \newline - Test Cases  \\
 \hline
- Sachin Samarasinghe & - Information Lead \newline - Developer \newline - Code Review \newline - Test Cases
+ Sachin Samarasinghe & - Information/Research Lead \newline - Developer \newline - Code Review \newline - Test Cases
 \\
 \hline 
 \end{tabular}
@@ -112,7 +106,7 @@ Mohamed Bengezi & - Documentation Lead \newline - Designer \newline - Developer 
 
 \newpage
 \section{Git Workflow Plan}
-ASK TA ABOUT
+\tab A Git workflow plan will be used to develop the software in an organized and structured manner. A centralized Git repository will be used to store and keep track of development of the source code. There will be two main brances in the repository, ``develop" and ``master". The ``develop" branch will keep track of the code that is in development. Furthermore, the "develop" branch will contain sub branches that keep track of different features. Once a feature is completed, the specific sub branch that kept track of that feature will be merged to the ”develop" branch. The ``master" branch will be used to keep track of milestones. A milestone is a specific set of features and functions that software must have and perform. Milestones will be used throughout the development process. Once the code corresponding to a specific milestone is stable, it will be merged to the ``master" branch. If any additional steps such as testing is required before the merge, they will be performed on a release branch which will be forked from the stable ``develop" branch. Tags will be used to track significant commits. They will be used to label every milestone, significant development commnits and features.
 
 \newpage
 \section{Proof of Concept}
