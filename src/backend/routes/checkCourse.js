@@ -2,6 +2,11 @@ var express = require('express');
 var router = express.Router();
 var selectedCourses = [];
 
+router.post('/remove/:courseId',function (req, res, next) {
+    console.log("Removing "+req.params.courseId + "--index--"+selectedCourses.indexOf(req.params.courseId));
+    delete selectedCourses[selectedCourses.indexOf(req.params.courseId)];
+    res.end();
+});
 router.post('/:courseId',function (req, res, next) {
     var courses = require('../app').macCourses;
     console.log("First course is " + courses);
@@ -27,6 +32,8 @@ router.post('/:courseId',function (req, res, next) {
         }
 
     }
-})
+});
+
+
 
 module.exports = router;
