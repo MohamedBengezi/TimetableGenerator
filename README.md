@@ -15,8 +15,8 @@ ReferenceMaterial - Materials used for reference
 
 ## How to run this application ?
 
-	* Download the code 
+	* Clone / Download the project.
 
-	* Run the 'Run.bat' file
+	* Open the 'Run.bat' file in the root folder.
 
 	* Open 'http://localhost:3000/' in your browser.
