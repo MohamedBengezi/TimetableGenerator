@@ -4,7 +4,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var url = require('url');
 var request = require('request');
 
 
@@ -18,12 +17,10 @@ var realData = null;
 
 request('https://www.timetablegenerator.io/api/v2/school/mcmaster', function (error, response, body) {
   if (error){
-    console.log('Something went wrong');
+    console.log('\n Something went wrong');
   }
   else{
-    console.log('Got the data');
     realData = JSON.parse(body);
-    console.log(realData.name);
     startProgram()
   }
 })
@@ -51,7 +48,6 @@ function startProgram() {
         try{
             var deptandCourse = realData.timetables[2017][13].courses[key].code.split(' ');
             var courseName = deptandCourse[0] + '-'+ deptandCourse[1];
-            console.log(realData.timetables[2017][13].courses[key]);
             courseIDs.push(courseName);
         }
 
@@ -62,6 +58,7 @@ function startProgram() {
     }
     app.locals.courseids = courseIDs;
     module.exports.macCourses = courseIDs;
+    console.log('\n OPEN http://localhost:3000/ IN YOUR BROWSER');
 }
 // view engine setup
 
