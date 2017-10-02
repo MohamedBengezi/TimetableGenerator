@@ -6,31 +6,58 @@ html, body{
     background: #eaeaea;
     overflow: auto;
 }
-
+*{
+}
+#titleBox{
+    width: 100%;
+    background: #000000;
+    height: 10%;
+    position: fixed;
+}
 #about{
     background: #aaaaaa;
-    width: 70%;
+    width: 55%;
     padding: 3%;
-    margin: 5% auto;
+    margin-top:10%;
+    margin-left: auto;
+    margin-right:auto;
     border-radius:5px;
-    font-size: 1.5rem;
+    font-size: 2.5rem;
 }
 
 #title{
     text-align: center;
-    font-size: 4rem;
+    font-size: 3rem;
+    position: absolute;
+    color: #f6f6f6;
+    top: 7%;
+    left:15px;
+    font-family: 'Righteous', cursive;
+    letter-spacing: 3px;
+}
 
+#generate{
+    position: absolute;
+    top: 25%;
+    right: 15px;
+    width: 130px;
+    height: 40px;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #ffffff;
 }
 #about li{
     margin-top: 2%;
 }
 
 #inputBox{
-    margin:auto;
-    margin-left: 15%;
+    margin-top: 5%;
+    margin-left:15%;
 }
 
 #input{
+    margin-top: 5px;
     width:100%;
 }
 
