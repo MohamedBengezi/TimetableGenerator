@@ -28,7 +28,6 @@ request('https://www.timetablegenerator.io/api/v2/school/mcmaster', function (er
 var courseIDs = [];
 function startProgram() {
     app.locals.dataSet  =realData;
-
     for(var key in realData.timetables[2017][6].courses){
 
         try{
@@ -43,7 +42,7 @@ function startProgram() {
         }
     }
 
-    for (var key in realData.timetables[2017][13].courses){
+    for (var key in realData.timetables[2018][13].courses){
 
         try{
             var deptandCourse = realData.timetables[2017][13].courses[key].code.split(' ');
