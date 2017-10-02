@@ -7,12 +7,18 @@
       <link rel="stylesheet" type="text/css" href="/stylesheets/animate.min.css">
       <link rel="stylesheet" type="text/css" href="/stylesheets/jquery-ui.css">
       <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
       <script src="/javascripts/jquery.js"></script>
       <script src="/javascripts/jquery-ui.js"></script>
       <script src="/javascripts/main.js"></script>
   </head>
   <body>
-  <h1 id="title" class="animated tada">Timetable Generator</h1>
+  <div id="titleBox">
+      <h1 id="title" class="animated tada">Timetable Generator</h1>
+      <button type="button" class="btn btn-primary" id="generate">Generate</button>
+  </div>
+
 
   <div id="about">
     <ul>
@@ -35,8 +41,7 @@
               <input type="text" name="courses" list="courseID" id="input"  placeholder="e.g) ECON-1BB3">
           </div>
 
-
-          <button id="add">Add</button>
+          <button type="button" class="btn" id="add">Add</button>
           <h5 id="error"></h5>
       </div>
 
