@@ -6,8 +6,7 @@ html, body{
     background: #eaeaea;
     overflow: auto;
 }
-*{
-}
+
 #titleBox{
     width: 100%;
     background: #000000;
@@ -18,7 +17,8 @@ html, body{
     background: #aaaaaa;
     width: 55%;
     padding: 3%;
-    margin-top:10%;
+    margin-top:100px;
+    margin-top:100px;
     margin-left: auto;
     margin-right:auto;
     border-radius:5px;
@@ -28,18 +28,14 @@ html, body{
 #title{
     text-align: center;
     font-size: 3rem;
-    position: absolute;
+    text-align: center;
     color: #f6f6f6;
-    top: 7%;
-    left:15px;
     font-family: 'Righteous', cursive;
     letter-spacing: 3px;
 }
 
 #generate{
-    position: absolute;
-    top: 25%;
-    right: 15px;
+    margin-left: 20px;
     width: 130px;
     height: 40px;
     border: none;
@@ -52,8 +48,8 @@ html, body{
 }
 
 #inputBox{
-    margin-top: 5%;
-    margin-left:15%;
+    margin-top: 2%;
+    margin-left:23%;
 }
 
 #input{
@@ -77,8 +73,8 @@ html, body{
 
 #error{
     color: red;
-    font-size: 1.5rem;
-    margin: 0;
+    font-size: 2rem;
+    margin-top: 5px;
     margin-left: 20px;
 }
 
@@ -95,4 +91,20 @@ html, body{
 .remove{
     display: inline-block;
     margin-right: 20px;
+}
+
+#output{
+    border: 5px solid black;
+    height: 200px;
+    width: 70%;
+    overflow: auto;
+    margin-top: 10px;
+    font-size: 2rem;
+    position: relative;
+}
+
+#info{
+    text-align: center;
+    margin-top: 10%;
+    font-size: 2rem;
 }
