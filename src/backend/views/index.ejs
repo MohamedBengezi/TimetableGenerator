@@ -16,19 +16,19 @@
   <body>
   <div id="titleBox">
       <h1 id="title" class="animated tada">Timetable Generator</h1>
-      <button type="button" class="btn btn-primary" id="generate">Generate</button>
+
   </div>
 
 
   <div id="about">
-    <ul>
-      <li>
-          Enter the course codes of your  <%= dataSet.name %> classes.
-      </li>
-      <li>
-        This website will generate one or more timetables for you.
-      </li>
-    </ul>
+      <ul>
+          <li>
+              Enter the course codes of your  <%= dataSet.name %> classes.
+          </li>
+          <li>
+              This website will generate one or more timetables for you.
+          </li>
+      </ul>
   </div>
 
   <div id="inputBox">
@@ -37,15 +37,18 @@
 
 
       <div id="oneline">
+
           <div class="ui-widget">
               <input type="text" name="courses" list="courseID" id="input"  placeholder="e.g) ECON-1BB3">
           </div>
 
           <button type="button" class="btn" id="add">Add</button>
+          <button type="button" class="btn btn-primary" id="generate">Generate</button>
           <h5 id="error"></h5>
       </div>
 
       <div id="output">
+         <h4 id="info">Added courses will appear here </h4>
       </div>
 
   </div>
