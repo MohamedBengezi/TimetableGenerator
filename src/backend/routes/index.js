@@ -1,10 +1,12 @@
 var express = require('express');
 var router = express.Router();
-
+var reload = require('./checkCourse').reloadReset;
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+    reload();
 
+    res.render('index', { title: 'Express' });
+    res.end();
 });
 
 router.post('/getlink',function (req,res,next) {
