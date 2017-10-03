@@ -25,7 +25,7 @@ $(document).ready(function () {
                 }
                 console.log('done ' + result);
                 $('#output').html(result);
-            })
+            });
         }
 
     });
@@ -37,6 +37,23 @@ $(document).ready(function () {
     }).done(function (result) {
         console.log(result);
         $("#input").autocomplete({ maxShowItems:10,source:result, minLength:4, delay:0});
-    })
-    $.getJSON("https")
-})
+    });
+
+    $("#generate").click(function () {
+        console.log("clicked generate ");
+
+       $.ajax({
+            url: '/check/submit',
+            type: "POST"
+        }).done(function () {
+            $.ajax({
+                url: '/generateTimeTable',
+                type: "POST"
+            });
+        });
+
+    });
+
+});
+
+
