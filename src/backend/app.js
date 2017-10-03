@@ -10,7 +10,7 @@ var request = require('request');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var checkCourse = require('./routes/checkCourse');
-
+var scheduler  = require('./routes/scheduler');
 var app = express();
 
 var realData = null;
@@ -28,6 +28,7 @@ request('https://www.timetablegenerator.io/api/v2/school/mcmaster', function (er
 var courseIDs = [];
 function startProgram() {
     app.locals.dataSet  =realData;
+    module.exports.Dataset = realData;
     for(var key in realData.timetables[2017][6].courses){
 
         try{
@@ -75,6 +76,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/check',checkCourse);
+app.use('/generateTimeTable', scheduler);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
