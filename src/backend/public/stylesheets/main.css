@@ -22,12 +22,16 @@ html, body{
     margin-left: auto;
     margin-right:auto;
     border-radius:5px;
-    font-size: 2.5rem;
+
 }
 
+#about *{
+    color: black;
+    font-size: 2.5rem;
+}
 #title{
     text-align: center;
-    font-size: 3rem;
+    font-size: 3.3rem;
     text-align: center;
     color: #f6f6f6;
     font-family: 'Righteous', cursive;
