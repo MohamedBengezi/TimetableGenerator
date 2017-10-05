@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var request = require('request');
-
+var Course = require('./routes/Course');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -14,6 +14,7 @@ var scheduler  = require('./routes/scheduler');
 var app = express();
 
 var realData = null;
+
 
 request('https://www.timetablegenerator.io/api/v2/school/mcmaster', function (error, response, body) {
   if (error){
@@ -25,15 +26,84 @@ request('https://www.timetablegenerator.io/api/v2/school/mcmaster', function (er
   }
 })
 
-var courseIDs = [];
+var courseIDs = []; //Custom made course ids to show the available courses to user.
+
+var allCourses = [] //Array containing 'Course' objects which represents all courses.
+                    //Multiple entries of same course will be there if the course is offered in multiple semesters.
 function startProgram() {
     app.locals.dataSet  =realData;
-    module.exports.Dataset = realData;
     for(var key in realData.timetables[2017][6].courses){
 
         try{
             var deptandCourse = realData.timetables[2017][6].courses[key].code.split(' ');
             var courseName = deptandCourse[0] + '-'+ deptandCourse[1];
+            var lectureTimes = [];
+            var tutorialTimes = [];
+            var labTimes = [];
+            var term = realData.timetables[2017][6].courses[key].term;
+          //  console.log("Term -- " + term);
+            for (var time in realData.timetables[2017][6].courses[key].sections){
+
+
+                switch (time){
+                    case "C":
+                        // Code for getting lecture times for all cores.
+                        for (var eachCore in realData.timetables[2017][6].courses[key].sections.C){ // runs for C01, C02, C03 ...
+                            var oneCore = []; // Contains Specific info about each Core
+                            for (var eachTime in realData.timetables[2017][6].courses[key].sections.C[eachCore].r_periods){ //runs to find times for each Cores
+
+                                var timeObject = {
+                                    day : realData.timetables[2017][6].courses[key].sections.C[eachCore].r_periods[eachTime].day,
+                                    start: realData.timetables[2017][6].courses[key].sections.C[eachCore].r_periods[eachTime].start,
+                                    end : realData.timetables[2017][6].courses[key].sections.C[eachCore].r_periods[eachTime].end,
+                                    core: eachCore,
+                                    room: realData.timetables[2017][6].courses[key].sections.C[eachCore].r_periods[eachTime].room
+                                };
+                                oneCore.push(timeObject);
+                            }
+                            lectureTimes.push(oneCore);
+                        }
+
+                        break;
+                    case "L":
+                        // Code for getting lab times for all labs.
+
+                        for (var eachLab in realData.timetables[2017][6].courses[key].sections.L){ // Runs for each Labs L01, L02 etc
+                            var oneLab = []; // Contains Specific info about each Lab
+                            for (var eachTime in realData.timetables[2017][6].courses[key].sections.L[eachLab].r_periods){ // gets days and times for each Labs L01
+                                var timeObject = {
+                                    day : realData.timetables[2017][6].courses[key].sections.L[eachLab].r_periods[eachTime].day,
+                                    start: realData.timetables[2017][6].courses[key].sections.L[eachLab].r_periods[eachTime].start,
+                                    end : realData.timetables[2017][6].courses[key].sections.L[eachLab].r_periods[eachTime].end,
+                                    lab: eachLab,
+                                    room: realData.timetables[2017][6].courses[key].sections.L[eachLab].r_periods[eachTime].room
+                                };
+                                oneLab.push(timeObject);
+                            }
+                            labTimes.push(oneLab);
+                        }
+
+                        break;
+                    case "T":
+                        //Code for getting tutorial times for all tutorials.
+                        for (var eachTutorial in realData.timetables[2017][6].courses[key].sections.T){ // Runs for each tutorials T01, T02 etc
+                            var oneTutorial = []; // Contains Specific info about each Tutorial
+                            for (var eachTime in realData.timetables[2017][6].courses[key].sections.T[eachTutorial].r_periods){ // gets days and times for each tutorials T01
+                                var timeObject = {
+                                    day : realData.timetables[2017][6].courses[key].sections.T[eachTutorial].r_periods[eachTime].day,
+                                    start: realData.timetables[2017][6].courses[key].sections.T[eachTutorial].r_periods[eachTime].start,
+                                    end : realData.timetables[2017][6].courses[key].sections.T[eachTutorial].r_periods[eachTime].end,
+                                    tutorial: eachTutorial,
+                                    room: realData.timetables[2017][6].courses[key].sections.T[eachTutorial].r_periods[eachTime].room
+                                };
+                                oneTutorial.push(timeObject);
+                            }
+                            tutorialTimes.push(oneTutorial);
+                        }
+                        break;
+                }
+            }
+            allCourses.push(new Course.macCourse(courseName,lectureTimes,tutorialTimes,labTimes,term));
             courseIDs.push(courseName);
         }
 
@@ -43,21 +113,11 @@ function startProgram() {
         }
     }
 
-    for (var key in realData.timetables[2018][13].courses){
 
-        try{
-            var deptandCourse = realData.timetables[2017][13].courses[key].code.split(' ');
-            var courseName = deptandCourse[0] + '-'+ deptandCourse[1];
-            courseIDs.push(courseName);
-        }
-
-        catch (Excpetion){
-            console.log("DataSet Error -- beans -- ");
-            console.log(Excpetion);
-        }
-    }
     app.locals.courseids = courseIDs;
     module.exports.macCourses = courseIDs;
+    module.exports.dataset = allCourses;
+    console.log("Total allcourses length ---" + allCourses.length);
     console.log('\n OPEN http://localhost:3000/ IN YOUR BROWSER');
 }
 // view engine setup
