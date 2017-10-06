@@ -1,0 +1,161 @@
+\documentclass[12pt]{article}
+
+\usepackage{graphicx}
+\usepackage{paralist}
+\usepackage{amsfonts}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{tabto}
+
+\hypersetup{colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    filecolor=blue,
+    urlcolor=blue,
+    unicode=false}
+
+\oddsidemargin 0mm
+\evensidemargin 0mm
+\textwidth 160mm
+\textheight 200mm
+
+\pagestyle {plain}
+\pagenumbering{arabic}
+
+\newcounter{stepnum}
+
+\title{Software Requirements Specification: Revision 0}
+\author{Group 2 - Genzter \\
+		\\ Binu, Amit - binua - 400023175
+		\\ Bengezi, Mohamed - bengezim - 400021279
+		\\ Samarasinghe, Sachin - samarya - 001430998
+		\\ October 6, 2017
+		\\Professor: Dr. Bokhari
+		\\ Lab: L01}
+
+\begin {document}
+\maketitle
+
+\newpage
+
+{\centering
+  \tableofcontents\par
+}
+\addtocontents{toc}{\protect\vspace{2.5em}}
+
+\newpage
+\section{Revision History}
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{ | c | c | c | c | }
+\hline
+ Date & Version & Description & Author \\ 
+\hline
+ 05/OCT/17 & 0.0 & Created SRS & Mohamed Bengezi, Amit Binu, Sachin Samarasinghe \\  
+\hline
+  & & & \\
+\hline
+ & & & \\
+\hline 
+ & & & \\ 
+\hline 
+\end{tabular}
+\end{center}
+\caption{Revision History}
+\end{table}
+
+\newpage
+\section{Project Drivers}
+\subsection{Purpose}
+\tab This project addresses a very tedious and time-consuming issue that affects thousands of university students every year. When it comes to course selection, finding the perfect schedule is no easy feat. Various obstacles contribute to this difficulty, whether it be a core, lecture or tutorial conflicting with something else, or a certain course can only be taken in a certain semester, etc. The Timetable Generator solves this issue by taking a list of required courses as input, and outputting a set of viable schedules as output, allowing the user to select the most appealing option. The goal of this project is to successfully accomplish this in an efficient manner, with an easy-to-use interface.
+
+\subsection{Stakeholders}
+There are a couple of stakeholders for this project, including the Genzter team, and obviously the students of McMaster University. In this case, the client and customer are the same: the student body. As for the motivation, seeing as we are students, we have first hand experience with regards to what is expected, and what an acceptable project entails.
+
+\subsection{Scope}
+The scope of this project includes understanding McMaster University's course layout, course selection process, as well as how courses differ throughout the various fields of study at McMaster. Also within the scope is the behaviour of students, and how they prefer timetables, whether they generally prefer early classes, late classes, Friday's off, etc. 
+
+\subsection{Constraints}
+
+\subsection{Naming Conventions}
+
+\subsection{Terminology}
+PROJECT SPECIFIC TERMS.
+\newpage
+\section{Functional Requirements}
+
+\tab The functional requirements for this project include taking a set of course-codes from the user as an input, checking user's input, and then generating a schedule with no conflicts. The algorithm should generate the schedules within an acceptable period of time. Finally, this schedule will be outputted in a table format.
+
+\subsection{User Input}
+
+\tab The program will check whether the input is valid or not, and displays an error message if the input is invalid. It also checks whether the user has already added the same course code or not. Also, the user's input must be in capital letters in order for it to be valid.
+\
+\subsection{Generating Schedule}
+\tab The user must pass some input(s) in order to generate the schedule. The program takes a set of all the course codes the user entered and generates a schedule with no conflicts. The program should generate the schedule within a decent period of time. 
+
+\subsection{Output}
+\tab The output will be displayed in a table format. Each column of the table represents a day of the week and each row of the table represents 30 minutes of a day. There will be a total of 6 columns and 28 rows. Each course will be represented using a unique color.
+
+\newpage
+\section{Non-Functional Requirements}
+\tab The Non-functional requirements (NFR) of this project describe the appearance and feel of the of the Timetable Generator, as well as requirements such as usability, performance, operational, maintainability, and portability.
+
+\subsection{Requirements}
+\subsubsection{Usability}
+\tab The User-Interface (UI) of the project should be very clear and easy to use, and very minimal learning should be required. The user will be able to select the desired courses by inputting the course codes, and pressing an "Add" button to save that selection. Once all desired courses are selected, a "Generate" button is the pressed, and the set of schedules in outputted. The UI couldn't be easier to use, seeing as it simply requires the press of two buttons.
+
+\subsubsection{Performance}
+The performance requirement depends on various factors. Firstly, the speed of the program once the "Generate" button is pressed should take a relatively acceptable time period. That being said, the computation required is not an easy one, so the program is not expected to be lightning quick, but not painfully long. As for safety-critical requirements, there none that apply specifically to this product, seeing as it is hosted online, and no user information is stored. The precision of the product will be measured using schedules, or sets of schedules. The schedules are in the same format as current school schedules, and the precision will be bench-marked using this format. As for reliability, the generator should not available to users at most once a week, for maintenance. Otherwise, it should not produce failures. The capacity of the product should be in the area of 200 users at a single moment.
+
+\subsubsection{Operational and Environmental Requirements}
+For this project, there is no specific physical environment in which the product will operate. The site will be hosted online, so there are mainly technological environments. The expected technological environment must include a reliable internet connection, and any desired internet browser
+
+\subsubsection{Maintainability and Portability}
+The maintainability of the product will be defined by the difficulty to update the data-set used. The reason is because the rest of the project will not need to be maintained, only debugged and improved. The data-set will be easy to update, and so maintainability will not be a big issue. As for portability, the project will be available online, so any user with internet connection will be able to enjoy the product.
+\newpage
+
+\section{Open Issues}
+
+\tab The data that is used in this project is pulled from \url{http://www.timetablegenerator.io}. If the owner of this website decides to modify the format of the data , then this project will have to be re-implemented. 
+
+
+\section{Off-the-Shelf Solutions}
+There are existing similar products, such as \url{http://www.timetablegenerator.io}. The Genzter team has been in contact with the developers of this website, and have received assistance and guidance from them. The data-set can be considered a "ready made component", because this project will be using their data-set (with permission). There are also quite a few open-sourced projects on \url{http://www.github.com} that can be followed.
+
+\section{New Problems}
+This project shouldn't create any issues or conflicts with the current implementation environment. As for potential user issues, there should not be any adverse reactions that occur.
+\section{Tasks}
+The tasks of this project include:
+\begin{itemize}
+  \item Defining the Problem Statement
+  \item Creating the Development Plan
+  \item Defining the Requirements
+  \item Developing the Proof of Concept
+  \item Implementation
+  \item Testing
+\end{itemize}
+This list can change as the development of the project continues.
+
+\section{Risks}
+    Some of the main risks of this project are 
+    
+    \begin{itemize}
+        \item 
+        Since the data for this website is gathered from \url{https://www.timetablegenerator.io} and if this website gets shutdown, this project won't work. The probability for this being a problem is unlikely. A plan to solve this problem will be to make another program that will parse this data from \url{http://mosaic.mcmaster.ca}.
+        \item
+        This project will also not work, if the owner of this website decides to make the data private. The probability for this being a problem is also unlikely. A plan to solve this problem will be to make another program that will parse this data from \url{http://mosaic.mcmaster.ca}.
+        
+    \end{itemize}
+\section{Costs}
+There should a very small cost associated with this project, seeing as all software used is free, or used under a student license. The cost will come from purchasing the domain and hosting the website. There shouldn't be any other costs associated with the project.
+\section{User Documentation}
+The only documentation that will be necessary for users are the simple instructions that are on the homepage of the Generator. 
+
+
+
+\begin{thebibliography}{9}
+
+
+ 
+\end{thebibliography}
+\end {document}
