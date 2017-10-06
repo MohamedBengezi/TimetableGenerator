@@ -16,8 +16,8 @@ var course = function (name,lectureTimes,tutorialTimes,labTimes,term) {
         TimeObject
             - It is an object with following attributes.
             - day
-            - start
-            - end
+            - start (8:5 is representing 8:30 am, 13:5 is representing 13:30)
+            - end ((8:5 is representing 8:30 am, 13:5 is representing 13:30)
             - core
             - room
             - supervisor
