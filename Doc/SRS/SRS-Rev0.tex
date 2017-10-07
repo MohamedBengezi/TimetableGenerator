@@ -76,11 +76,37 @@ There are a couple of stakeholders for this project, including the Genzter team,
 The scope of this project includes understanding McMaster University's course layout, course selection process, as well as how courses differ throughout the various fields of study at McMaster. Also within the scope is the behaviour of students, and how they prefer timetables, whether they generally prefer early classes, late classes, Friday's off, etc. 
 
 \subsection{Constraints}
+\begin{itemize}
+  \item The project must at least re-implement all of the functionalities of the original software.
+  \item Core functionalities must be completed by October 16 for the proof of concept demonstration.
+  \item The backend server must use HTTP to communicate with the client.
+  \item When a valid timetable cannot be generated, the server must communicate that fact to the client.
+  \item The server must be able to serve multiple clients concurrently.
+  \item The server must keep each session isolated from other sessions.
+\end{itemize}
 
 \subsection{Naming Conventions}
+At the moment there are no special naming conventions.
 
 \subsection{Terminology}
-PROJECT SPECIFIC TERMS.
+\begin{itemize}
+  \item \textbf{Server} is the backend server powered by Node.js. This server manages sessions, calculates timetables and delivers the results to the client. The server uses HTTP to communicate with the client.
+  
+  \item \textbf{Client} refers to the web-based client side software that takes the user input and sends it to the server. Through the client, the users can choose the courses that they are interested in adding to their timetables. The client is programmed using HTML, CSS and Javascript.
+  
+  \item \textbf{Site} refers to the website that hosts the client. The users can access the application though the site.
+  
+  \item A \textbf{Session} refers to a visit of a user to the site. A session begins when the user's web browser connects to the site. And a session ends when the tab or the window that has the site opened is closed. During a session, a user can add, remove and generate a timetable for their selected courses.
+  
+  \item \textbf{Selected course list} is a list of courses that are selected by a specific user in the client. When commanded by the user, the client will submit the selected course list to the server and will wait for a response from the server.
+  
+  \item A \textbf{valid timetable} is a timetable for all the selected courses without any timing conflicts. This includes times and durations of lectures, tutorials and labs.
+  
+  \item \textbf{Scheduler} is the software module that is responsible for generating the timetables.
+  
+  \item \textbf{Scheduling algorithm} is the specific timetable generation algorithm used by the scheduler to generate timetables.
+\end{itemize}
+
 \newpage
 \section{Functional Requirements}
 
