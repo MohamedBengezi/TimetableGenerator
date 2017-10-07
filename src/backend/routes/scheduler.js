@@ -21,9 +21,9 @@ var day4=[];
 var day5=[];
 var day6=[];
 
-/*var times = []; //Contains the day-time of a course, lab or tutorial.
-                // An example of its element :208301120f => day 2, start 08:30, end 11:20, fixed (no other option for it).
-*/
+var times = []; //Contains the array of times a course, lab or tutorial can't be in.
+                // 8.5 is considered as a 8:30, 9.0 is considered as 9:00.
+
 
 router.post('/',function (req, res, next) {
     console.log("THESE ARE THE FINAL COURSES \n" );
@@ -47,8 +47,6 @@ Array.prototype.multiIndexOf = function (el) {
     }
     return idxs;
 };
-
-
 
 function algorithm() {
 
@@ -94,11 +92,48 @@ function doSemester1() {
     console.log(semester1.length + "\n");
     for (var i=0; i < semester1.length; i++){
         if (semester1[i].lectureTimes.length === 1){
-            finalSemester1.push(semester1[i]);
+            var day = semester1[i].lectureTimes[0].day;
+            var start = semester1[i].lectureTimes[0].start;
+            var end = semester1[i].lectureTimes[0].end;
 
-            console.log("Fixed course " + semester1[i].name);
+            finalSemester1.push(semester1[i].lectureTimes);
+            if(times[day].indexOf(start) < 0 && times[day].indexOf(end) < 0){
+                reserveTime(start, end, day);
+            }
+            else{
+                sendError("Sorry we can't make a schedule with the courses you chose.")
+            }
+            console.log("Fixed lecture " + semester1[i].name);
         }
+        if (semester1[i].tutorialTimes.length === 1){
+            var day = semester1[i].tutorialTimes[0].day;
+            var start = semester1[i].tutorialTimes[0].start;
+            var end = semester1[i].tutorialTimes[0].end;
+            finalSemester1.push(semester1[i].tutorialTimes);
+            console.log("Fixed tutorial " + semester1[i].name);
+            if(times[day].indexOf(start) < 0 && times[day].indexOf(end) < 0){
+                reserveTime(start, end, day);
+            }
+            else{
+                sendError("Sorry we can't make a schedule with the courses you chose.")
+            }
+        }
+        if (semester1[i].labTimes.length === 1){
+            var day = semester1[i].labTimes[0].day;
+            var start = semester1[i].labTimes[0].start;
+            var end = semester1[i].labTimes[0].end;
+            finalSemester1.push(semester1[i].labTimes);
+            console.log("Fixed lab " + semester1[i].name);
+            if(times[day].indexOf(start) < 0 && times[day].indexOf(end) < 0){
+                reserveTime(start, end, day);
+            }
+            else{
+                sendError("Sorry we can't make a schedule with the courses you chose.")
+            }
+        }
+
         else{
+
             console.log("Flexible Course " + semester1[i].name);
         }
     }
@@ -154,6 +189,17 @@ function putInaDay(courseDay, course){
     }
 }
 
+function reserveTime(startTime,endTime,day) {
+    var tempArray = [];
+    for (var i= startTime; i< endTime; i+=0.5){
+        tempArray.push(i);
+    }
+    times[day] = tempArray;
+}
+
+function sendError(message) {
+    //Sends an error page;
+}
 
 module.exports = router;
 module.exports.reset = function () { // To reset all the values when the page is reloaded.

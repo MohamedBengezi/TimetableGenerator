@@ -51,11 +51,23 @@ function startProgram() {
                         for (var eachCore in realData.timetables[2017][6].courses[key].sections.C){ // runs for C01, C02, C03 ...
                             var oneCore = []; // Contains Specific info about each Core
                             for (var eachTime in realData.timetables[2017][6].courses[key].sections.C[eachCore].r_periods){ //runs to find times for each Cores
-
+                                var startTime = realData.timetables[2017][6].courses[key].sections.C[eachCore].r_periods[eachTime].start + "";
+                                var endTime = realData.timetables[2017][6].courses[key].sections.C[eachCore].r_periods[eachTime].end + "";
+                                if (startTime == 'undefined' || endTime == 'undefined'){
+                                    continue;
+                                }
+                                startTime = startTime.replace(':','.');
+                                if(startTime.charAt('3') == '3'){
+                                    startTime = startTime.replace('.3','.5');
+                                }
+                                endTime = endTime.replace(':','.');
+                                if (endTime.charAt('3') == '3'){
+                                    endTime = endTime.replace('.3','.5');
+                                }
                                 var timeObject = {
                                     day : realData.timetables[2017][6].courses[key].sections.C[eachCore].r_periods[eachTime].day,
-                                    start: realData.timetables[2017][6].courses[key].sections.C[eachCore].r_periods[eachTime].start,
-                                    end : realData.timetables[2017][6].courses[key].sections.C[eachCore].r_periods[eachTime].end,
+                                    start: Number(startTime),
+                                    end : Number(endTime),
                                     core: eachCore,
                                     room: realData.timetables[2017][6].courses[key].sections.C[eachCore].r_periods[eachTime].room
                                 };
@@ -71,10 +83,23 @@ function startProgram() {
                         for (var eachLab in realData.timetables[2017][6].courses[key].sections.L){ // Runs for each Labs L01, L02 etc
                             var oneLab = []; // Contains Specific info about each Lab
                             for (var eachTime in realData.timetables[2017][6].courses[key].sections.L[eachLab].r_periods){ // gets days and times for each Labs L01
+                                var startTime = realData.timetables[2017][6].courses[key].sections.L[eachLab].r_periods[eachTime].start + "";
+                                var endTime = realData.timetables[2017][6].courses[key].sections.L[eachLab].r_periods[eachTime].end + "";
+                                if (startTime == 'undefined' || endTime == 'undefined'){
+                                    continue;
+                                }
+                                startTime = startTime.replace(':','.');
+                                if(startTime.charAt('3') == '3'){
+                                    startTime = startTime.replace('.3','.5');
+                                }
+                                endTime = endTime.replace(':','.');
+                                if (endTime.charAt('3') == '3'){
+                                    endTime = endTime.replace('.3','.5');
+                                }
                                 var timeObject = {
                                     day : realData.timetables[2017][6].courses[key].sections.L[eachLab].r_periods[eachTime].day,
-                                    start: realData.timetables[2017][6].courses[key].sections.L[eachLab].r_periods[eachTime].start,
-                                    end : realData.timetables[2017][6].courses[key].sections.L[eachLab].r_periods[eachTime].end,
+                                    start: Number(startTime),
+                                    end : Number(endTime),
                                     lab: eachLab,
                                     room: realData.timetables[2017][6].courses[key].sections.L[eachLab].r_periods[eachTime].room
                                 };
@@ -89,10 +114,24 @@ function startProgram() {
                         for (var eachTutorial in realData.timetables[2017][6].courses[key].sections.T){ // Runs for each tutorials T01, T02 etc
                             var oneTutorial = []; // Contains Specific info about each Tutorial
                             for (var eachTime in realData.timetables[2017][6].courses[key].sections.T[eachTutorial].r_periods){ // gets days and times for each tutorials T01
+                                var startTime = realData.timetables[2017][6].courses[key].sections.T[eachTutorial].r_periods[eachTime].start + "";
+                                var endTime = realData.timetables[2017][6].courses[key].sections.T[eachTutorial].r_periods[eachTime].end + "";
+                                if (startTime == 'undefined' || endTime == 'undefined'){
+                                    continue;
+                                }
+                                startTime = startTime.replace(':','.');
+                                if(startTime.charAt('3') == '3'){
+                                    startTime = startTime.replace('.3','.5');
+                                }
+                                endTime = endTime.replace(':','.');
+                                if (endTime.charAt('3') == '3'){
+                                    endTime = endTime.replace('.3','.5');
+                                }
+
                                 var timeObject = {
                                     day : realData.timetables[2017][6].courses[key].sections.T[eachTutorial].r_periods[eachTime].day,
-                                    start: realData.timetables[2017][6].courses[key].sections.T[eachTutorial].r_periods[eachTime].start,
-                                    end : realData.timetables[2017][6].courses[key].sections.T[eachTutorial].r_periods[eachTime].end,
+                                    start: Number(startTime),
+                                    end : Number(endTime),
                                     tutorial: eachTutorial,
                                     room: realData.timetables[2017][6].courses[key].sections.T[eachTutorial].r_periods[eachTime].room
                                 };
@@ -143,8 +182,6 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
-
-
 
 // error handler
 app.use(function(err, req, res, next) {
