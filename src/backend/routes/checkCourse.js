@@ -36,10 +36,6 @@ router.post('/:courseId',function (req, res, next) {
     }
 });
 
-
-
-
-
 module.exports = router;
 module.exports.reloadReset = function () {
     selectedCourses = [];
