@@ -16,6 +16,7 @@ $(document).ready(function () {
             }).done(function (result) {
                 if (result === "added"){
                     $("#error").html("You already chose this course");
+                    $('#error').effect('shake');
                     return;
                 }
                 if (result === "error"){
