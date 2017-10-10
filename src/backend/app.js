@@ -65,7 +65,7 @@ function startProgram() {
                                     endTime = endTime.replace('.3','.5');
                                 }
                                 var timeObject = {
-                                    day : realData.timetables[2017][6].courses[key].sections.C[eachCore].r_periods[eachTime].day,
+                                    day : Number(realData.timetables[2017][6].courses[key].sections.C[eachCore].r_periods[eachTime].day),
                                     start: Number(startTime),
                                     end : Number(endTime),
                                     core: eachCore,
@@ -97,7 +97,7 @@ function startProgram() {
                                     endTime = endTime.replace('.3','.5');
                                 }
                                 var timeObject = {
-                                    day : realData.timetables[2017][6].courses[key].sections.L[eachLab].r_periods[eachTime].day,
+                                    day : Number(realData.timetables[2017][6].courses[key].sections.L[eachLab].r_periods[eachTime].day),
                                     start: Number(startTime),
                                     end : Number(endTime),
                                     lab: eachLab,
@@ -129,7 +129,7 @@ function startProgram() {
                                 }
 
                                 var timeObject = {
-                                    day : realData.timetables[2017][6].courses[key].sections.T[eachTutorial].r_periods[eachTime].day,
+                                    day : Number(realData.timetables[2017][6].courses[key].sections.T[eachTutorial].r_periods[eachTime].day),
                                     start: Number(startTime),
                                     end : Number(endTime),
                                     tutorial: eachTutorial,
