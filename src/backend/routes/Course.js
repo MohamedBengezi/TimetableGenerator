@@ -6,7 +6,16 @@ var course = function (name,lectureTimes,tutorialTimes,labTimes,term) {
     this.tutorialTimes = tutorialTimes;
     this.labTimes = labTimes;
     this.term = term;
-}
+    this.updateLectureTimes = function () { //Removes the lecture Times from the course object once it is added to the schedule.
+       this.lectureTimes = [];
+    };
+    this.updateTutorialTimes = function () { //Removes the tutorial times from the course object once it is added to the schedule.
+        this.tutorialTimes = [];
+    };
+    this.updateLabTimes = function () { //Removes the lab times from the course object once it is added to the schedule.
+        this.labTimes = [];
+    };
+};
 
 /*
     lectureTimes
@@ -18,7 +27,7 @@ var course = function (name,lectureTimes,tutorialTimes,labTimes,term) {
             - day
             - start (8:5 is representing 8:30 am, 13:5 is representing 13:30)
             - end ((8:5 is representing 8:30 am, 13:5 is representing 13:30)
-            - core
+            - tutorial
             - room
             - supervisor
 
