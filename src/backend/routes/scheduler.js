@@ -1,4 +1,7 @@
 var express = require('express');
+var jsgraphs = require('js-graph-algorithms');
+
+var graph; //Graph where each node represents a core and edge represents non-conflict relationship.
 var router = express.Router();
 var dataset;
 var allCourses;
@@ -10,6 +13,8 @@ var bothSemesters = []; //Contains courses that are available for both Semesters
 var semester1 = []; // Contains courses that are available only for first Semesters.
 var semester2 = []; //Contains courses that are available only for second Semesters.
 
+var fixedCores = []; //Array of fixed cores for labs, lectures and tutorials
+var flexCores = []; //Array of flexible cores for labs, lectures and tutorials.
 var finalSemester1 = []; //Array of course objects for final schedule for first semester 1.
 var finalSemester2 =[]; //Array of course objects for final schedule for second semester 2.
 
@@ -21,7 +26,7 @@ var day4=[];
 var day5=[];
 var day6=[];
 
-var times = []; //Contains the array of times a course, lab or tutorial can't be in.
+var times = []; //Contains the array of times a lecture, lab or tutorial that are reserved.
                 // 8.5 is considered as a 8:30, 9.0 is considered as 9:00.
 
 
@@ -38,17 +43,11 @@ router.post('/',function (req, res, next) {
     algorithm();
 });
 
-Array.prototype.multiIndexOf = function (el) {
-    var idxs = [];
-    for (var i = this.length - 1; i >= 0; i--) {
-        if (this[i] === el) {
-            idxs.unshift(i);
-        }
-    }
-    return idxs;
-};
-
 function algorithm() {
+
+    for(var i =0; i < 7; i++){ // Initializing all the arrays within time.
+        times[i] = [];
+    }
 
     for ( var i = 0; i < finalCourses.length; i++){
         var indicies = allCourses.multiIndexOf(finalCourses[i]);
@@ -90,58 +89,89 @@ function algorithm() {
 function doSemester1() {
     console.log("\n --- SEMESTER 1 --- \n");
     console.log(semester1.length + "\n");
+    // Finds the lecture times, tutorial times and lab times that are fixed and flexible.
     for (var i=0; i < semester1.length; i++){
-        if (semester1[i].lectureTimes.length === 1){
-            var day = semester1[i].lectureTimes[0].day;
-            var start = semester1[i].lectureTimes[0].start;
-            var end = semester1[i].lectureTimes[0].end;
 
-            finalSemester1.push(semester1[i].lectureTimes);
+        if (semester1[i].lectureTimes.length === 1){
+            var day = semester1[i].lectureTimes[0][0].day;
+            var start = semester1[i].lectureTimes[0][0].start;
+            var end = semester1[i].lectureTimes[0][0].end;
+            console.log('Day ' + day);
             if(times[day].indexOf(start) < 0 && times[day].indexOf(end) < 0){
+                //pushes an object with name, type and time
+                fixedCores.push({name :semester1[i].name, type :"lecture", time : semester1[i].lectureTimes});
                 reserveTime(start, end, day);
+                semester1[i].updateLectureTimes();
             }
-            else{
+            else{ // Sends an error if 2 courses have fixed lecture times.
                 sendError("Sorry we can't make a schedule with the courses you chose.")
             }
             console.log("Fixed lecture " + semester1[i].name);
         }
+
+        else{ // This means the lecture times are flexible.
+            if(semester1[i].lectureTimes.length != 0){
+                flexCores.push({name :semester1[i].name, type :"lecture", time : semester1[i].lectureTimes});
+                console.log("Flexible lecture " + semester1[i].name);
+            }
+        }
         if (semester1[i].tutorialTimes.length === 1){
-            var day = semester1[i].tutorialTimes[0].day;
-            var start = semester1[i].tutorialTimes[0].start;
-            var end = semester1[i].tutorialTimes[0].end;
-            finalSemester1.push(semester1[i].tutorialTimes);
+            var day = semester1[i].tutorialTimes[0][0].day;
+            var start = semester1[i].tutorialTimes[0][0].start;
+            var end = semester1[i].tutorialTimes[0][0].end;
+
             console.log("Fixed tutorial " + semester1[i].name);
             if(times[day].indexOf(start) < 0 && times[day].indexOf(end) < 0){
+                //pushes an object with name, type and time
+                fixedCores.push({name :semester1[i].name, type :"tutorial", time : semester1[i].tutorialTimes});
                 reserveTime(start, end, day);
+                semester1[i].updateTutorialTimes();
             }
-            else{
+            else{ // Sends an error if 2 courses have fixed tutorial times.
                 sendError("Sorry we can't make a schedule with the courses you chose.")
             }
         }
+
+        else { // This means the tutorial times are flexible.
+            if(semester1[i].tutorialTimes.length != 0){
+                flexCores.push({name :semester1[i].name, type :"tutorial", time : semester1[i].tutorialTimes});
+                console.log("Flexible tutorial " + semester1[i].name);
+            }
+
+        }
+
         if (semester1[i].labTimes.length === 1){
-            var day = semester1[i].labTimes[0].day;
-            var start = semester1[i].labTimes[0].start;
-            var end = semester1[i].labTimes[0].end;
-            finalSemester1.push(semester1[i].labTimes);
+            var day = semester1[i].labTimes[0][0].day;
+            var start = semester1[i].labTimes[0][0].start;
+            var end = semester1[i].labTimes[0][0].end;
+
             console.log("Fixed lab " + semester1[i].name);
             if(times[day].indexOf(start) < 0 && times[day].indexOf(end) < 0){
+                //pushes an object with name, type and time
+                fixedCores.push({name :semester1[i].name, type :"lecture", time : semester1[i].lectureTimes});
                 reserveTime(start, end, day);
+                semester1[i].updateLabTimes();
             }
-            else{
+            else{ // Sends an error if 2 courses have fixed lab times.
                 sendError("Sorry we can't make a schedule with the courses you chose.")
             }
         }
 
         else{
+            if(semester1[i].labTimes.length != 0){
+                flexCores.push({name :semester1[i].name, type :"lab", time : semester1[i].labTimes});
+                console.log("Flexible Lab " + semester1[i].name);
+            }
 
-            console.log("Flexible Course " + semester1[i].name);
         }
     }
+
+    doFlexibleCourses();
+
 }
 
 function doSemester2() {
-    console.log("\n --- SEMESTER 2 --- \n");
-    console.log(semester2.length + "\n");
+
     for (var i=0; i < semester2.length; i++){
         if (semester2[i].lectureTimes.length === 1){
             finalSemester2.push(semester2[i]);
@@ -157,6 +187,44 @@ function dobothSemester() {
     
 }
 
+function doFlexibleCourses() {
+    var counter =  fixedCores.length; //Counter contains the number of all  labs, tutorials and lectures.
+    for (var i =0 ; i < flexCores.length
+        ; i++){
+       var time = flexCores[i].time;
+       counter += time.length;
+       console.log('Time length ' + time.length);
+    }
+
+    graph = new jsgraphs.Graph(counter);
+
+        //Labeling nodes for fixed cores.
+        for(var i = 0 ; i < fixedCores.length; i++){
+            var timeObject = fixedCores[i].time;
+            var name = fixedCores[i].name;
+            var core = timeObject[0][0].core;
+            //Labelling a node
+            graph.node(i).label = name + ' ' + core;
+        }
+
+        counter = fixedCores.length -1;
+        //Labelling nodes for flexible cores
+
+        for(var i=0; i < flexCores.length; i++){
+            var timeObject = flexCores[i].time;
+            var name = flexCores[i].name;
+            console.log("time object length " + timeObject.length);
+            for(i=0 ; i < timeObject.length; i++){
+                var core = (timeObject[i][0].tutorial);
+                graph.node(counter).label = name + ' ' + core;
+                counter++;
+            }
+        }
+
+
+
+
+}
 /*
     This function takes a courseDay(day of a lecture, tutorial, or lab), the corresponding course object and puts it
     in the appropriate array.
@@ -189,6 +257,7 @@ function putInaDay(courseDay, course){
     }
 }
 
+// Reserves the time for a particular day in order to avoid conflicts.
 function reserveTime(startTime,endTime,day) {
     var tempArray = [];
     for (var i= startTime; i< endTime; i+=0.5){
@@ -198,8 +267,18 @@ function reserveTime(startTime,endTime,day) {
 }
 
 function sendError(message) {
-    //Sends an error page;
+    //Sends an error page 'scheduleError.ejs' with the appropriate 'message'
 }
+
+Array.prototype.multiIndexOf = function (el) {
+    var idxs = [];
+    for (var i = this.length - 1; i >= 0; i--) {
+        if (this[i] === el) {
+            idxs.unshift(i);
+        }
+    }
+    return idxs;
+};
 
 module.exports = router;
 module.exports.reset = function () { // To reset all the values when the page is reloaded.
