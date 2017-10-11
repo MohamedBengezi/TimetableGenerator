@@ -29,6 +29,7 @@ var day6=[];
 var times = []; //Contains the array of times a lecture, lab or tutorial that are reserved.
                 // 8.5 is considered as a 8:30, 9.0 is considered as 9:00.
 
+var success = true;
 
 router.post('/',function (req, res, next) {
     console.log("THESE ARE THE FINAL COURSES \n" );
@@ -40,11 +41,19 @@ router.post('/',function (req, res, next) {
     var checkCourse = require('./checkCourse');
     finalCourses  = checkCourse.finalCourses;
 
-    algorithm();
+    var errorCheck = false;
+    errorCheck = algorithm();
+
+    if (errorCheck == false){
+        console.log("There is an error");
+        res.render('scheduleError', { title: 'Error', message: "Sorry, some of the fixed courses con"});
+        res.end();
+    }else{console.log("There is no error");
+    }
+
 });
 
 function algorithm() {
-
     for(var i =0; i < 7; i++){ // Initializing all the arrays within time.
         times[i] = [];
     }
@@ -56,18 +65,22 @@ function algorithm() {
             var secondSem = dataset[indicies[1]];
             var bothSem = [firstSem,secondSem];
             bothSemesters.push(bothSem);
+            success = true;
         }
         else{
-           var term = dataset[indicies[0]].term;
+            var term = dataset[indicies[0]].term;
            console.log("This is the term " + term);
            if(term == '2'){
                semester1.push(dataset[indicies[0]]);
+               success = true;
            }
            if(term == '5'){
                semester2.push(dataset[indicies[0]]);
+               success = true;
            }
            else{
                fullYear.push(dataset[indicies[0]]);
+               success = true;
            }
         }
     }
@@ -76,17 +89,24 @@ function algorithm() {
     console.log("Both Semesters " + bothSemesters);
     try {
 
-        doSemester1();
+       success = doSemester1();
         doSemester2();
+        success = true;
     }
 
     catch (Exception){
         console.log(Exception);
+
+
     }
+
+    return success;
+
 };
 
 
 function doSemester1() {
+    var suc = true;
     console.log("\n --- SEMESTER 1 --- \n");
     console.log(semester1.length + "\n");
     // Finds the lecture times, tutorial times and lab times that are fixed and flexible.
@@ -104,6 +124,7 @@ function doSemester1() {
                 semester1[i].updateLectureTimes();
             }
             else{ // Sends an error if 2 courses have fixed lecture times.
+                suc = false;
                 sendError("Sorry we can't make a schedule with the courses you chose.")
             }
             console.log("Fixed lecture " + semester1[i].name);
@@ -128,6 +149,7 @@ function doSemester1() {
                 semester1[i].updateTutorialTimes();
             }
             else{ // Sends an error if 2 courses have fixed tutorial times.
+                suc = false;
                 sendError("Sorry we can't make a schedule with the courses you chose.")
             }
         }
@@ -153,6 +175,7 @@ function doSemester1() {
                 semester1[i].updateLabTimes();
             }
             else{ // Sends an error if 2 courses have fixed lab times.
+                suc = false;
                 sendError("Sorry we can't make a schedule with the courses you chose.")
             }
         }
@@ -167,6 +190,7 @@ function doSemester1() {
     }
 
     doFlexibleCourses();
+    return suc;
 
 }
 
@@ -268,6 +292,9 @@ function reserveTime(startTime,endTime,day) {
 
 function sendError(message) {
     //Sends an error page 'scheduleError.ejs' with the appropriate 'message'
+    router.post('/generate',function (req, res, next) {
+
+    });
 }
 
 Array.prototype.multiIndexOf = function (el) {

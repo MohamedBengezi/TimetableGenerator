@@ -42,6 +42,11 @@ $(document).ready(function () {
 
     $("#generate").click(function () {
         console.log("clicked generate ");
+        var value = $('#input').val();
+        if (value === ''){
+            $('#error').html("Please enter a course code");
+            $('#error').effect('shake');
+        }
 
        $.ajax({
             url: '/check/submit',
