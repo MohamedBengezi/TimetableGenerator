@@ -1,7 +1,23 @@
 
-$('#output').innerHTML = "<p>Hello</p>";
+window.addEventListener( "pageshow", function ( event ) {
+    var historyTraversal = event.persisted || ( typeof window.performance != "undefined" && window.performance.navigation.type === 2 );
+    if ( historyTraversal ) {
+        // Handle page restore.
+        console.log("RECALLING");
+        $.ajax({
+            url: '/check/showCourses',
+            type:"GET",
+            async: true,
+            cache: false
+        }).done(function (result) {
+            $('#output').html(result);
+        });
+    }
+});
 $(document).ready(function () {
     var allCourses = [];
+
+
     $('#add').click(function () {
         var value = $('#input').val();
         if (value === ''){
@@ -24,7 +40,6 @@ $(document).ready(function () {
                     $('#error').effect('shake');
                     return;
                 }
-                console.log('done ' + result);
                 $('#output').html(result);
             });
         }
@@ -48,6 +63,7 @@ $(document).ready(function () {
             $('#error').effect('shake');
         }
 
+
        $.ajax({
             url: '/check/submit',
             type: "POST"
@@ -55,6 +71,11 @@ $(document).ready(function () {
             $.ajax({
                 url: '/generateTimeTable',
                 type: "POST"
+            }).done(function (result) {
+                if (result == 'ERROR'){
+                    window.location = '/generateTimeTable/showError';
+                }
+
             });
         });
 
