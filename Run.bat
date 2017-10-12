@@ -1,3 +1,5 @@
-node src/backend/bin/www
+cd src/backend
 
-pause
+npm start
+
+
