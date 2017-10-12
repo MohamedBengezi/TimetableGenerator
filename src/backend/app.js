@@ -8,7 +8,6 @@ var request = require('request');
 var Course = require('./routes/Course');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
 var checkCourse = require('./routes/checkCourse');
 var scheduler  = require('./routes/scheduler');
 var app = express();
@@ -173,7 +172,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
 app.use('/check',checkCourse);
 app.use('/generateTimeTable', scheduler);
 // catch 404 and forward to error handler

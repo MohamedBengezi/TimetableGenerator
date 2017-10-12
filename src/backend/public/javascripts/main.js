@@ -66,11 +66,15 @@ $(document).ready(function () {
 
        $.ajax({
             url: '/check/submit',
-            type: "POST"
+            type: "POST",
+           async: true,
+           cache:false
         }).done(function () {
             $.ajax({
                 url: '/generateTimeTable',
-                type: "POST"
+                type: "POST",
+                async: true,
+                cache:false
             }).done(function (result) {
                 if (result == 'ERROR'){
                     window.location = '/generateTimeTable/showError';

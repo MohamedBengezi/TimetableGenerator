@@ -32,6 +32,14 @@ var times = []; //Contains the array of times a lecture, lab or tutorial that ar
 var success = true;
 
 router.post('/',function (req, res, next) {
+    semester1 = [];
+    semester2 = [];
+    fullYear = [];
+    bothSemesters = [];
+    fixedCores=[];
+    flexCores=[];
+    finalSemester1=[];
+    finalSemester2=[];
     console.log("THESE ARE THE FINAL COURSES \n" );
 
     dataset = require('../app.js').dataset; //An Array of 'Course' objects that contains detailed information about a course.
