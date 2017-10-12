@@ -41,17 +41,25 @@ router.post('/',function (req, res, next) {
     var checkCourse = require('./checkCourse');
     finalCourses  = checkCourse.finalCourses;
 
-    var errorCheck = false;
+    var errorCheck;
     errorCheck = algorithm();
+    console.log("Error check Value : ---- " + errorCheck);
 
-    if (errorCheck == false){
+
+  if (errorCheck == false){
         console.log("There is an error");
-        res.render('scheduleError', { title: 'Error', message: "Sorry, some of the fixed courses con"});
+      router.get('/showError', function (req, res, next) {
+          res.status(200);
+          return res.render('scheduleError');
+      });
+        res.send("ERROR");
         res.end();
+
     }else{console.log("There is no error");
     }
-
 });
+
+
 
 function algorithm() {
     for(var i =0; i < 7; i++){ // Initializing all the arrays within time.
@@ -90,8 +98,7 @@ function algorithm() {
     try {
 
        success = doSemester1();
-        doSemester2();
-        success = true;
+     //   doSemester2();
     }
 
     catch (Exception){
@@ -106,7 +113,6 @@ function algorithm() {
 
 
 function doSemester1() {
-    var suc = true;
     console.log("\n --- SEMESTER 1 --- \n");
     console.log(semester1.length + "\n");
     // Finds the lecture times, tutorial times and lab times that are fixed and flexible.
@@ -116,16 +122,18 @@ function doSemester1() {
             var day = semester1[i].lectureTimes[0][0].day;
             var start = semester1[i].lectureTimes[0][0].start;
             var end = semester1[i].lectureTimes[0][0].end;
+            console.log(times[day].indexOf(start));
             console.log('Day ' + day);
+            console.log('start ' + start);
+            console.log('end ' + end + '\n');
+
             if(times[day].indexOf(start) < 0 && times[day].indexOf(end) < 0){
                 //pushes an object with name, type and time
                 fixedCores.push({name :semester1[i].name, type :"lecture", time : semester1[i].lectureTimes});
                 reserveTime(start, end, day);
-                semester1[i].updateLectureTimes();
             }
             else{ // Sends an error if 2 courses have fixed lecture times.
-                suc = false;
-                sendError("Sorry we can't make a schedule with the courses you chose.")
+                return false;
             }
             console.log("Fixed lecture " + semester1[i].name);
         }
@@ -146,11 +154,9 @@ function doSemester1() {
                 //pushes an object with name, type and time
                 fixedCores.push({name :semester1[i].name, type :"tutorial", time : semester1[i].tutorialTimes});
                 reserveTime(start, end, day);
-                semester1[i].updateTutorialTimes();
             }
             else{ // Sends an error if 2 courses have fixed tutorial times.
-                suc = false;
-                sendError("Sorry we can't make a schedule with the courses you chose.")
+                return false;
             }
         }
 
@@ -172,11 +178,9 @@ function doSemester1() {
                 //pushes an object with name, type and time
                 fixedCores.push({name :semester1[i].name, type :"lecture", time : semester1[i].lectureTimes});
                 reserveTime(start, end, day);
-                semester1[i].updateLabTimes();
             }
             else{ // Sends an error if 2 courses have fixed lab times.
-                suc = false;
-                sendError("Sorry we can't make a schedule with the courses you chose.")
+                return false;
             }
         }
 
@@ -190,7 +194,7 @@ function doSemester1() {
     }
 
     doFlexibleCourses();
-    return suc;
+    return true;
 
 }
 
@@ -244,10 +248,6 @@ function doFlexibleCourses() {
                 counter++;
             }
         }
-
-
-
-
 }
 /*
     This function takes a courseDay(day of a lecture, tutorial, or lab), the corresponding course object and puts it
@@ -283,17 +283,14 @@ function putInaDay(courseDay, course){
 
 // Reserves the time for a particular day in order to avoid conflicts.
 function reserveTime(startTime,endTime,day) {
-    var tempArray = [];
     for (var i= startTime; i< endTime; i+=0.5){
-        tempArray.push(i);
+        times[day].push(i);
     }
-    times[day] = tempArray;
 }
 
 function sendError(message) {
     //Sends an error page 'scheduleError.ejs' with the appropriate 'message'
     router.post('/generate',function (req, res, next) {
-
     });
 }
 
@@ -316,5 +313,4 @@ module.exports.reset = function () { // To reset all the values when the page is
     semester2 = [];
     finalSemester1 = [];
     finalSemester2 = [];
-
 };
