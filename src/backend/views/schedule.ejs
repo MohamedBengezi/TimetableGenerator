@@ -21,6 +21,7 @@
             <th>Wednesday</th>
             <th>Thursday</th>
             <th>Friday</th>
+            <th>Saturday</th>
         </tr>
 
         <% for(var i =8; i < 22.5; i += 0.5){var id = 'time' +i+'';id= id.replace('.','')%>
@@ -37,8 +38,8 @@
                     <%= s%>
                     <% }%>
                 </td>
-                <% for (var j =0; j < 5; j++){ var id="day"+j;%>
-                <td class= <%= id%> style="border: 1px solid black; border-collapse: collapse; text-align: center"></td>
+                <% for (var j =0; j < 6; j++){ var id="day"+j;%>
+                <td class= <%= id%> style="text-align: center"></td>
                 <%}%>
             </tr>
 
