@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Schedule</title>
+    <link rel="icon" href="https://www.iconsfind.com/wp-content/uploads/2015/11/20151104_563963802fd08-210x210.png">
+    <script src="/javascripts/jquery.js"></script>
+    <script src="/javascripts/schedule.js"></script>
+</head>
+<body>
+<h1>Here is your time table </h1>
+
+    <% var counter1 = 1; schedule.forEach(function (version) { %>
+<ul>
+    <h1>--- Schedule <%= counter1%> --- <% var idName ='schedule' + counter1++ %></h1>
+    <table id=<%= idName%> style="width:100%" border="1">
+        <tr>
+            <th>Time</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+        </tr>
+
+        <% for(var i =8; i < 22.5; i += 0.5){var id = 'time' +i+'';id= id.replace('.','')%>
+            <tr class=<%= id%>>
+                <td style="border: 1px solid black; border-collapse: collapse; text-align: center">
+                    <%
+                    var time = i + '';
+                    if(time.includes('.5')){
+                        var s = i - 0.5 + ':30'; %>
+                        <%= s%>
+                    <%}
+                    else{
+                        var s = i  + ':00'%>
+                    <%= s%>
+                    <% }%>
+                </td>
+                <% for (var j =0; j < 5; j++){ var id="day"+j;%>
+                <td class= <%= id%> style="border: 1px solid black; border-collapse: collapse; text-align: center"></td>
+                <%}%>
+            </tr>
+
+        <% } %>
+    </table>
+
+</ul>
+    <%})%>
+
+</body>
+</html>
