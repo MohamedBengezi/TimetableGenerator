@@ -14,12 +14,13 @@ var app = express();
 
 var realData = null;
 
-fs.readFile("C://Users//amitb//Desktop/data.txt", 'utf8', function(err, contents) {
+/*fs.readFile("C://Users//amitb//Desktop/data.txt", 'utf8', function(err, contents) {
 
     realData = JSON.parse(contents);
     startProgram();
-});
-/*request('C://Users//amitb//Desktop/data.txt', function (error, response, body) {
+}); */
+
+request('C://Users//amitb//Desktop/data.txt', function (error, response, body) {
   if (error){
     console.log('\n Something went wrong');
   }
@@ -27,7 +28,7 @@ fs.readFile("C://Users//amitb//Desktop/data.txt", 'utf8', function(err, contents
     realData = JSON.parse(body);
     startProgram()
   }
-})*/
+});
 
 var courseIDs = []; //Custom made course ids to show the available courses to user.
 
