@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var request = require('request');
 var Course = require('./routes/Course');
-
+var fs = require('fs');
 var index = require('./routes/index');
 var checkCourse = require('./routes/checkCourse');
 var scheduler  = require('./routes/scheduler');
@@ -14,8 +14,12 @@ var app = express();
 
 var realData = null;
 
+fs.readFile("C://Users//amitb//Desktop/data.txt", 'utf8', function(err, contents) {
 
-request('https://www.timetablegenerator.io/api/v2/school/mcmaster', function (error, response, body) {
+    realData = JSON.parse(contents);
+    startProgram();
+});
+/*request('C://Users//amitb//Desktop/data.txt', function (error, response, body) {
   if (error){
     console.log('\n Something went wrong');
   }
@@ -23,7 +27,7 @@ request('https://www.timetablegenerator.io/api/v2/school/mcmaster', function (er
     realData = JSON.parse(body);
     startProgram()
   }
-})
+})*/
 
 var courseIDs = []; //Custom made course ids to show the available courses to user.
 
@@ -68,7 +72,8 @@ function startProgram() {
                                     start: Number(startTime),
                                     end : Number(endTime),
                                     core: eachCore,
-                                    room: realData.timetables[2017][6].courses[key].sections.C[eachCore].r_periods[eachTime].room
+                                    room: realData.timetables[2017][6].courses[key].sections.C[eachCore].r_periods[eachTime].room,
+                                    name:courseName + ' ' + eachCore
                                 };
                                 oneCore.push(timeObject);
                             }
@@ -100,11 +105,18 @@ function startProgram() {
                                     start: Number(startTime),
                                     end : Number(endTime),
                                     lab: eachLab,
-                                    room: realData.timetables[2017][6].courses[key].sections.L[eachLab].r_periods[eachTime].room
+                                    room: realData.timetables[2017][6].courses[key].sections.L[eachLab].r_periods[eachTime].room,
+                                    name:courseName + " " + eachLab
                                 };
                                 oneLab.push(timeObject);
                             }
-                            labTimes.push(oneLab);
+                            if(oneLab .length > 0){
+                                labTimes.push(oneLab);
+                            }
+                            else{
+                                console.log("Undefined lab for " + key);
+                            }
+
                         }
 
                         break;
@@ -132,7 +144,8 @@ function startProgram() {
                                     start: Number(startTime),
                                     end : Number(endTime),
                                     tutorial: eachTutorial,
-                                    room: realData.timetables[2017][6].courses[key].sections.T[eachTutorial].r_periods[eachTime].room
+                                    room: realData.timetables[2017][6].courses[key].sections.T[eachTutorial].r_periods[eachTime].room,
+                                    name:courseName + ' ' + eachTutorial
                                 };
                                 oneTutorial.push(timeObject);
                             }

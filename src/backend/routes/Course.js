@@ -29,6 +29,7 @@ var course = function (name,lectureTimes,tutorialTimes,labTimes,term) {
             - end ((8:5 is representing 8:30 am, 13:5 is representing 13:30)
             - tutorial
             - room
+            -name
             - supervisor
 
 
