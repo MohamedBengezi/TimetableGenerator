@@ -33,6 +33,15 @@ var success = true;
 
 var schedule=[];
 router.get('/',function (req, res, next) {
+    schedule=[];
+    times=[];
+    day1=[];
+    day2=[];
+    day3=[];
+    day4=[];
+    day5=[];
+    day6=[];
+
     semester1 = [];
     semester2 = [];
     fullYear = [];
@@ -51,6 +60,7 @@ router.get('/',function (req, res, next) {
     var checkCourse = require('./checkCourse');
     finalCourses  = checkCourse.finalCourses;
 
+    console.log("Final Courses --" + finalCourses);
     var errorCheck;
     errorCheck = algorithm();
     console.log("Error check Value : ---- " + errorCheck);
@@ -62,7 +72,7 @@ router.get('/',function (req, res, next) {
 
     }else{
       schedule= [];
-      console.log("There is no error");
+      console.log("There is no error \n \n");
       finalSemester1.forEach(function (version) {
           version.forEach(function (core) {
               core.forEach(function (timeObj) {
@@ -127,7 +137,7 @@ function algorithm() {
     console.log("Both Semesters " + bothSemesters);
     try {
 
-       success = doSemester1();
+       success = doSemester(semester1);
      //   doSemester2();
     }
 
@@ -142,7 +152,7 @@ function algorithm() {
 }
 
 
-function doSemester1() {
+function doSemester(semester1) {
     console.log("\n --- SEMESTER 1 --- \n");
     console.log(semester1.length + "\n");
     // Finds the lecture times, tutorial times and lab times that are fixed and flexible.
@@ -248,12 +258,12 @@ var conflictAvoider = []; //Each index represents the times of a course.
 
 var allTimeObjects = []; // Contains the time objects of all Cores. The value of each index is same as the node id in graph.
 function makeGraph() {
+    allTimeObjects=[];
     var counter =  fixedCores.length; //Counter contains the number of all  labs, tutorials and lectures.
     console.log("Number of fixed cores " + counter + " -- Number of flexible cores " + flexCores.length);
     for (var i =0 ; i < flexCores.length; i++){
        var time = flexCores[i].time;
        counter += time.length;
-
     }
 
     graph = new jsgraphs.Graph(counter);
@@ -262,10 +272,9 @@ function makeGraph() {
         for(var i = 0 ; i < fixedCores.length; i++){
             conflictAvoider[i] = [];
             var timeObject = fixedCores[i].time;
-            var name = fixedCores[i].name;
-            var core = timeObject[0][0].core;
+            var core = timeObject[0][0].name;
             //Labelling a node
-            graph.node(i).label = name;
+            graph.node(i).label = core;
             timeObject.forEach(function (core) {
                 allTimeObjects.push(core);
             });
@@ -284,17 +293,18 @@ function makeGraph() {
         for(var i=0; i < flexCores.length; i++){
             var timeObject = flexCores[i].time;
             var name = flexCores[i].name;
+            console.log('---- ' + name + ' ----');
             for(j=0 ; j < timeObject.length; j++){
                 allTimeObjects.push(timeObject[j]);
 
-                graph.node(counter).label = name;
+                graph.node(counter).label = timeObject[j][0].name;
                 conflictAvoider[counter] = [];
                 counter++;
             }
         }
 
     //Reserving time for fixed cores
-
+    console.log("LENGTH --- " + conflictAvoider.length);
     for(var i =0 ; i < conflictAvoider.length; i++){
             for (var eachDay=0; eachDay < 7; eachDay++){
                 conflictAvoider[i][eachDay]= [];
@@ -319,7 +329,14 @@ function makeGraph() {
     var nodeIds = []; // Node ids of last flex cores. This is used to
   while(index < flexCores.length ){
       var course = flexCores[index]; //Could be a lecture  or tutorial or lab.
-      counter = connectedCompontents.length;
+      if(connectedCompontents.length===0){
+          counter = 1;
+      }
+      else{
+          counter = connectedCompontents.length;
+      }
+
+      console.log('=== counter === ' + counter);
       if(fixedCores[0].time[0][0].core === "fake" && counter === 0){
           counter = 1;
       }
@@ -335,19 +352,26 @@ function makeGraph() {
               var end = course.time[core][eachDay].end;
 
               for(var i =0; i< connectedCompontents.length; i++){
-                  if(i < fixedCores.length){ //Need this in-order for program to work when user enters only one course.
+                   //Need this in-order for program to work when user enters only one course.
+                  if(i<fixedCores.length){
                       var courseId = connectedCompontents[i]; // Takes care of the flexible cores that conflicts with FIXED cores.
+                      console.log("Index is ---" + courseId);
                       if(conflictAvoider[courseId][day].indexOf(start) >= 0 && conflictAvoider[courseId][day].indexOf(end) >= 0){
                           ignore = true;
                           break;
                       }
                   }
+                  else {
+                      break;
+                  }
+
               }
-              if (ignore){ break;}
+              if (ignore){ console.log(course.time[core][eachDay].name + " HAS A CONFLICT WITH FIXED CORE"); break;}
           }
 
           if (! ignore){
-              console.log('---connected componenets--' + connectedCompontents);
+              console.log('---connected componenets---' + connectedCompontents.length );
+              console.log('---fixed Cores---'+fixedCores.length);
               if(connectedCompontents.length > fixedCores.length ){
                   for(var eachDay= 0; eachDay < course.time[core].length; eachDay++) {
                       var day = course.time[core][eachDay].day;
@@ -365,7 +389,8 @@ function makeGraph() {
                   }
               }
               else{
-                      graph.addEdge(fixedCores.length-1, flexCourseId);
+                  console.log("\n Edge between " + graph.node(fixedCores.length-1).label + " and " + graph.node(flexCourseId).label);
+                  graph.addEdge(fixedCores.length-1, flexCourseId);
                       avoidConflicts(start,end,day,flexCourseId);
               }
           }
@@ -378,7 +403,7 @@ function makeGraph() {
         index++;
 
     }
-  if(flexCores.length > 1 ){
+  if(flexCores.length > 0 ){
       var timeTables = [];
       BreadthFirstPaths(graph,0);
 
@@ -389,13 +414,12 @@ function makeGraph() {
               console.log("\n ----- TIMETABLE----- \n");
               if(graph.node(path[path.length-1]).label === "fake fake"){
 
-                  path.splice(path.length-1);
+                  path.splice(path.length-1,1);
               }
               timeTables.push(path)
               for(var i =0; i < path.length; i++){
                   console.log(graph.node(path[i]).label );
               }
-
           }
       }
 

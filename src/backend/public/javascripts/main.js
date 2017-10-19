@@ -21,7 +21,7 @@ $(document).ready(function () {
         var value = $('#input').val();
         if (value === ''){
             $('#error').html("Please enter a course code");
-            $('#error').effect('shake');
+            $('#input').effect('shake');
         }
         else{
             $('#error').html(" ");
@@ -31,12 +31,12 @@ $(document).ready(function () {
             }).done(function (result) {
                 if (result === "added"){
                     $("#error").html("You already chose this course");
-                    $('#error').effect('shake');
+                    $('#input').effect('shake');
                     return;
                 }
                 if (result === "error"){
                     $("#error").html("Invalid course");
-                    $('#error').effect('shake');
+                    $('#input').effect('shake');
                     return;
                 }
                 $('#output').html(result);
@@ -59,7 +59,8 @@ $(document).ready(function () {
         var value = $('#input').val();
         if (value === ''){
             $('#error').html("Please enter a course code");
-            $('#error').effect('shake');
+            $('#input').effect('shake');
+            return;
         }
 
 
@@ -68,8 +69,15 @@ $(document).ready(function () {
             type: "POST",
            async: true,
            cache:false
-        }).done(function () {
-            window.location = "/generateTimeTable";
+        }).done(function (result) {
+            if(result === 'error'){
+                $('#error').html("Please ADD a course code");
+                $('#input').effect('shake');
+            }
+            else{
+                window.location = "/generateTimeTable";
+            }
+
         });
 
     });

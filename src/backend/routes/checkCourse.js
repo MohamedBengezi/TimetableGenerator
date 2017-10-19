@@ -6,12 +6,17 @@ var selectedCourses = [];
 
 router.post('/remove/:courseId',function (req, res, next) {
     console.log("\n \n REMOVING \n \n");
-    selectedCourses.splice(selectedCourses.indexOf(req.params.courseId));
+    selectedCourses.splice(selectedCourses.indexOf(req.params.courseId),1);
     res.end();
 });
 
 
 router.post('/submit',function (req, res, next) {
+    if(selectedCourses.length === 0){
+        res.send('error');
+        res.end();
+        return;
+    }
     module.exports.finalCourses = selectedCourses;
     res.end();
 });
