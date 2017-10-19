@@ -14,21 +14,23 @@ var app = express();
 
 var realData = null;
 
-/*fs.readFile("C://Users//amitb//Desktop/data.txt", 'utf8', function(err, contents) {
+fs.readFile("C://Users//amitb//Desktop/data.txt", 'utf8', function(err, contents) {
 
     realData = JSON.parse(contents);
     startProgram();
-}); */
+});
 
-request('C://Users//amitb//Desktop/data.txt', function (error, response, body) {
+/*request('https://www.timetablegenerator.io/api/v2/school/mcmaster/', function (error, response, body) {
+    console.log(error);
   if (error){
     console.log('\n Something went wrong');
   }
   else{
     realData = JSON.parse(body);
-    startProgram()
+    console.log("Starting the program");
+    startProgram();
   }
-});
+});*/
 
 var courseIDs = []; //Custom made course ids to show the available courses to user.
 
@@ -74,7 +76,8 @@ function startProgram() {
                                     end : Number(endTime),
                                     core: eachCore,
                                     room: realData.timetables[2017][6].courses[key].sections.C[eachCore].r_periods[eachTime].room,
-                                    name:courseName + ' ' + eachCore
+                                    name:courseName + ' ' + eachCore,
+                                    supervisor:realData.timetables[2017][6].courses[key].sections.C[eachCore].r_periods[eachTime].supervisors[0]
                                 };
                                 oneCore.push(timeObject);
                             }
@@ -101,13 +104,15 @@ function startProgram() {
                                 if (endTime.charAt('3') == '3'){
                                     endTime = endTime.replace('.3','.5');
                                 }
+
                                 var timeObject = {
                                     day : Number(realData.timetables[2017][6].courses[key].sections.L[eachLab].r_periods[eachTime].day),
                                     start: Number(startTime),
                                     end : Number(endTime),
                                     lab: eachLab,
                                     room: realData.timetables[2017][6].courses[key].sections.L[eachLab].r_periods[eachTime].room,
-                                    name:courseName + " " + eachLab
+                                    name:courseName + " " + eachLab,
+                                    supervisor:realData.timetables[2017][6].courses[key].sections.L[eachLab].r_periods[eachTime].supervisors[0]
                                 };
                                 oneLab.push(timeObject);
                             }
@@ -146,7 +151,8 @@ function startProgram() {
                                     end : Number(endTime),
                                     tutorial: eachTutorial,
                                     room: realData.timetables[2017][6].courses[key].sections.T[eachTutorial].r_periods[eachTime].room,
-                                    name:courseName + ' ' + eachTutorial
+                                    name:courseName + ' ' + eachTutorial,
+                                    supervisor:realData.timetables[2017][6].courses[key].sections.T[eachTutorial].r_periods[eachTime].supervisors[0]
                                 };
                                 oneTutorial.push(timeObject);
                             }
