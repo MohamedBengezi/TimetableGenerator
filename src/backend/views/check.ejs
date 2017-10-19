@@ -10,7 +10,7 @@
 <script>
     $('.remove').click(function () {
         var className = '.' + ($(this).val());
-
+        console.log("Removing " + $(this).val());
         $.ajax({
             url:"/check/remove/"+$(this).val(),
             type: "POST"
