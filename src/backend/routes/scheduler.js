@@ -32,6 +32,7 @@ var times = []; //Contains the array of times a lecture, lab or tutorial that ar
 var success = true;
 
 var schedule=[];
+var schedule2=[];
 router.get('/',function (req, res, next) {
     schedule=[];
     times=[];
@@ -72,8 +73,9 @@ router.get('/',function (req, res, next) {
 
     }else{
       schedule= [];
+      schedule2=[];
       console.log("There is no error \n \n");
-      finalSemester1.forEach(function (version) {
+      var version = finalSemester1[0];
           version.forEach(function (core) {
               core.forEach(function (timeObj) {
                   putInaDay(timeObj.day, timeObj);
@@ -87,7 +89,24 @@ router.get('/',function (req, res, next) {
           day4=[];
           day5=[];
           day6=[];
-      });
+
+          version = finalSemester2[0];
+          version.forEach(function (core) {
+              core.forEach(function (timeObj) {
+                  putInaDay(timeObj.day, timeObj);
+              });
+          });
+          var temp =[day1,day2,day3,day4,day5,day6];
+          schedule.push(temp);
+          day1=[];
+          day2=[];
+          day3=[];
+          day4=[];
+          day5=[];
+          day6=[];
+
+
+      console.log(schedule2);
 
   //    express.locals.schedule= schedule;
 
@@ -101,13 +120,11 @@ router.get('/getSchedule',function (req,res,next) {
 });
 
 function algorithm() {
-    for(var i =0; i < 7; i++){ // Initializing all the arrays within time.
-        times[i] = [];
-    }
+
 
     for ( var i = 0; i < finalCourses.length; i++){
         var indicies = allCourses.multiIndexOf(finalCourses[i]);
-        console.log("Course Name : " +finalCourses[i].name);
+        console.log("Course Name : " +finalCourses[i]);
         if (indicies.length > 1){
             var firstSem = dataset[indicies[0]];
             var secondSem = dataset[indicies[1]];
@@ -132,19 +149,73 @@ function algorithm() {
            }
         }
     }
+
+    bothSemesters.forEach(function (course) {
+
+        if(semester1.length < semester2.length){
+            console.log(course[0].name + ' term -- ' + course[0].term);
+            semester1.push(course[0]);
+            if(doSemester((semester1))=== false){
+                semester1.splice(semester1.indexOf(course[0]),1);
+                semester2.push(course[1]);
+                if(doSemester(semester2)===false){
+                    return false;
+                }
+            }
+        }
+        else{
+            semester2.push(course[1]);
+            if(doSemester((semester2))=== false){
+                semester2.splice(semester2.indexOf(course[1]),1);
+                semester1.push(course[0]);
+                if(doSemester(semester1)===false){
+                    return false;
+                }
+            }
+        }
+    });
     console.log("Semester 1 " +semester1);
     console.log("Semester 2 " +semester2);
     console.log("Both Semesters " + bothSemesters);
     try {
-
+        finalSemester1=[];
+        finalSemester2=[];
        success = doSemester(semester1);
-     //   doSemester2();
+       var success2 = doSemester(semester2);
+
+       if(!success || !success2){
+           console.log("Redoing it " + success + ' ' + success2);
+           bothSemesters.forEach(function (course) {
+               var sem1='';
+               var sem2='';
+               if(semester1.indexOf(course[0]) >= 0){
+                   semester1.splice(semester1.indexOf(course[0]),1);
+                   sem2=course[1];
+               }
+               if(semester2.indexOf(course[1]) >= 0){
+                   semester2.splice(semester2.indexOf(course[1]),1);
+                   sem1=course[0];
+               }
+               if(sem1 !== ''){
+                   semester1.push(sem1)
+               }
+               if(sem2 !== ''){
+                   semester2.push(sem2);
+               }
+           });
+           success = doSemester(semester1);
+           if(success === false){
+               return false;
+           }
+           success2 = doSemester(semester2);
+           return success2;
+
+       }
+
     }
 
     catch (Exception){
         console.log(Exception);
-
-
     }
 
     return success;
@@ -153,6 +224,12 @@ function algorithm() {
 
 
 function doSemester(semester1) {
+    for(var i =0; i < 7; i++){ // Initializing all the arrays within time.
+        times[i] = [];
+    }
+    fixedCores=[];
+    flexCores=[];
+
     console.log("\n --- SEMESTER 1 --- \n");
     console.log(semester1.length + "\n");
     // Finds the lecture times, tutorial times and lab times that are fixed and flexible.
@@ -232,8 +309,7 @@ function doSemester(semester1) {
         fixedCores.push({name :"fake", type :"fake", time : [[{day:10,start:20,end:20,core:'fake',room:'fake',name:'fake'}]]}) //Fake core with no times.
     }
 
-    makeGraph();
-    return true;
+    return makeGraph();
 
 }
 
@@ -310,7 +386,7 @@ function makeGraph() {
                 conflictAvoider[i][eachDay]= [];
             }
             if (i<fixedCores.length){
-                for (var j=0; j < fixedCores[i].time.length; j++){
+                for (var j=0; j < fixedCores[i].time[0].length; j++){
                     var day = fixedCores[i].time[0][j].day;
                     var start = fixedCores[i].time[0][j].start;
                     var end = fixedCores[i].time[0][j].end;
@@ -346,62 +422,67 @@ function makeGraph() {
       console.log('For loop for --- ' + graph.node(flexCourseId).label);
       for(var core =0; core < course.time.length; core++){
           var ignore = false;
-          for(var eachDay= 0; eachDay < course.time[core].length; eachDay++){
-              var day  = course.time[core][eachDay].day;
-              var start = course.time[core][eachDay].start;
-              var end = course.time[core][eachDay].end;
 
-              for(var i =0; i< connectedCompontents.length; i++){
-                   //Need this in-order for program to work when user enters only one course.
-                  if(i<fixedCores.length){
-                      var courseId = connectedCompontents[i]; // Takes care of the flexible cores that conflicts with FIXED cores.
-                      console.log("Index is ---" + courseId);
-                      if(conflictAvoider[courseId][day].indexOf(start) >= 0 && conflictAvoider[courseId][day].indexOf(end) >= 0){
-                          ignore = true;
-                          break;
-                      }
-                  }
-                  else {
-                      break;
-                  }
-
-              }
-              if (ignore){ console.log(course.time[core][eachDay].name + " HAS A CONFLICT WITH FIXED CORE"); break;}
-          }
-
-          if (! ignore){
-              console.log('---connected componenets---' + connectedCompontents.length );
-              console.log('---fixed Cores---'+fixedCores.length);
               if(connectedCompontents.length > fixedCores.length ){
-                  for(var eachDay= 0; eachDay < course.time[core].length; eachDay++) {
-                      var day = course.time[core][eachDay].day;
-                      var start = course.time[core][eachDay].start;
-                      var end = course.time[core][eachDay].end;
+                  var ignore2 = false;
+                  for(var i =counter; i< connectedCompontents.length; i++){
+                      var courseId = connectedCompontents[i];
+                      for(var eachDay= 0; eachDay < course.time[core].length; eachDay++) {
+                          var day = course.time[core][eachDay].day;
+                          var start = course.time[core][eachDay].start;
+                          var end = course.time[core][eachDay].end;
 
-                      for(var i =counter; i< connectedCompontents.length; i++){
-                          var courseId = connectedCompontents[i]; // Takes care of the flexible cores that conflicts with FIXED cores.
-                          if(conflictAvoider[courseId][day].indexOf(start) < 0 && conflictAvoider[courseId][day].indexOf(end) < 0){
-                              console.log("\n Edge between " + graph.node(courseId).label + " and " + graph.node(flexCourseId).label);
-                              graph.addEdge(courseId,flexCourseId);
+                          BreadthFirstPaths(graph,0);
+                          if(graph.node(courseId).label === "BIOLOGY-2F03 C01"){
+                              console.log("Course is -- BIO 2F03 C01 and " +  course.time[core][eachDay].name);
+                              console.log(hasPathConflict(courseId,day,start,end) + " -- \n");
+                          }
+                          if(hasPathConflict(courseId,day,start,end)){
+                              console.log(course.time[core][eachDay].name + " won't work with " + graph.node(courseId).label);
+                              ignore2 = true;
+                              break;
+                          }
+                      }
+                      if(! ignore2){
+                          graph.addEdge(courseId,flexCourseId);
+                          for(var eachDay= 0; eachDay < course.time[core].length; eachDay++) {
+                              var day = course.time[core][eachDay].day;
+                              var start = course.time[core][eachDay].start;
+                              var end = course.time[core][eachDay].end;
                               avoidConflicts(start,end,day,flexCourseId);
                           }
+                      }
+                      else{
+                          ignore2 = false;
                       }
                   }
               }
               else{
-                  console.log("\n Edge between " + graph.node(fixedCores.length-1).label + " and " + graph.node(flexCourseId).label);
-                  graph.addEdge(fixedCores.length-1, flexCourseId);
-                      avoidConflicts(start,end,day,flexCourseId);
+                  for(var eachDay= 0; eachDay < course.time[core].length; eachDay++) {
+                      var day = course.time[core][eachDay].day;
+                      var start = course.time[core][eachDay].start;
+                      var end = course.time[core][eachDay].end;
+                      BreadthFirstPaths(graph,0);
+                      if(hasPathConflict(fixedCores.length-1,day,start,end)){
+                          console.log(course.time[core][eachDay].name + " won't work with " + graph.node(fixedCores.length-1).label);
+                          ignore = true;
+                          break;
+                      }
+                  }
+                  if(! ignore){
+                      graph.addEdge(fixedCores.length-1, flexCourseId);
+                      for(var eachDay= 0; eachDay < course.time[core].length; eachDay++) {
+                          avoidConflicts(course.time[core][eachDay].start,course.time[core][eachDay].end,course.time[core][eachDay].day,flexCourseId);
+                      }
+                  }
               }
-          }
+
           if(index === (flexCores.length - 1)){
-              console.log('pushing ' +graph.node(flexCourseId).label);
               nodeIds.push(flexCourseId);
           }
           flexCourseId++;
       }
         index++;
-
     }
   if(flexCores.length > 0 ){
       var timeTables = [];
@@ -422,25 +503,45 @@ function makeGraph() {
               }
           }
       }
+      if(timeTables.length === 0 ){
+          return false;
+      }
 
-
-
-      timeTables.forEach(function (timeTable) {
-          var version = [];
-          timeTable.forEach(function (core) {
-              version.push(allTimeObjects[core]);
+      if(finalSemester1.length === 0){
+          timeTables.forEach(function (timeTable) {
+              var version = [];
+              timeTable.forEach(function (core) {
+                  version.push(allTimeObjects[core]);
+              });
+              finalSemester1.push(version);
           });
-          finalSemester1.push(version);
-      });
+      }
+      else{
+          timeTables.forEach(function (timeTable) {
+              var version = [];
+              timeTable.forEach(function (core) {
+                  version.push(allTimeObjects[core]);
+              });
+              finalSemester2.push(version);
+          });
+      }
 
   }
   else{ //If this condition runs, it means that the user has only given fixed cores.
      // fixedCores --> variable that has fixedCores
-      fixedCores.forEach(function (core) {
-          finalSemester1.push(core.time);
-      });
-  }
+      if(finalSemester1.length === 0){
+          fixedCores.forEach(function (core) {
+              finalSemester1.push(core.time);
+          });
+      }
+      else{
+          fixedCores.forEach(function (core) {
+              finalSemester2.push(core.time);
+          });
+      }
 
+  }
+  return true;
 }
 
 function getConnectedComponent(graph) {
@@ -471,7 +572,33 @@ function  avoidConflicts(startTime,endTime,day,courseIndex) {
         conflictAvoider[courseIndex][day].push(i);
     }
 }
+function hasConflict(startTime,endTime,day,courseId) {
+    for (var i= startTime; i<= endTime; i+=0.5){
+        if(conflictAvoider[courseId][day].indexOf(i) >= 0){
+            return true;
+        }
+    }
+    return false;
+}
 
+function hasPathConflict(coreId,day, start,end) {
+    var path = pathTo(coreId);
+  //
+    //  console.log("\n \n -- " + graph.node(coreId).label + " -- \n \n");
+    path.forEach(function (t) {
+    //    console.log(graph.node(t).label);
+    });
+
+   // console.log("Path to -- " + graph.node(coreId).label);
+    //console.log("\n\n\n\n")
+    var s = false;
+    path.forEach(function (vertex) {
+        if (hasConflict(start, end, day, vertex)) {
+            s=true;
+        }
+    });
+    return s;
+}
 var marked=[];
 var edgeTo=[];
 var distTO=[];
