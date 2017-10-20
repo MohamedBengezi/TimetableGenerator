@@ -13,14 +13,15 @@ var scheduler  = require('./routes/scheduler');
 var app = express();
 
 var realData = null;
+/*
 
 fs.readFile("C://Users//amitb//Desktop/data.txt", 'utf8', function(err, contents) {
 
     realData = JSON.parse(contents);
     startProgram();
 });
-
-/*request('https://www.timetablegenerator.io/api/v2/school/mcmaster/', function (error, response, body) {
+*/
+request('https://www.timetablegenerator.io/api/v2/school/mcmaster/', function (error, response, body) {
     console.log(error);
   if (error){
     console.log('\n Something went wrong');
@@ -30,7 +31,7 @@ fs.readFile("C://Users//amitb//Desktop/data.txt", 'utf8', function(err, contents
     console.log("Starting the program");
     startProgram();
   }
-});*/
+});
 
 var courseIDs = []; //Custom made course ids to show the available courses to user.
 

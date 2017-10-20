@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2017-09-24" view-index="0" gantt-divider-location="639" resource-divider-location="300" version="2.8.5" locale="en_US">
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2017-10-01" view-index="0" gantt-divider-location="639" resource-divider-location="300" version="2.8.5" locale="en_US">
     <description/>
     <view zooming-state="default:0" id="gantt-chart">
         <field id="tpd3" name="Name" width="196" order="0"/>
@@ -7,7 +7,7 @@
         <field id="tpc0" name="" width="70" order="3"/>
         <field id="tpc1" name="" width="70" order="4"/>
         <field id="tpc2" name="Moe" width="69" order="5"/>
-        <timeline><![CDATA[0,15]]></timeline>
+        <timeline><![CDATA[15,21,0]]></timeline>
         <option id="color.recent"><![CDATA[#00ff66 #000000 #ff9999 #66ff99 #ccff99 #6666ff]]></option>
     </view>
     <view id="resource-table">
@@ -44,14 +44,17 @@
         <task id="3" name="Problem Statement" color="#ccff99" meeting="false" start="2017-09-24" duration="2" complete="100" expand="true">
             <depend id="0" type="2" difference="0" hardness="Rubber"/>
         </task>
-        <task id="0" name="Development Plan" color="#6666ff" shape="1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1" meeting="false" start="2017-09-26" duration="5" complete="80" webLink="https%3A%2F%2Fwww.sharelatex.com%2Fproject%2F59cadc8b7bd11d5822ac256d" expand="true"/>
-        <task id="9" name="Demo For PoC" color="#66ff99" meeting="false" start="2017-10-03" duration="4" complete="0" priority="2" expand="true">
-            <task id="12" name="SRS" color="#ff9999" meeting="false" start="2017-10-03" duration="4" complete="0" expand="true">
-                <task id="17" name="Functional Requirements" color="#8cb6ce" meeting="false" start="2017-10-03" duration="2" complete="0" expand="true"/>
-                <task id="18" name="Non-Functional requirements" color="#8cb6ce" meeting="false" start="2017-10-04" duration="3" complete="0" expand="true"/>
-            </task>
+        <task id="0" name="Development Plan" color="#6666ff" shape="1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1" meeting="false" start="2017-09-26" duration="5" complete="100" webLink="https%3A%2F%2Fwww.sharelatex.com%2Fproject%2F59cadc8b7bd11d5822ac256d" expand="true"/>
+        <task id="12" name="SRS" color="#ff9999" meeting="false" start="2017-10-03" duration="4" complete="0" expand="true">
+            <task id="17" name="Functional Requirements" color="#8cb6ce" meeting="false" start="2017-10-03" duration="2" complete="0" expand="true"/>
+            <task id="18" name="Non-Functional requirements" color="#8cb6ce" meeting="false" start="2017-10-04" duration="3" complete="0" expand="true"/>
+            <task id="27" name="Other" color="#8cb6ce" meeting="false" start="2017-10-06" duration="1" complete="0" expand="true"/>
         </task>
-        <task id="15" name="Implementation" color="#000000" meeting="false" start="2017-10-07" duration="26" complete="5" expand="true"/>
+        <task id="15" name="Implementation" color="#000000" meeting="false" start="2017-10-07" duration="25" complete="48" expand="true">
+            <task id="21" name="Proof_of_Concept" color="#8cb6ce" meeting="false" start="2017-10-07" duration="13" complete="100" expand="true"/>
+            <task id="23" name="Semester 2 functionality" color="#8cb6ce" meeting="false" start="2017-10-19" duration="8" complete="0" expand="true"/>
+            <task id="24" name="Drag and Drop feature" color="#8cb6ce" meeting="false" start="2017-10-26" duration="6" complete="0" expand="true"/>
+        </task>
     </tasks>
     <resources>
         <resource id="0" name="Mohamed" function="Default:0" contacts="" phone=""/>
@@ -61,11 +64,8 @@
     <allocations>
         <allocation task-id="3" resource-id="0" function="Default:1" responsible="true" load="50.0"/>
         <allocation task-id="0" resource-id="0" function="Default:0" responsible="true" load="100.0"/>
-        <allocation task-id="9" resource-id="0" function="Default:0" responsible="false" load="33.0"/>
         <allocation task-id="3" resource-id="1" function="Default:0" responsible="false" load="25.0"/>
-        <allocation task-id="9" resource-id="1" function="Default:0" responsible="true" load="34.0"/>
         <allocation task-id="3" resource-id="2" function="Default:0" responsible="false" load="25.0"/>
-        <allocation task-id="9" resource-id="2" function="Default:0" responsible="false" load="33.0"/>
     </allocations>
     <vacations/>
     <previous/>

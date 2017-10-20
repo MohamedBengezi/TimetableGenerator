@@ -69,7 +69,7 @@ router.get('/',function (req, res, next) {
 
   if (errorCheck === false){
         console.log("There is an error");
-      return res.render('scheduleError');
+      return res.render('scheduleError',{conflicts: conflictCourses});
 
     }else{
       schedule= [];
@@ -222,7 +222,16 @@ function algorithm() {
 
 }
 
+function getConflicts(startTime,endTime,day) {
+    for (var i= startTime; i<= endTime; i+=0.5){
+        if(times[day].indexOf(i) >= 0){
+            return true;}
+    }
+    return false;
+}
 
+var conflictCourses = [];
+var index = 0;
 function doSemester(semester1) {
     for(var i =0; i < 7; i++){ // Initializing all the arrays within time.
         times[i] = [];
@@ -246,6 +255,11 @@ function doSemester(semester1) {
                 reserveTime(start, end, day);
             }
             else{ // Sends an error if 2 courses have fixed lecture times.
+                semester1.forEach(function (core) {
+                    if(getConflicts(start,end,day) && conflictCourses.indexOf(core.name) < 0){
+                        conflictCourses.push(core.name);
+                    }
+                });
                 return false;
             }
             console.log("Fixed lecture " + semester1[i].name);
@@ -566,6 +580,8 @@ function reserveTime(startTime,endTime,day) {
         times[day].push(i);
     }
 }
+
+
 
 function  avoidConflicts(startTime,endTime,day,courseIndex) {
     for (var i= startTime; i< endTime; i+=0.5){
