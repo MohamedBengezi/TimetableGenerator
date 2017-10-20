@@ -117,6 +117,7 @@ class TimeTable:
                                      c2[1][0], c2[1])):
                     #two courses conflict
                     return True
+        return False
 
     #returns a list of courses that are in sections that does not conflict
     #with c,st,s.
@@ -181,13 +182,14 @@ class TimeTable:
             possibleSections = [] #combinations of sections that do not
                                       #create time conflicts
 
+            courseIndex = 0
             mainName = semlst[courseIndex][0]
             #iterate through all sections
             for mainSection in semlst[courseIndex][1]:
                 #get a list of non conflicting sections of all courses
                 toBe = semlst[courseIndex+1:]
                 for i in range(len(toBe)):
-                    r = s.nonConflictingList(1, mainName, mainSection[0],
+                    r = s.nonConflictingList(sem, mainName, mainSection[0],
                                                      mainSection, toBe[i])
                     if (len(r) == 0):
                         toBe = None

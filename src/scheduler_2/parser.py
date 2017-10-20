@@ -131,17 +131,17 @@ t = tb({1: sem1, 2: sem2})
 ##t.addSection(2, 'COMMERCE 1BA3', 'C', 'C01', False)
 t.printDay(1, 1)
 
-for course, data in a.items():
-    for i in range(1, data[0][0] + 1):
-        t.addSection(1, course, data[0][i][0], data[0][i][1], False)
+##for course, data in a.items():
+##    for i in range(1, data[0][0] + 1):
+##        t.addSection(1, course, data[0][i][0], data[0][i][1], False)
 
 k = t.addSections(allCourses, 1, 2)
 s = 0
-##for l in k:
-##    s += 1
-##    for i in l:
-##        if (t.listConflicts(s, i)):
-##            print(True)
+for l in k:
+    s += 1
+    for i in l:
+        if (t.listConflicts(s, i)):
+            print(True)
 ##for s in k:
 ##    for c in s:
 ##        print(c)
