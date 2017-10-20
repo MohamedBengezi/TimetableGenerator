@@ -8,11 +8,10 @@
     <script src="/javascripts/schedule.js"></script>
 </head>
 <body>
-<h1>Here is your time table </h1>
 
     <% var counter1 = 1; schedule.forEach(function (version) { %>
 <ul>
-    <h1>--- Schedule <%= counter1%> --- <% var idName ='schedule' + counter1++ %></h1>
+    <h1>--- Semester <%= counter1%> --- <% var idName ='schedule' + counter1++ %></h1>
     <table id=<%= idName%> style="width:100%" border="1">
         <tr>
             <th>Time</th>

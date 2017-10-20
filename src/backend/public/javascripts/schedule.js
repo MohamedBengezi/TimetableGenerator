@@ -15,6 +15,8 @@ $(document).ready(function () {
     function putCourses(schedule) {
         var counter = 1;
         schedule.forEach(function (version) {
+            colors=[];
+            courses=[];
             version.forEach(function (day) {
                 day.forEach(function (core) {
                     var startTime = core.start+'';
@@ -28,6 +30,7 @@ $(document).ready(function () {
                     var code = core.name.split(' ');
                     code= code[0];
                     var color;
+                    console.log('Name -- ' + name + ' -- ' +core.start + ' - ' + core.end + ' - ' + day);
                     if (courses.indexOf(code) < 0){
                         //make a randomColor;
 
