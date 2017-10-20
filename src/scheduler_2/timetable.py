@@ -106,30 +106,17 @@ class TimeTable:
                     return True                
         return False
 
-    #adds specified section type to the time table and tries to resolve any
-    #conflicts
-    #for an example, add lab for SFWRENG 3XA3 in the year 2017 to the time table
-    def addSectionWithReorder(s, year, courseName, sectionType, movable):
-        sectionData = s.data[year][courseName][sectionType]
-        possibleSections = []  #sections that are possible to add to the
-                               #timetable
-        for section, times in sectionData.items():
-            possible = True
-            for time in times:
-                conflict = s.checkForConflicts(year, time[0], time[1], time[2])
-                if (conflict[0] and not conflict[3]):
-                    possible = False
-                    break
-            if (possible):
-                possibleSections.append(section)
-
-        for section in possibleSections:
-            conflicts = s.checkForConflictsWithCourse(year, courseName,
-                                                      sectionType, section)
-            if (len(conflicts) == 0):
-                s.addSection(year, courseName, sectionType, section, movable)
-                return True
-        return False
+    #returns True if any section in the sections conflict any other section in
+    #the list. Returns False otherwirse.
+    def listConflicts(s, sem, sections):
+        for i in range(len(sections) - 1):
+            c1 = sections[i]
+            for j in range(i+1, len(sections)):
+                c2 = sections[j]
+                if (s.checkConflict(sem, c1[0], c1[1][0], c1[1], c2[0],
+                                     c2[1][0], c2[1])):
+                    #two courses conflict
+                    return True
 
     #returns a list of courses that are in sections that does not conflict
     #with c,st,s.
@@ -190,7 +177,7 @@ class TimeTable:
         #sectionIndex = index of the section inside a section list
         #courseIndex and sectionIndex choses which course, section pair
         #is chosed to be in the timetable
-        def calcTimeTableRecursive(semlst, courseIndex):
+        def calcTimeTableRecursive(semlst, sem):
             possibleSections = [] #combinations of sections that do not
                                       #create time conflicts
 
@@ -198,7 +185,6 @@ class TimeTable:
             #iterate through all sections
             for mainSection in semlst[courseIndex][1]:
                 #get a list of non conflicting sections of all courses
-                possibleSections = []
                 toBe = semlst[courseIndex+1:]
                 for i in range(len(toBe)):
                     r = s.nonConflictingList(1, mainName, mainSection[0],
@@ -208,44 +194,29 @@ class TimeTable:
                         break
                     else:
                         toBe[i] = (toBe[i][0], r)
-                
-##                if toBe is not None:
-##                    toBe.insert(0, (mainName, mainSection))
-##                    possibleSections.append(toBe)
-##
-                if (courseIndex == len(semlst) - 2):
-                    #second last course is being processed.
-                    #recursion ends here
-                    for section in toBe[0][1]:
-                        t = [(mainName, mainSection)]
-                        t.append((toBe[0][0], section))
-                        possibleSections.append(t)
-##                else:
-                    #recursively find available courses for the next course in
-                    #the list
+                        
+                if toBe is not None:
+                    if (courseIndex == len(semlst) - 2):
+                        #second last course is being processed.
+                        #recursion ends here
+                        for section in toBe[0][1]:
+                            t = [(mainName, mainSection)]
+                            t.append((toBe[0][0], section))
+                            possibleSections.append(t)
+                    else:
+                        #recursively find available courses for the next
+                        #course in the list
+                        tb = calcTimeTableRecursive(toBe, sem)
+                        if (len(tb) > 0):
+                            for possibility in tb:
+                                possibility.insert(0, (mainName, mainSection))
+                                possibleSections.append(possibility)
 
                 
             return possibleSections
-        k = [list(l) for l in expanded[0]]
-        print(len(k))
-        return k
-        return calcTimeTableRecursive(k, 10)
-                
-##                    for section in sem[k][1]:
-##                        c = TimeTable.checkConflict(2, sem[courseIndex][0],
-##                                                    sem[courseIndex][1][i][0],
-##                                                    sem[courseIndex][1][i],
-##                                                    sem[k][0], section[0],
-##                                                    section)
-##                        if not c:
-##                            possibleSections.append(sem[k])
-##                if
-                                                
-                        
-        return (s2, expanded[1])
-    
-        
-        return (s1, s2, bothSem)
+        s1 = calcTimeTableRecursive(expanded[0], 1)
+        s2 = calcTimeTableRecursive(expanded[1], 2)
+        return (s1, s2)
                     
         
         

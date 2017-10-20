@@ -70,11 +70,10 @@ allCourses = [('SFWRENG 3BB4', 'C'), ('SFWRENG 3RA3', 'C'),
               ('SFWRENG 3MX3', 'T'), ('SFWRENG 3XA3', 'L'),
               ('COMMERCE 1AA3', 'C'), ('SFWRENG 3A04', 'C'),
               ('SFWRENG 3DX4', 'C'), ('SFWRENG 2DA4', 'C'),
-              ('SFWRENG 3A04', 'T'), ('SFWRENG 3XA3', 'L'),
-              ('COMMERCE 1BA3', 'C'), ('ECON 1BB3', 'C'),
-              ('ECON 1BB3', 'T')]
+              ('SFWRENG 3A04', 'T'), ('ECON 1BB3', 'T'),
+              ('COMMERCE 1BA3', 'C'), ('ECON 1BB3', 'C')]
 
-f = open('E:/Books/Year 3/3xa3/data.json', 'r')
+f = open('D:/Backup/User/Docs/Books/Year 3/3xa3/data.txt', 'r')
 pj = json.loads(f.read())
 f.close()
 
@@ -137,6 +136,12 @@ for course, data in a.items():
         t.addSection(1, course, data[0][i][0], data[0][i][1], False)
 
 k = t.addSections(allCourses, 1, 2)
+s = 0
+##for l in k:
+##    s += 1
+##    for i in l:
+##        if (t.listConflicts(s, i)):
+##            print(True)
 ##for s in k:
 ##    for c in s:
 ##        print(c)
