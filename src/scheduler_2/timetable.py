@@ -119,6 +119,17 @@ class TimeTable:
                     return True
         return False
 
+    #checks if the provided section conflicts with any section in the provided list.
+    #c = courseName, st = sectionType, s = section, lst = list to check agianst for
+    #conflicts. The list contains tuples of form (courseName, section)
+    #sem = semester
+    #Returns True if there are conflicts, returns False otherwise
+    def checkSectionAgainstList(self, sem, c, st, s, lst):
+        for name, section in lst:
+            if (self.checkConflict(sem, c, st, s, name, section[0], section)):
+                return True
+        return False
+
     #returns a list of courses that are in sections that does not conflict
     #with c,st,s.
     #c = courseName, st = sectionType, sc=section, sections=courses to check
@@ -136,6 +147,7 @@ class TimeTable:
     #sem1year is the year that the semester 1 takes place.
     #sem2year is the year that the semester 2 takes place.
     def addSections(s, sections, sem1year, sem2year):
+        #the following lists contain (courseName, sectionToBeAdded)
         s1 = [] #semester 1 courses
         s2 = [] #semester 2 courses
         bothSem = [] #courses available in both semesters
@@ -165,14 +177,19 @@ class TimeTable:
 
         #add sections to section list
         #this expands (courseName, 'C') to (courseName, ['C01', 'C02', ...])
-        expanded = [[], [], [], []] #expanded courses
+        expanded = [[], [], [], []] #expanded courses, [sem1, sem2, bothSem1, bothSem2]
         for semesterCourses, semester in [(s1, 1), (s2, 2)]:
             for course, section in semesterCourses:
                 expanded[semester-1].append(
                     (course,
                      [core for core in s.data[semester][course][section]]))
 
-
+        #expand courses that are offered in both semesters
+        for semester in [1,2]:
+            for course, section in bothSem:
+                expanded[semester+1].append((course,
+                    [core for core in s.data[semester][course][section]]))
+                    
         #semlst = semester data, list of (courseName, [sections])
         #courseIndex = index of the course in the semester data
         #sectionIndex = index of the section inside a section list
@@ -216,8 +233,20 @@ class TimeTable:
 
                 
             return possibleSections
+
         s1 = calcTimeTableRecursive(expanded[0], 1)
         s2 = calcTimeTableRecursive(expanded[1], 2)
+
+        i = 0
+        while (i < len(s1)):
+            currentSchedule = s1[i]
+            i += 1
+            for course, sections in expanded[2]:
+                for section in sections:
+                    if not s.checkSectionAgainstList(1, course, section[0], section,
+                                                     currentSchedule):
+                        s1.insert(i, [(course, section)] + currentSchedule)
+                        i += 1
         return (s1, s2)
                     
         
