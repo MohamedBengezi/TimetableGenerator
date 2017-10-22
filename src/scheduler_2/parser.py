@@ -137,11 +137,24 @@ t.printDay(1, 1)
 
 k = t.addSections(allCourses, 1, 2)
 s = 0
-for l in k:
+for sem in [1,2]:
     s += 1
-    for i in l:
-        if (t.listConflicts(s, i)):
-            print(True)
+    for schedule in k[sem-1]:
+        try:
+            if (t.listConflicts(sem, schedule)):
+                print(True)
+        except KeyError:
+            print(s)
+            print(sem)
+            for i in schedule:
+                print(i)
+            break
+##s = 0
+##for l in k:
+##    s += 1
+##    for i in l:
+##        if (t.listConflicts(s, i)):
+##            print(True)
 ##for s in k:
 ##    for c in s:
 ##        print(c)

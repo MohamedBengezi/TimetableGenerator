@@ -178,8 +178,8 @@ class TimeTable:
         #add sections to section list
         #this expands (courseName, 'C') to (courseName, ['C01', 'C02', ...])
         expanded = [[], [], [], []] #expanded courses, [sem1, sem2, bothSem1, bothSem2]
-        for semesterCourses, semester in [(s1, 1), (s2, 2)]:
-            for course, section in semesterCourses:
+        for sections, semester in [(s1, 1), (s2, 2)]:
+            for course, section in sections:
                 expanded[semester-1].append(
                     (course,
                      [core for core in s.data[semester][course][section]]))
@@ -234,19 +234,22 @@ class TimeTable:
                 
             return possibleSections
 
+        #calculate timetables for semester 1 and 2
         s1 = calcTimeTableRecursive(expanded[0], 1)
         s2 = calcTimeTableRecursive(expanded[1], 2)
 
-        i = 0
-        while (i < len(s1)):
-            currentSchedule = s1[i]
-            i += 1
-            for course, sections in expanded[2]:
-                for section in sections:
-                    if not s.checkSectionAgainstList(1, course, section[0], section,
-                                                     currentSchedule):
-                        s1.insert(i, [(course, section)] + currentSchedule)
-                        i += 1
+        #add courses that are in both semesters
+        for semlst, sem in [(s1, 1), (s2, 2)]:
+            i = 0
+            while (i < len(semlst)):
+                currentSchedule = semlst[i]
+                i += 1
+                for course, sections in expanded[sem+1]:
+                    for section in sections:
+                        if not s.checkSectionAgainstList(sem, course, section[0],
+                                                         section, currentSchedule):
+                            semlst.insert(i, [(course, section)] + currentSchedule)
+                            i += 1
         return (s1, s2)
                     
         
