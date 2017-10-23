@@ -1,0 +1,29 @@
+.error_box {
+    margin: auto;
+    //width: 25%;
+    background: RGB(239, 239, 239);
+	border-radius: 8px;
+}
+
+.error_title {
+    border-radius: 8px 8px 0 0;
+    padding: 8px;
+    background: RGB(255, 34, 39);
+    text-align: center;
+    color: white;
+}
+
+#info{
+    text-align: center;
+    margin-top: 22%;
+    font-size: 2rem;
+}
+
+.error_text {
+    text-align: center;
+    background: #fc3002;
+}
+
+.error_Title {
+
+}
