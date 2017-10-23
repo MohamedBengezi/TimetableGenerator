@@ -119,6 +119,11 @@ class TimeTable:
                     return True
         return False
 
+    #returns True if any courses in l1 conflicts with l2 and vice-versa.
+    #return False other-wise
+    def listsConflicts(s, sem, l1, l2):
+        None
+
     #checks if the provided section conflicts with any section in the provided list.
     #c = courseName, st = sectionType, s = section, lst = list to check agianst for
     #conflicts. The list contains tuples of form (courseName, section)
@@ -248,10 +253,9 @@ class TimeTable:
                         if (len(tb) > 0):
                             for possibility in tb:
                                 possibility.insert(0, (mainName, mainSection))
-                                possibleSections.append(possibility)
-
-                
+                                possibleSections.append(possibility)                
             return possibleSections
+
 
         #calculate timetables for semester 1 and 2
         s1 = calcTimeTableRecursive(expanded[0], 1)
@@ -260,22 +264,23 @@ class TimeTable:
         for l in [s1, s2]:
             for i in range(len(l)):
                 l[i] = [l[i], []]
-            
+
+        return calcTimeTableRecursive(expanded[2][0], 1)
         #add courses that are in both semesters
-        for semlst, sem in [(s1, 1), (s2, 2)]:
-            for course, sections in expanded[sem+1]:
-                i = 0
-                while (i < len(semlst)):                
-                    currentSchedule = semlst[i]
-                    i += 1
-                    for section in sections:
-                        if not s.checkSectionAgainstList(sem, course, section[0], section, currentSchedule[0]):
-                            tmp = [list(currentSchedule[0]),
-                                   list(currentSchedule[0])]
-                            tmp[0].insert(0, (course, section))
-                            tmp[1].append((course, section[0]))
-                            semlst.insert(i, tmp)
-                            i += 1
+##        for semlst, sem in [(s1, 1), (s2, 2)]:
+##            for course, sections in expanded[sem+1]:
+##                i = 0
+##                while (i < len(semlst)):                
+##                    currentSchedule = semlst[i]
+##                    i += 1
+##                    for section in sections:
+##                        if not s.checkSectionAgainstList(sem, course, section[0], section, currentSchedule[0]):
+##                            tmp = [list(currentSchedule[0]),
+##                                   list(currentSchedule[0])]
+##                            tmp[0].insert(0, (course, section))
+##                            tmp[1].append((course, section[0]))
+##                            semlst.insert(i, tmp)
+##                            i += 1
 
         #takes in a paired list of course sections and adds non-conflicting
         #combinations to the semlst
@@ -283,27 +288,27 @@ class TimeTable:
         #semesters
         #courselst = paired list of courses offered in both semesters. has the
         #form [(c1, [a,b,c]), (c1, [t1, t2]), ...]
-        def addBothSemSections(s, sem, schedule, courselst, courseIndex,
-                               scheduledCourses):
-            if (courseIndex < len(courselst)-1):
-                course, sections = courselst[courseIndex]
-                for section in sections:
-                    scheduledCourses.append((course, section))
-                    addBothSemSections(s, sem, schedule, courselst,
-                                       courseIndex+1, scheduledCourse)
-            else if not s.listConflicts(sem, scheduledCourses):
-                return True
-            else:
-                return False
-                
-        for semlst, sem in [(s1, 1), (s2, 2)]:
-            for courses in expanded[sem+1]:
-                i = 0
-                while (i < len(semlst)):
-                    c0 = courses[0][0]
-                    for s0 in courses[0][1]:
-                        if (len(courses) > 1):
-                            for j in range(1, len(courses)):
+##        def addBothSemSections(s, sem, schedule, courselst, courseIndex,
+##                               scheduledCourses):
+##            if (courseIndex < len(courselst)-1):
+##                course, sections = courselst[courseIndex]
+##                for section in sections:
+##                    scheduledCourses.append((course, section))
+##                    addBothSemSections(s, sem, schedule, courselst,
+##                                       courseIndex+1, scheduledCourse)
+##            else if not s.listConflicts(sem, scheduledCourses):
+##                return True
+##            else:
+##                return False
+##                
+##        for semlst, sem in [(s1, 1), (s2, 2)]:
+##            for courses in expanded[sem+1]:
+##                i = 0
+##                while (i < len(semlst)):
+##                    c0 = courses[0][0]
+##                    for s0 in courses[0][1]:
+##                        if (len(courses) > 1):
+##                            for j in range(1, len(courses)):
                         
         return (s1, s2)
         
