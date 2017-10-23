@@ -276,13 +276,34 @@ class TimeTable:
                             tmp[1].append((course, section[0]))
                             semlst.insert(i, tmp)
                             i += 1
+
+        #takes in a paired list of course sections and adds non-conflicting
+        #combinations to the semlst
+        #semlst = list of possible timetables without courses offered in both
+        #semesters
+        #courselst = paired list of courses offered in both semesters. has the
+        #form [(c1, [a,b,c]), (c1, [t1, t2]), ...]
+        def addBothSemSections(s, sem, schedule, courselst, courseIndex,
+                               scheduledCourses):
+            if (courseIndex < len(courselst)-1):
+                course, sections = courselst[courseIndex]
+                for section in sections:
+                    scheduledCourses.append((course, section))
+                    addBothSemSections(s, sem, schedule, courselst,
+                                       courseIndex+1, scheduledCourse)
+            else if not s.listConflicts(sem, scheduledCourses):
+                return True
+            else:
+                return False
+                
         for semlst, sem in [(s1, 1), (s2, 2)]:
             for courses in expanded[sem+1]:
                 i = 0
                 while (i < len(semlst)):
                     c0 = courses[0][0]
                     for s0 in courses[0][1]:
-                        for j in range(len(courses)):
+                        if (len(courses) > 1):
+                            for j in range(1, len(courses)):
                         
         return (s1, s2)
         
