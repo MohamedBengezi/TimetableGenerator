@@ -115,29 +115,3 @@ html , body{
     margin-top: 22%;
     font-size: 2rem;
 }
-
-.error_title {
-    margin: auto;
-    width: 25%;
-}
-.error_box {
-    margin: auto;
-    width: 25%;
-    background: grey;
-    padding: 10px;
-    padding-top: 0px;
-
-}
-
-.error_title {
-    padding-top: 200px;
-}
-
-.error_text {
-    text-align: center;
-    background: #fc3002;
-}
-
-.error_Title {
-
-}
