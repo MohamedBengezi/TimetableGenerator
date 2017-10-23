@@ -276,6 +276,14 @@ class TimeTable:
                             tmp[1].append((course, section[0]))
                             semlst.insert(i, tmp)
                             i += 1
+        for semlst, sem in [(s1, 1), (s2, 2)]:
+            for courses in expanded[sem+1]:
+                i = 0
+                while (i < len(semlst)):
+                    c0 = courses[0][0]
+                    for s0 in courses[0][1]:
+                        for j in range(len(courses)):
+                        
         return (s1, s2)
         
     def printDay(s, year, day):
