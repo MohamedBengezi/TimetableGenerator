@@ -238,6 +238,10 @@ class TimeTable:
         s1 = calcTimeTableRecursive(expanded[0], 1)
         s2 = calcTimeTableRecursive(expanded[1], 2)
 
+        for l in [s1, s2]:
+            for i in range(len(l)):
+                l[i] = [l[i], []]
+            
         #add courses that are in both semesters
         for semlst, sem in [(s1, 1), (s2, 2)]:
             for course, sections in expanded[sem+1]:
@@ -246,13 +250,14 @@ class TimeTable:
                     currentSchedule = semlst[i]
                     i += 1
                     for section in sections:
-                        if not s.checkSectionAgainstList(sem, course, section[0],
-                                                         section, currentSchedule):
-                            semlst.insert(i, [(course, section)] + currentSchedule)
+                        if not s.checkSectionAgainstList(sem, course, section[0], section, currentSchedule[0]):
+                            tmp = [list(currentSchedule[0]),
+                                   list(currentSchedule[0])]
+                            tmp[0].insert(0, (course, section))
+                            tmp[1].append((course, section[0]))
+                            semlst.insert(i, tmp)
                             i += 1
         return (s1, s2)
-                    
-        
         
     def printDay(s, year, day):
         for entry in s.courses[year][day]:
