@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var selectedCourses = [];
-
+selectedCourses=['PHYSICS-1E03','ENGINEER-1P03','PHYSICS-1D03','CHEM-1E03','MATH-1ZA3','MATH-1ZC3','MATH-1ZB3','MATLS-1M03','ENGINEER-1C03','ENGINEER-1D04','ECON-1BB3','ECON-1B03'];
 
 
 router.post('/remove/:courseId',function (req, res, next) {

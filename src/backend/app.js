@@ -48,7 +48,7 @@ function startProgram() {
             var tutorialTimes = [];
             var labTimes = [];
             var term = realData.timetables[2017][6].courses[key].term;
-          //  console.log("Term -- " + term);
+            //  console.log("Term -- " + term);
             for (var time in realData.timetables[2017][6].courses[key].sections){
 
 
@@ -82,7 +82,10 @@ function startProgram() {
                                 };
                                 oneCore.push(timeObject);
                             }
-                            lectureTimes.push(oneCore);
+                            if(oneCore.length !== 0){
+                                lectureTimes.push(oneCore);
+                            }
+
                         }
 
                         break;
@@ -157,7 +160,10 @@ function startProgram() {
                                 };
                                 oneTutorial.push(timeObject);
                             }
-                            tutorialTimes.push(oneTutorial);
+                            if(oneTutorial.length !== 0){
+                                tutorialTimes.push(oneTutorial);
+                            }
+
                         }
                         break;
                 }

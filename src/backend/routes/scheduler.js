@@ -185,41 +185,184 @@ function algorithm() {
 
        if(!success || !success2){
            console.log("Redoing it " + success + ' ' + success2);
-           bothSemesters.forEach(function (course) {
-               var sem1='';
-               var sem2='';
-               if(semester1.indexOf(course[0]) >= 0){
-                   semester1.splice(semester1.indexOf(course[0]),1);
-                   sem2=course[1];
+           if(!success || !success2){
+               bothSemesters.forEach(function (course) {
+                   if(semester1.indexOf(course[0]) >= 0){
+                       semester1.splice(semester1.indexOf(course[0]),1);
+                   }
+                   if(semester2.indexOf(course[1]) >= 0){
+                       semester2.splice(semester2.indexOf(course[1]),1);
+                   }
+               });
+               /*         console.log("Before calling both Sem function \n");
+                        console.log("Semester 1");
+                        semester1.forEach(function (t) {
+                            console.log(t.name);
+                        });
+                        console.log("\n Semester 2");
+                        semester2.forEach(function (t) {
+                            console.log(t.name);
+                        });*/
+
+               var workingBothSemester = dobothSemester(bothSemesters,semester1,semester2);
+               console.log("---After--- " + workingBothSemester);
+
+               if(workingBothSemester !== false){
+
+                   workingBothSemester.forEach(function (course) {
+                       console.log(course[0].name);
+                       if(semester1.length < semester2.length){
+                           semester1.push(course[0]);
+                       }
+                       else{
+                           semester2.push(course[1]);
+                       }
+                   });
+                   finalSemester1=[];
+                   finalSemester2=[];
+                   var suc = doSemester(semester1);
+                   var suc2 = doSemester(semester2);
+                   console.log("Final results " + suc + " " + suc2);
+                   return true;
                }
-               if(semester2.indexOf(course[1]) >= 0){
-                   semester2.splice(semester2.indexOf(course[1]),1);
-                   sem1=course[0];
+               else{
+                   return false;
                }
-               if(sem1 !== ''){
-                   semester1.push(sem1)
-               }
-               if(sem2 !== ''){
-                   semester2.push(sem2);
-               }
-           });
-           success = doSemester(semester1);
-           if(success === false){
-               return false;
            }
-           success2 = doSemester(semester2);
-           return success2;
-
        }
-
     }
 
     catch (Exception){
         console.log(Exception);
     }
-
     return success;
+}
 
+function permutation(number) {
+    var prod =1;
+    for(var i =2; i <= number; i++){
+        prod = prod * i;
+    }
+    return prod;
+}
+
+function updateSemester(semster) {
+    var temp=[];
+    semster.forEach(function (t) {
+        temp.push(t);
+    });
+    return temp;
+}
+var madeArrays=[];
+function dobothSemester(bothSemesters,semester1,semester2) {
+    madeArrays=[];
+    var tempor = [];
+    for(var z=0; z < bothSemesters.length; z++){
+        tempor.push(z);
+    }
+    madeArrays.push(tempor);
+    console.log(" \n Initial")
+    bothSemesters.forEach(function (t) {
+        console.log(t[0].name);
+    });
+
+    var tempSem1 = updateSemester(semester1);
+    var tempSem2 = updateSemester(semester2);
+
+    console.log("\n");
+    console.log("Redoing it with bothSem length " + bothSemesters.length + " and perm value " + permutation(bothSemesters.length));
+    var counter = 1;
+    var possiblities = permutation(bothSemesters.length);
+    while (counter < possiblities){
+        var randomArray = [];
+        var arrIndicies = [];
+        var value = tempSem1 === semester1;
+        console.log("Decoding " + value );
+        while (randomArray.length !== bothSemesters.length){ //Creates a brand new Array
+            var Index = Math.floor(Math.random() * bothSemesters.length);
+
+            var randomCore = bothSemesters[Index];
+            if(randomArray.indexOf(randomCore) < 0){
+                console.log("pushing " + randomCore[0].name);
+                randomArray.push(randomCore);
+                arrIndicies.push(Index);
+            }
+
+            if(MadeBefore(madeArrays,arrIndicies) && randomArray.length === bothSemesters.length){
+                randomArray = [];
+                arrIndicies =[];
+            }
+            //       console.log("Random Array Length " + randomArray.length);
+            if(!MadeBefore(madeArrays,arrIndicies) && randomArray.length === bothSemesters.length){
+                // console.log("new Array ");
+                //  console.log(arrIndicies);
+                ///       break;
+            }
+
+        }
+
+        tempSem1 = updateSemester(semester1);
+        tempSem2 = updateSemester(semester2);
+        if(counter===3){
+            console.log("Before Printing tempSem1 values")
+            tempSem1.forEach(function (t) {
+                console.log(t.name);
+            })
+        }
+        console.log('--Might Not Work --');
+        randomArray.forEach(function (course) {
+            if(tempSem1.length < tempSem2.length){
+                tempSem1.push(course[0]);
+            }
+            else{
+                tempSem2.push(course[1]);
+            }
+        });
+        finalSemester1=[];
+        finalSemester2=[];
+
+        if(counter===3){
+            console.log("Printing tempSem1 values")
+            tempSem1.forEach(function (t) {
+                console.log(t.name);
+            })
+        }
+        if(doSemester(tempSem1) && doSemester(tempSem2)){
+            console.log("Returning working array");
+            return randomArray;
+        }
+        var temp=[];
+        randomArray.forEach(function (core) {
+            temp.push(bothSemesters.indexOf(core));
+        });
+        madeArrays.push(temp);
+        console.log("Made Arrays");
+        console.log(madeArrays);
+        counter++;
+    }
+    console.log("Made Array's length " + madeArrays.length);
+    console.log("Returning Empty Array");
+    return false;
+}
+
+/**
+ * @return {boolean} based on whether the array has been made before or not.
+ */
+function MadeBefore(madeArrays,arr) {
+    for(var j=0; j< madeArrays.length; j++) {
+        var arrayElement = madeArrays[j];
+        var different = false;
+        for(var i=0; i< arr.length; i++){
+            if(arr[i] !== arrayElement[i]){
+                different = true;
+                break;
+            }
+        }
+        if(different === false){
+            return true;
+        }
+    }
+    return false;
 }
 
 function getConflicts(startTime,endTime,day) {
@@ -230,15 +373,36 @@ function getConflicts(startTime,endTime,day) {
     return false;
 }
 
+function prioritize(semester) {
+    var result = [];
+    var ranks = [];
+    var sorted = [];
+    for (var i =0; i < semester.length; i++){
+        var rank = semester[i].lectureTimes.length + semester[i].tutorialTimes.length + semester[i].labTimes.length;
+        ranks.push(rank);
+        sorted.push(rank);
+    }
+    sorted = sorted.sort(function(a, b){return a-b});
+    console.log("Unsorted Ranks " + ranks);
+    console.log("Sorted Ranks " + sorted);
+    for(var i = sorted.length -1 ; i >= 0 ; i--){
+        var index = ranks.indexOf(sorted[i]);
+        result.push(semester[index]);
+        ranks[index] = 0;
+    }
+
+    return result;
+}
+
+
 var conflictCourses = [];
-var index = 0;
 function doSemester(semester1) {
     for(var i =0; i < 7; i++){ // Initializing all the arrays within time.
         times[i] = [];
     }
     fixedCores=[];
     flexCores=[];
-
+    semester1 = prioritize(semester1);
     console.log("\n --- SEMESTER 1 --- \n");
     console.log(semester1.length + "\n");
     // Finds the lecture times, tutorial times and lab times that are fixed and flexible.
@@ -325,23 +489,6 @@ function doSemester(semester1) {
 
     return makeGraph();
 
-}
-
-function doSemester2() {
-
-    for (var i=0; i < semester2.length; i++){
-        if (semester2[i].lectureTimes.length === 1){
-            finalSemester2.push(semester2[i]);
-            console.log("Fixed course --semester 2" + semester2[i].name);
-        }
-        else{
-            console.log("Flexible Course --semester 2" + semester2[i].name);
-        }
-    }
-}
-
-function dobothSemester() {
-    
 }
 
 var conflictAvoider = []; //Each index represents the times of a course.
@@ -452,7 +599,7 @@ function makeGraph() {
                               console.log(hasPathConflict(courseId,day,start,end) + " -- \n");
                           }
                           if(hasPathConflict(courseId,day,start,end)){
-                              console.log(course.time[core][eachDay].name + " won't work with " + graph.node(courseId).label);
+                        //     console.log(course.time[core][eachDay].name + " won't work with " + graph.node(courseId).label);
                               ignore2 = true;
                               break;
                           }
@@ -478,7 +625,7 @@ function makeGraph() {
                       var end = course.time[core][eachDay].end;
                       BreadthFirstPaths(graph,0);
                       if(hasPathConflict(fixedCores.length-1,day,start,end)){
-                          console.log(course.time[core][eachDay].name + " won't work with " + graph.node(fixedCores.length-1).label);
+                 //         console.log(course.time[core][eachDay].name + " won't work with " + graph.node(fixedCores.length-1).label);
                           ignore = true;
                           break;
                       }
