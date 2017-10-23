@@ -27,7 +27,6 @@
 		\\ Binu, Amit - binua - 400023175
 		\\ Bengezi, Mohamed - bengezim - 400021279
 		\\ Samarasinghe, Sachin - samarya - 001430998
-		\\ October 27, 2017
 		\\Professor: Dr. Bokhari
 		\\ Lab: L01}
 
@@ -102,106 +101,150 @@ As stated above, automated testing will be done using the javascript testing fra
 For unit testing we will be using the testing framework \href{http://jasmine.github.io/}{Jasmine}. For system testing we will be running the game by executing it on a browser and observing the functionalities. For code analysis we will use humans with coding experience to analyze the code.
 
 \subsection{Testing Schedule}
-The testing schedule is included in the
- 
-\subsection{Testing: Primary}
-The software that will be required is a JavaScript automated testing framework, a server that can host our website when we're testing on different devices and browsers, a text editor that can make changes to specific pieces of code that will require changing, and a media editor that will be able to modify images and change signs. 
-The required personnel to set-up automated testing will be required to have sufficient knowledge in JavaScript and HTML to setup multiple test cases. However, users and development groups that will be doing manual testing do not not have specific requirements needed for testing. 
-The automated testing will be done through Jasmine Framework that provides its own documentation. It creates cases that require inputs and expected outputs and will allow the tester to find faults if any. It will create webpages with documentation that show whether a test case has passed or failed and why. 
-The proof of concept will indicate correct sound output and frame resizing. It will display a simple test run through the Jasmine Framework showing that both functions are ideal in their outputs. This testing will then be shown and used as a guideline to other tests. 
-\\
-\\
-\\
-
-\subsection{Testing: Secondary}
-Secondary testing will be done by users in our open beta testing. We will allow users to access our game at an early development stage after preliminary tests by developers. They will be able to manually perform functional testing by checking for bugs and running through the game through our website. 
+The testing schedule is included in the Gantt chart, located in the Project Schedule folder in the main directory.
 
 \newpage
-% SPECIFICATIONS AND EVALUATION
-\section{Specifications and Evaluation}
-\subsection{Specifications}
-\subsubsection*{Business Functions}
-\begin{itemize}
-\item The executable HTML file will create a new browser window.
 
-\item The HTML will be executed by a browser with JavaScript functionality.
+\section{System Test Description}
+\subsection{Tests for Functional Requirements}
+\subsubsection{Test Area 1 \\ Conflict Detection Test}
+\begin{enumerate}
+\item Type: Dynamic \\
+Initial State: Homepage \\
+Input: SFWRENG 3RA3, EARTHSC 2EI3 \\
+Output: Conflict error page \\
+The courses in the input field will be selected and added in the UI manually. The expected result, an error page, will be checked against the actual output. The courses selected must have conflicting time slots. \\
 
-\item The game will have a standby state in which it waits for user input.
+\item Type: Dynamic \\
+Initial State: Homepage \\
+Input: RELIGST-2TA3, SFWRENG 3BB4 \\
+Output: Conflict error page \\
+The courses in the input field will be selected and added in the UI manually. The expected result, an error page, will be checked against the actual output. The courses selected must have conflicting time slots. \\
 
-\item Upon the reception of user input from the standby state the game will begin.
 
-\item At the beginning of the game the user will perceive all stats reset to their default state.
+\item Type: Dynamic \\
+Initial State: Homepage \\
+Input: BIOLOGY 2F03, SFWRENG 3MX3 \\
+Output: Conflict error page \\
+The courses in the input field will be selected and added in the UI manually. The expected result, an error page, will be checked against the actual output. The courses selected must have conflicting time slots. \\
 
-\item At the beginning of the game the user character will maintain its state until user input is received.
 
-\item If there is a collision with the user character and an obstacle object the game will terminate and all stats will be recorded.
+\item Type: Dynamic \\
+Initial State: Homepage \\
+Input: MATLS 2B03, EARTHSC 2EI3 \\
+Output: Conflict error page \\
+The courses in the input field will be selected and added in the UI manually. The expected result, an error page, will be checked against the actual output. The courses selected must have conflicting time slots. \\
+\end{enumerate}
 
-\item Upon termination of the game state all stats will be reset to their default state and the standby state will be reinitiated.
+\subsubsection{Test Area 2: Output Timetable}
+\begin{enumerate}
+\item Type: Manual \\
+Initial State: Homepage \\
+Input: SFWRENG 3XA3, SFWRENG 3BB4, SFWRENG 3DB3, SFWRENG 3MX3, COMMERCE 1AA3 \\
+Output: Valid Schedule in a timetable format. \\
+The courses in the input field will be selected and added in the UI manually. The expected result, a color coded schedule, will be checked against the actual output. Generated timetable must have every core, tutorial, lab etc. required for each course. It will be manually checked against the dataset and our own timetables \\
 
-\item If there is a collision with the user character and an objective object the user's score will increment and the objective object's instance will terminate.
+\item Type: Manual \\
+Initial State: Homepage \\
+Input:  ENGINEER-1C03, MATH-1ZC3, MATH-1ZB3,  ECON-1BB3, PHYSICS-1E03, MATLS-1M03 \\
+Output: Valid Schedule in a timetable format. \\
+The courses in the input field will be selected and added in the UI manually. The expected result, a color coded schedule, will be checked against the actual output. Generated timetable must have every core, tutorial, lab etc. required for each course. It will be manually checked against the dataset and our own timetables \\
 
-\item During the game state reception of user input will cause the user character to respond in a constant and uniform manner relative to the user character's instance.
-\end{itemize}
+\item Type: Manual \\
+Initial State: Homepage \\
+Input: RELIGST-2TA3, RELIGST-2QQ3, POLSCI-2I03, POLSCI-4CA3\\
+Output: Valid Schedule in a timetable format. \\
+The courses in the input field will be selected and added in the UI manually. The expected result, a color coded schedule, will be checked against the actual output. Generated timetable must have every core, tutorial, lab etc. required for each course. It will be manually checked against the dataset and our own timetables \\
 
-\subsubsection*{Structural Functions}
-\begin{itemize}
-\item Cookie
-\subitem Test how cookies are created and used by the program through static and dynamic testing. This includes code analysis, unit testing, and system testing.
+\item Type: Manual \\
+Initial State: Homepage \\
+Input:EARTHSC-2EI3, EARTHSC-2C03, GEOG-2UI3, GEOG-2GI3, BIOLOGY-2F03\\
+Output: Valid Schedule in a timetable format. \\
+The courses in the input field will be selected and added in the UI manually. The expected result, a color coded schedule, will be checked against the actual output. Generated timetable must have every core, tutorial, lab etc. required for each course. It will be manually checked against the dataset and our own timetables \\
+\end{enumerate}
 
-\item Rendering
-\subitem Test the use of graphic files compared to drawing objects for the game rendering. This includes manual system testing for aesthetic purposes. 
-\end{itemize}
+\subsubsection{Regression Testing}
+Regression testing will continually happen to ensure all features continue to function ideally, no matter the changes occuring to the program.
 
-\subsubsection*{Test/Function Relationships}
-Much of the testing done for the structural functions will be changed depending on how we (the developers) choose to optimize or design the appearance of the product.\\
-\\
-For the structural testing of the cookies, it must be decided on which data to store for each cookies instance and how that data will affect the game. This can be done initially through manual code analysis then verified with unit testing, and a manual system test where the value of the cookie can be checked by access through the game and of where the cookies are stored.\\
-\\
-The structural rendering tests will be used to decide through the aesthetic decisions of the designers and developers the presentation of core functional and ornamental objects in the game. As such the tests conducted will mostly be done through manual system tests although additional unit tests can be performed to validate the functionality of either drawing or using images to render objects.
+\subsubsection{Parallel Testing}
+Please refer to \hyperref[sec:compare]{this section}
 
-\subsubsection*{Test Progression}
-The tests will proceed by verifying the business functions and all critical components of the project software. With the basis of the project verified structural testing can proceed to optimize the performance of the product and the end users' experience with the product.
+\subsection{Tests for Non-functional Requirements}
+\subsubsection{Test Area 1: Speed Performance}
+\begin{enumerate}
 
-\subsection{Methods and Constraints}
-\subsubsection*{Methodology}
-The A Team's (the developers) approach to testing is to validate the core functionality of the product being developed before testing non-critical components of the product.
+\item Type: Manual \\
+Initial State: Homepage \\
+Input: SFWRENG 3XA3, SFWRENG 3BB4, SFWRENG 3DB3, SFWRENG 3MX3, COMMERCE 1AA3 \\
+Output: Schedule in a timetable format. \\
+The input courses shall be selected, and the the generator is timed from when the "Generate" button is pressed. \\
 
-\subsubsection*{Test Tools}
-For unit testing we will be using the testing framework \href{http://jasmine.github.io/}{Jasmine}. For system testing we will be running the game by executing it on a browser and observing the functionalities. For code analysis we will use humans with coding experience to analyze the code.
+\item Type: Manual \\
+Initial State: Homepage \\
+Input:  ENGINEER-1C03, MATH-1ZC3, MATH-1ZB3,  ECON-1BB3, PHYSICS-1E03, MATLS-1M03 \\
+Output: Schedule in a timetable format. \\
+The input courses shall be selected, and the the generator is timed from when the "Generate" button is pressed.  \\
+\end{enumerate}
 
-\subsubsection*{Extent}
-The entirety of the product will be tested.
+\subsubsection{Test Area 2: UI}
+\begin{enumerate}
 
-\subsubsection*{Data Recording}
-The results of the unit testing will be written to a test results log. System testing will be added to a separate test log specifcaly for system testing, as will code analysis.\\
-\\
-All test will contain information on the aspect being tested, the date of the test, the person running the test, the results of the test, a description of the test purpose, a description of the test results, and next steps from the test.
+\item Type: Manual \\
+Initial State: Homepage \\
+Input: Any McMaster Course \\
+Output: Add course to list of courses \\
+Any McMaster course is selected, and the "Add" button is pressed. This is to test the ability of the UI to retrieve input from the user. \\
 
-\subsubsection*{Constraints}
-Due to the game's simple mechanics, there are few constraints on the testing.
+\item Type: Manual \\
+Initial State: Homepage with list of courses chosen\\
+Input:  Pressing the "Remove" button \\
+Output: Removal of the selected course \\
+Starting off with a list of courses, the "Remove" button will be pressed to test the ability of the UI to modify the course list at the request of the user.  \\
 
-\subsection{Evaluation}
-\subsubsection*{Criteria}
-Our tests will cover primarily the boundaries of the game mechanics and some testing inside the boundaries as an example test of normal behaviour.
 
-\subsubsection*{Data Reduction}
-All test logs will indicate a pass or a need fro review which allow us to focus on reimplementing and testing components which do not pass the tests.
+\item Type: Manual \\
+Initial State: Homepage with list of courses chosen\\
+Input:  Pressing the "Generate" button \\
+Output: Timetable \\
+Starting off with a list of courses, the "Generate" button will be pressed to test the ability of the UI to display output at the request of the user.  \\
+\end{enumerate}
 
+\subsubsection{Test Area 3: Maintainability}
+\begin{enumerate}
+\item Type: Static \\
+Initial State: Not running \\
+Input: Code walkthrough and inspection\\
+Output: N/A  \\
+This test is a static test for confirming the syntax and structural integrity of the backend of the program.\\
+\end{enumerate}
+
+
+\subsubsection{Traceability}
+CHECK WITH T/A UVCFDTXCFVGUBINOUBVYCFTDXRTCFYGVUBHINJKML;PNOBIUVTYCRX
 \newpage
-% TEST DESCRIPTION
-\section{Test Descriptions}
-\subsection{Test Identification}
-Control: The team are going to be using automatic insertions, in the form of a unit tester named Jasmine. Our team will also manually create non automated inputs in the form of playing the game.\\
-\\
-The inputs created from Jasmine will be in the three different forms. First will we have Jasmine change the location of our fish player to random locations, and by knowing what spaces are occupied by pipes, the Jasmine Framework can determine when the collision function should return true. Next our inputs will be in the form of Jasmine checking for stored cookies. As a result of some browsers not allowing cookies, this isn't a full proof test and some manual testing will be needed. Lastly, the input going into the input recognition function will be a replica of random inputs a user may put if they were actually playing. If the program registers the input as intended, the program will pass. For the manual testing, our inputs will be the team actually running the game and giving usual and unusual user inputs and seeing how the program reacts.\\
- \\
-Manual testing will occur on different browsers such as Chrome, Explorer, Firefox, etc. This will allow diversity within our tests. Automated testing (through Jasmine) will consist of many different sets of inputs. Jasmine will be given a set of expected outputs and will allow a test to pass if these outputs are met given many different inputs. Some tests will attempt to generate exceptions by accessing inputs outside of the alphabet of possible inputs such as accessing cookies that do not exist, etc.\\
-\\
-The outputs will be pretty straight forward to tell for the Jasmine Framework. If the fish is on the same location that is occupied by a pipe the collision function should return true. The output for the cookie testing will be slightly different, as it will just be a check to see if the cookies were stored. The output for our manual testing will be comprised of images showing the expected results. 
 
-\subsection{Additional Test Identification}
-The last of our testing will be semantics and syntax testing. We need for this program to render neatly and look clean. This will be done by trying different frame sizes, different animations and changing the images in our sprite library. Checking this fairly regularly is a smart idea to find the most ascetically pleasing set of sprites and the nicest size to fit our game onto (a preferred size). Variable naming and implementation layouts will be tested to make sure our code is understandable to all members and that the code makes sense to someone trying to maintain it. Syntax will be tested regularly by running the program and having other members look over new additions. This will make sure that we avoid a syntax mistake that could cause problems later down the road for our project and have the team unsure about its location. System tests will be conducted to cross check against the prototype to ensure proper functionality.\\
-\\
-In addition structural testing will include performance, difficulty, accessibility, and meeting aesthetic requirements. Performance related testing will determine frame rate speeds on differing browsers; server lag and the machine's processing power will be taken into consideration. Difficulty will be adjusted for a subjectively optimal user experience by mutation testing the rendered obstacle functions. The accessibility will be tested by running system tests on different machine types running varying browsers and operating systems per test. Aesthetic requirements will be met through manual system testing by using different sprite designs and will be decided at the discretion of the developers.
+\section{PoC Test}
 
+\subsection{Test Area 2: Conflict Detection}
+\begin{enumerate}
+\item Type: Dynamic \\
+Initial State: Homepage \\
+Input: BIOLOGY 2F03, SFWRENG 3MX3 \\
+Output: Conflict error page \\
+The courses in the input field will be selected and added in the UI manually. The expected result, an error page, will be checked against the actual output. The courses selected must have conflicting time slots. \\
+\end{enumerate}
+
+\subsection{Test Area 1: Schedule Output}
+\begin{enumerate}
+\item Type: Manual \\
+Initial State: Homepage \\
+Input: SFWRENG 3XA3, SFWRENG 3BB4 \\
+Output: Valid Schedule in a timetable format. \\
+The courses in the input field will be selected and added in the UI manually. The expected result, a color coded schedule, will be checked against the actual output. Generated timetable must have every core, tutorial, lab etc. required for each course. It will be manually checked against the dataset and our own timetables \\
+\end{enumerate}
+
+\section{Comparison to Existing Implementation}\label{sec:compare}
+The project will be benchmarked against two existing implementations, \url{http://timetablegenerator.io} and \url{https://github.com/ash47/TimetableGenerator}. Mainly, we will be comparing our project with \url{http://timetablegenerator.io} because it uses the McMaster database as well, so we can fully compare the generated timetables. The outputs are fairly similar, so comparison should not be very difficult. The comparison will be done manually by the testing team.
+\section{Unit Testing Plan}
+ASK TA ABOUT THUS DBUIEWBVHBEODIWEEOP
 \end{document}
