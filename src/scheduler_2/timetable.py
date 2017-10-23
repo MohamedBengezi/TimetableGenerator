@@ -189,6 +189,25 @@ class TimeTable:
             for course, section in bothSem:
                 expanded[semester+1].append((course,
                     [core for core in s.data[semester][course][section]]))
+
+        #sections that are must be taken together in a single semester must be
+        #paired. ex: ECON 1BB3 T and ECON 1BB3 C must be taken together in a
+        #single semester
+        for sem in [2,3]:
+            semlst = expanded[sem]
+            i = 0
+            paired = [] #list that contains paired sections
+            while (i < len(semlst)):
+                tmp = [semlst[i]]
+                course = semlst[i][0]
+                #look for other sections with the same course name                
+                for j in range(i+1, len(semlst)):
+                    if (semlst[j][0] == course):
+                        tmp.append(semlst[j])
+                        semlst.pop(j)
+                paired.append(tmp)
+                i += 1
+            expanded[sem] = paired
                     
         #semlst = semester data, list of (courseName, [sections])
         #courseIndex = index of the course in the semester data
