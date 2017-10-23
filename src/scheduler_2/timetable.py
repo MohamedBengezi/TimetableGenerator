@@ -240,11 +240,11 @@ class TimeTable:
 
         #add courses that are in both semesters
         for semlst, sem in [(s1, 1), (s2, 2)]:
-            i = 0
-            while (i < len(semlst)):
-                currentSchedule = semlst[i]
-                i += 1
-                for course, sections in expanded[sem+1]:
+            for course, sections in expanded[sem+1]:
+                i = 0
+                while (i < len(semlst)):                
+                    currentSchedule = semlst[i]
+                    i += 1
                     for section in sections:
                         if not s.checkSectionAgainstList(sem, course, section[0],
                                                          section, currentSchedule):
