@@ -43,6 +43,7 @@
         </taskproperties>
         <task id="3" name="Problem Statement" color="#ccff99" meeting="false" start="2017-09-24" duration="2" complete="100" expand="true">
             <depend id="0" type="2" difference="0" hardness="Rubber"/>
+            <depend id="34" type="2" difference="0" hardness="Strong"/>
         </task>
         <task id="0" name="Development Plan" color="#6666ff" shape="1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1" meeting="false" start="2017-09-26" duration="5" complete="100" webLink="https%3A%2F%2Fwww.sharelatex.com%2Fproject%2F59cadc8b7bd11d5822ac256d" expand="true"/>
         <task id="12" name="SRS" color="#ff9999" meeting="false" start="2017-10-03" duration="4" complete="0" expand="true">
@@ -50,10 +51,17 @@
             <task id="18" name="Non-Functional requirements" color="#8cb6ce" meeting="false" start="2017-10-04" duration="3" complete="0" expand="true"/>
             <task id="27" name="Other" color="#8cb6ce" meeting="false" start="2017-10-06" duration="1" complete="0" expand="true"/>
         </task>
-        <task id="15" name="Implementation" color="#000000" meeting="false" start="2017-10-07" duration="25" complete="48" expand="true">
+        <task id="15" name="Implementation" color="#000000" meeting="false" start="2017-10-07" duration="25" complete="79" expand="true">
+            <depend id="28" type="2" difference="0" hardness="Strong"/>
             <task id="21" name="Proof_of_Concept" color="#8cb6ce" meeting="false" start="2017-10-07" duration="13" complete="100" expand="true"/>
-            <task id="23" name="Semester 2 functionality" color="#8cb6ce" meeting="false" start="2017-10-19" duration="8" complete="0" expand="true"/>
+            <task id="23" name="Semester 2 functionality" color="#8cb6ce" meeting="false" start="2017-10-19" duration="8" complete="100" expand="true"/>
             <task id="24" name="Drag and Drop feature" color="#8cb6ce" meeting="false" start="2017-10-26" duration="6" complete="0" expand="true"/>
+            <task id="43" name="PoC Testing" color="#8cb6ce" meeting="false" start="2017-10-18" duration="2" complete="100" expand="true"/>
+        </task>
+        <task id="28" name="Testing" color="#8cb6ce" meeting="false" start="2017-11-01" duration="12" complete="0" expand="true" cost-manual-value="0.0" cost-calculated="false">
+            <task id="31" name="Functional Testing" color="#8cb6ce" meeting="false" start="2017-11-01" duration="3" complete="0" expand="true"/>
+            <task id="34" name="Structural Testing" color="#8cb6ce" meeting="false" start="2017-11-01" duration="8" complete="0" expand="true"/>
+            <task id="40" name="Parallel Testing" color="#8cb6ce" meeting="false" start="2017-11-08" duration="5" complete="0" expand="true"/>
         </task>
     </tasks>
     <resources>
@@ -64,8 +72,14 @@
     <allocations>
         <allocation task-id="3" resource-id="0" function="Default:1" responsible="true" load="50.0"/>
         <allocation task-id="0" resource-id="0" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="28" resource-id="0" function="Default:0" responsible="true" load="34.0"/>
+        <allocation task-id="34" resource-id="0" function="Default:0" responsible="true" load="100.0"/>
         <allocation task-id="3" resource-id="1" function="Default:0" responsible="false" load="25.0"/>
+        <allocation task-id="28" resource-id="1" function="Default:0" responsible="false" load="33.0"/>
+        <allocation task-id="31" resource-id="1" function="Default:0" responsible="true" load="100.0"/>
         <allocation task-id="3" resource-id="2" function="Default:0" responsible="false" load="25.0"/>
+        <allocation task-id="28" resource-id="2" function="Default:0" responsible="false" load="33.0"/>
+        <allocation task-id="40" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
     </allocations>
     <vacations/>
     <previous/>
