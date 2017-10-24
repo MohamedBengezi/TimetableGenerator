@@ -77,17 +77,16 @@ Open sourced similar project: \url{https://github.com/ash47/TimetableGenerator}
 
 
 
-% PLAN
 \section{Plan}
 \subsection{Software Description}
 The program uses Node js for the backend, and HTML/CSS for the front end. The main modules in the program are the index.js module, which contains the code for the main page, the checkCourse.js module, which checks and  ensures all user inputs are valid and viable, the scheduler.js module, which is the main algorithm for creating the timetables, the Course.js module, which defines the course objects used throughout the program, and all the corresponding ejs files, which contain the HTML code for the front end of each page. 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{figure}[H] %  figure placement: here, top, bottom, or page
+
+\begin{figure}[H]
    \centering
    \includegraphics[width=5in]{images/Software_Description.png} 
    \caption{Software Description}
-   \label{}
+   \label{s_d}
 \end{figure}
 
 
@@ -170,7 +169,7 @@ Regression testing will continually happen to ensure all features continue to fu
 Please refer to \hyperref[sec:compare]{this section}
 
 \subsection{Tests for Non-functional Requirements}
-\subsubsection{Test Area 1: Speed Performance}
+\subsubsection{Test Area 3: Speed Performance}
 \begin{enumerate}
 
 \item Type: Manual \\
@@ -186,7 +185,7 @@ Output: Schedule in a timetable format. \\
 The input courses shall be selected, and the the generator is timed from when the "Generate" button is pressed.  \\
 \end{enumerate}
 
-\subsubsection{Test Area 2: UI}
+\subsubsection{Test Area 4: UI}
 \begin{enumerate}
 
 \item Type: Manual \\
@@ -209,7 +208,7 @@ Output: Timetable \\
 Starting off with a list of courses, the "Generate" button will be pressed to test the ability of the UI to display output at the request of the user.  \\
 \end{enumerate}
 
-\subsubsection{Test Area 3: Maintainability}
+\subsubsection{Test Area 5: Maintainability}
 \begin{enumerate}
 \item Type: Static \\
 Initial State: Not running \\
@@ -220,12 +219,33 @@ This test is a static test for confirming the syntax and structural integrity of
 
 
 \subsubsection{Traceability}
-CHECK WITH T/A UVCFDTXCFVGUBINOUBVYCFTDXRTCFYGVUBHINJKML;PNOBIUVTYCRX
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{ | c | c | c | c | c | c | }
+\hline
+ Requirement & TA1 & TA2 & TA3 & TA4 & TA5  \\ 
+\hline
+ 3.1 & X & & & &   \\  
+\hline
+ 3.2 & & X & X & X & \\
+\hline
+ 3.3 & & X & & &\\
+\hline 
+ 4.1.1 & & & & X & \\ 
+\hline
+ 4.1.2 & & & X & & \\
+\hline
+  4.1.4 & & & & & X \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Traceability Matrix}
+\end{table}
 \newpage
 
 \section{PoC Test}
 
-\subsection{Test Area 2: Conflict Detection}
+\subsection{Conflict Detection}
 \begin{enumerate}
 \item Type: Dynamic \\
 Initial State: Homepage \\
@@ -234,7 +254,7 @@ Output: Conflict error page \\
 The courses in the input field will be selected and added in the UI manually. The expected result, an error page, will be checked against the actual output. The courses selected must have conflicting time slots. \\
 \end{enumerate}
 
-\subsection{Test Area 1: Schedule Output}
+\subsection{Schedule Output}
 \begin{enumerate}
 \item Type: Manual \\
 Initial State: Homepage \\
@@ -246,5 +266,5 @@ The courses in the input field will be selected and added in the UI manually. Th
 \section{Comparison to Existing Implementation}\label{sec:compare}
 The project will be benchmarked against two existing implementations, \url{http://timetablegenerator.io} and \url{https://github.com/ash47/TimetableGenerator}. Mainly, we will be comparing our project with \url{http://timetablegenerator.io} because it uses the McMaster database as well, so we can fully compare the generated timetables. The outputs are fairly similar, so comparison should not be very difficult. The comparison will be done manually by the testing team.
 \section{Unit Testing Plan}
-ASK TA ABOUT THUS DBUIEWBVHBEODIWEEOP
+Unit tests will be defined by specific modules and their functionality. So for example, from the software description figure, index will have a set of unit tests, and checkCourse will have its own, and so forth. Each module will have its own type of tests. We may need to implement stubs, to imitate connection to the database, to ensure the right functions are being called, etc. As for code coverage, equivalence will definitely be used throughout the majority of the test cases. Boundary cases will be used. An example of such a boundary case would be using a full year, six unit course as input, and testing the behaviour of the program. This is a boundary case because the program has had some trouble with full year courses. Lastly, control-flow testing will be implemented in order to extensively test as much lines of code as possible, and ensure that every path and edge is covered. As for specific details, that is still unclear at the moment, but will be updated and posted as soon as a defined  and detailed plan is created.
 \end{document}
