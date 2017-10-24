@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>TimeTable Generator</title>
+      <link rel="icon" href="https://www.iconsfind.com/wp-content/uploads/2015/11/20151104_563963802fd08-210x210.png">
+      <link rel="stylesheet" type="text/css" href="/stylesheets/animate.css">
+      <link rel="stylesheet" type="text/css" href="/stylesheets/animate.min.css">
+      <link rel="stylesheet" type="text/css" href="/stylesheets/jquery-ui.css">
+      <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <!-- /stylesheets/bootstrap.min.css    https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css -->
+      <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+      <script src="https://use.fontawesome.com/d1787f9932.js"></script>
+      <script src="/javascripts/jquery.js"></script>
+      <script src="/javascripts/jquery-ui.js"></script>
+
+  </head>
+  <body>
+  <div id="titleBox">
+      <h1 id="title" class="animated bounceIn">Timetable Generator</h1>
+
+  </div>
+
+
+  <div id="about">
+      <ul>
+          <li>
+              Enter the course codes of your  <%= dataSet.name %> classes.
+          </li>
+          <li>
+              This website will generate at least one timetable for you.
+          </li>
+      </ul>
+  </div>
+
+  <div id="inputBox">
+      <h2>Add the course codes below </h2>
+
+
+
+      <div id="oneline">
+
+          <div class="ui-widget">
+              <input type="text" name="courses" list="courseID" id="input"  placeholder="e.g) ECON-1BB3">
+          </div>
+
+          <button type="button" class="btn" id="add">Add</button>
+          <button type="button" class="btn btn-primary" id="generate">Generate</button>
+          <h5 id="error"></h5>
+      </div>
+
+
+
+  </div>
+  <div id="output">
+      <h4 id="info">Added courses will appear here </h4>
+  </div>
+  <script src="/javascripts/main.js?n=1"></script>
+
+  <a href="" <i class="fa fa-github-alt" aria-hidden="true"></i>
+
+
+  </body>
+</html>
