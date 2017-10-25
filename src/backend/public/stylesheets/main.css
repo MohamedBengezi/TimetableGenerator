@@ -8,6 +8,7 @@ html , body{
     position: relative;
 }
 
+
 #titleBox{
     width: 100%;
     background: #000000;
@@ -16,7 +17,8 @@ html , body{
     top:0px;
 }
 #about{
-    background: #aaaaaa;
+    border: 2px solid black;
+    background: #f6f6f6;
     width: 55%;
     padding: 2%;
     margin-top:80px;
@@ -25,6 +27,14 @@ html , body{
     border-radius:5px;
 
 }
+
+#about ul {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 1em;
+    text-indent: -1em;
+}
+
 
 #about *{
     color: black;
@@ -98,7 +108,7 @@ html , body{
 }
 
 #output{
-    border: 5px solid black;
+    border: 2px solid black;
     background: #f6f6f6;
     height: 42%;
     width: 40%;

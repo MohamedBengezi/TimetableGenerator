@@ -10,14 +10,15 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
       <!-- /stylesheets/bootstrap.min.css    https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css -->
       <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
-      <script src="https://use.fontawesome.com/d1787f9932.js"></script>
       <script src="/javascripts/jquery.js"></script>
       <script src="/javascripts/jquery-ui.js"></script>
+      <script src="https://use.fontawesome.com/d1787f9932.js"></script>
+
 
   </head>
   <body>
   <div id="titleBox">
-      <h1 id="title" class="animated bounceIn">Timetable Generator</h1>
+      <h1 id="title" class="animated bounceIn">Timetable Generator <i class="fa fa-calendar" aria-hidden="true"></i></h1>
 
   </div>
 
@@ -25,16 +26,16 @@
   <div id="about">
       <ul>
           <li>
-              Enter the course codes of your  <%= dataSet.name %> classes.
+              <i class="fa fa-arrow-right" aria-hidden="true"></i> Enter the course codes of your  <%= dataSet.name %> classes.
           </li>
           <li>
-              This website will generate at least one timetable for you.
+              <i class="fa fa-arrow-right" aria-hidden="true"></i> This website will generate at least one timetable for you.
           </li>
       </ul>
   </div>
 
   <div id="inputBox">
-      <h2>Add the course codes below </h2>
+      <h2>Enter a course code:</h2>
 
 
 
@@ -56,9 +57,5 @@
       <h4 id="info">Added courses will appear here </h4>
   </div>
   <script src="/javascripts/main.js?n=1"></script>
-
-  <a href="" <i class="fa fa-github-alt" aria-hidden="true"></i>
-
-
   </body>
 </html>
