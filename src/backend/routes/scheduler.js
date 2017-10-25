@@ -8,7 +8,7 @@ var allCourses;
 var finalCourses; // The courses user wants to generate time table on.
 
 //dataset.timetables[2017][6].courses
-var fullYear = []; // Contains course objects of courses that are available only for full year (September - March).
+//var fullYear = []; // Contains course objects of courses that are available only for full year (September - March).
 var bothSemesters = []; //Contains course objects of courses that are available for both Semesters. Example Macro Economics ECON 1BB3
 var semester1 = []; // Contains course objects of courses that are available only for first Semesters.
 var semester2 = []; //Contains course objects of courses that are available only for second Semesters.
@@ -45,7 +45,7 @@ router.get('/',function (req, res, next) {
 
     semester1 = [];
     semester2 = [];
-    fullYear = [];
+ //   fullYear = [];
     bothSemesters = [];
     fixedCores=[];
     flexCores=[];
@@ -144,7 +144,9 @@ function algorithm() {
                success = true;
            }
            else{
-               fullYear.push(dataset[indicies[0]]);
+            //   fullYear.push(dataset[indicies[0]]);
+               semester1.push(dataset[indicies[0]]);
+               semester2.push(dataset[indicies[0]]);
                success = true;
            }
         }
@@ -862,7 +864,7 @@ Array.prototype.multiIndexOf = function (el) {
 module.exports = router;
 module.exports.reset = function () { // To reset all the values when the page is reloaded.
     finalCourses = [];
-    fullYear = [];
+   // fullYear = [];
     bothSemesters = [];
     semester1 = [];
     semester2 = [];
