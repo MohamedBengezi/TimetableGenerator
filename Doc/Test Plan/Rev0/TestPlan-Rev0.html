@@ -1,0 +1,634 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head><title>Test Plan: Revision 0</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<!-- html --> 
+<meta name="src" content="TestPlan-Rev0.tex"> 
+<meta name="date" content="2017-10-27 12:47:00"> 
+<link rel="stylesheet" type="text/css" href="TestPlan-Rev0.css"> 
+</head><body 
+>
+   <div class="maketitle">
+                                                                                  
+                                                                                  
+                                                                                  
+                                                                                  
+
+<h2 class="titleHead">Test Plan: Revision 0</h2>
+             <div class="author" ><span 
+class="cmr-12">Group 2 - Genzter</span><br />
+<br />      <span 
+class="cmr-12">Binu, Amit - binua - 400023175</span>
+<br /> <span 
+class="cmr-12">Bengezi, Mohamed - bengezim - 400021279</span>
+<br /><span 
+class="cmr-12">Samarasinghe, Sachin - samarya - 001430998</span>
+<br />           <span 
+class="cmr-12">Professor: Dr. Bokhari</span>
+<br />                  <span 
+class="cmr-12">Lab: L01</span></div><br />
+<div class="date" ><span 
+class="cmr-12">October 27, 2017</span></div>
+   </div>
+<!--l. 36--><p class="indent" >
+                                                                                  
+                                                                                  
+   <h3 class="sectionHead"><span class="titlemark">1   </span> <a 
+ id="x1-10001"></a>Revision History</h3>
+   <div class="table">
+                                                                                  
+                                                                                  
+<!--l. 39--><p class="indent" >   <a 
+ id="x1-1001r1"></a><hr class="float"><div class="float" 
+>
+                                                                                  
+                                                                                  
+<div class="center" 
+>
+<!--l. 40--><p class="noindent" >
+<div class="tabular"> <table id="TBL-2" class="tabular" 
+cellspacing="0" cellpadding="0" rules="groups" 
+><colgroup id="TBL-2-1g"><col 
+id="TBL-2-1"></colgroup><colgroup id="TBL-2-2g"><col 
+id="TBL-2-2"></colgroup><colgroup id="TBL-2-3g"><col 
+id="TBL-2-3"></colgroup><colgroup id="TBL-2-4g"><col 
+id="TBL-2-4"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-1-"><td  style="white-space:nowrap; text-align:center;" id="TBL-2-1-1"  
+class="td11">   Date    </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-1-2"  
+class="td11">Version</td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-1-3"  
+class="td11">   Description     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-1-4"  
+class="td11">                   Author                              </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-2-"><td  style="white-space:nowrap; text-align:center;" id="TBL-2-2-1"  
+class="td11">23/OCT/17</td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-2-2"  
+class="td11">  0.0   </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-2-3"  
+class="td11">Created Test Plan</td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-2-4"  
+class="td11">Mohamed Bengezi, Amit Binu, Sachin Samarasinghe</td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-3-"><td  style="white-space:nowrap; text-align:center;" id="TBL-2-3-1"  
+class="td11">27/OCT/17</td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-3-2"  
+class="td11">  0.0   </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-3-3"  
+class="td11">Updated Test Plan</td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-3-4"  
+class="td11">              Mohamed Bengezi                       </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-4-"><td  style="white-space:nowrap; text-align:center;" id="TBL-2-4-1"  
+class="td11">          </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-4-2"  
+class="td11">      </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-4-3"  
+class="td11">                </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-4-4"  
+class="td11">                                            </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-5-"><td  style="white-space:nowrap; text-align:center;" id="TBL-2-5-1"  
+class="td11">          </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-5-2"  
+class="td11">      </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-5-3"  
+class="td11">                </td><td  style="white-space:nowrap; text-align:center;" id="TBL-2-5-4"  
+class="td11">                                            </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-6-"><td  style="white-space:nowrap; text-align:center;" id="TBL-2-6-1"  
+class="td11">          </td></tr></table></div></div>
+<br /> <div class="caption" 
+><span class="id">Table&#x00A0;1: </span><span  
+class="content">Revision History</span></div><!--tex4ht:label?: x1-1001r1 -->
+                                                                                  
+                                                                                  
+   </div><hr class="endfloat" />
+   </div>
+<!--l. 58--><p class="indent" >
+                                                                                  
+                                                                                  
+   <h3 class="likesectionHead"><a 
+ id="x1-20001"></a>Contents</h3>
+   <div class="tableofcontents">
+   <span class="sectionToc" >1 <a 
+href="#x1-10001" id="QQ2-1-1">Revision History</a></span>
+<br />   <span class="sectionToc" >2 <a 
+href="#x1-50002" id="QQ2-1-6">Introduction</a></span>
+<br />   &#x00A0;<span class="subsectionToc" >2.1 <a 
+href="#x1-60002.1" id="QQ2-1-7">Purpose</a></span>
+<br />   &#x00A0;<span class="subsectionToc" >2.2 <a 
+href="#x1-70002.2" id="QQ2-1-8">Objectives</a></span>
+<br />   &#x00A0;<span class="subsectionToc" >2.3 <a 
+href="#x1-80002.3" id="QQ2-1-9">References</a></span>
+<br />   <span class="sectionToc" >3 <a 
+href="#x1-90003" id="QQ2-1-10">Plan</a></span>
+<br />   &#x00A0;<span class="subsectionToc" >3.1 <a 
+href="#x1-100003.1" id="QQ2-1-11">Software Description</a></span>
+<br />   &#x00A0;<span class="subsectionToc" >3.2 <a 
+href="#x1-110003.2" id="QQ2-1-13">Test Team</a></span>
+<br />   &#x00A0;<span class="subsectionToc" >3.3 <a 
+href="#x1-120003.3" id="QQ2-1-14">Automated Testing Approach</a></span>
+<br />   &#x00A0;<span class="subsectionToc" >3.4 <a 
+href="#x1-130003.4" id="QQ2-1-15">Testing Tools</a></span>
+<br />   &#x00A0;<span class="subsectionToc" >3.5 <a 
+href="#x1-140003.5" id="QQ2-1-16">Testing Schedule</a></span>
+<br />   <span class="sectionToc" >4 <a 
+href="#x1-150004" id="QQ2-1-17">System Test Description</a></span>
+<br />   &#x00A0;<span class="subsectionToc" >4.1 <a 
+href="#x1-160004.1" id="QQ2-1-18">Tests for Functional Requirements</a></span>
+<br />   &#x00A0;&#x00A0;<span class="subsubsectionToc" >4.1.1 <a 
+href="#x1-170004.1.1" id="QQ2-1-19">Test Area 1 <br 
+class="newline" />Conflict Detection Test</a></span>
+<br />   &#x00A0;&#x00A0;<span class="subsubsectionToc" >4.1.2 <a 
+href="#x1-180004.1.2" id="QQ2-1-20">Test Area 2: Output Timetable</a></span>
+<br />   &#x00A0;&#x00A0;<span class="subsubsectionToc" >4.1.3 <a 
+href="#x1-190004.1.3" id="QQ2-1-21">Regression Testing</a></span>
+<br />   &#x00A0;&#x00A0;<span class="subsubsectionToc" >4.1.4 <a 
+href="#x1-200004.1.4" id="QQ2-1-22">Parallel Testing</a></span>
+<br />   &#x00A0;<span class="subsectionToc" >4.2 <a 
+href="#x1-210004.2" id="QQ2-1-23">Tests for Non-functional Requirements</a></span>
+<br />   &#x00A0;&#x00A0;<span class="subsubsectionToc" >4.2.1 <a 
+href="#x1-220004.2.1" id="QQ2-1-24">Test Area 3: Speed Performance</a></span>
+<br />   &#x00A0;&#x00A0;<span class="subsubsectionToc" >4.2.2 <a 
+href="#x1-230004.2.2" id="QQ2-1-25">Test Area 4: UI</a></span>
+<br />   &#x00A0;&#x00A0;<span class="subsubsectionToc" >4.2.3 <a 
+href="#x1-240004.2.3" id="QQ2-1-26">Test Area 5: Maintainability</a></span>
+<br />   &#x00A0;&#x00A0;<span class="subsubsectionToc" >4.2.4 <a 
+href="#x1-250004.2.4" id="QQ2-1-27">Traceability</a></span>
+<br />   <span class="sectionToc" >5 <a 
+href="#x1-260005" id="QQ2-1-29">PoC Test</a></span>
+<br />   &#x00A0;<span class="subsectionToc" >5.1 <a 
+href="#x1-270005.1" id="QQ2-1-30">Conflict Detection</a></span>
+<br />   &#x00A0;<span class="subsectionToc" >5.2 <a 
+href="#x1-280005.2" id="QQ2-1-31">Schedule Output</a></span>
+<br />   <span class="sectionToc" >6 <a 
+href="#x1-290006" id="QQ2-1-32">Comparison to Existing Implementation</a></span>
+<br />   <span class="sectionToc" >7 <a 
+href="#x1-300007" id="QQ2-1-33">Unit Testing Plan</a></span>
+   </div>
+   <h3 class="likesectionHead"><a 
+ id="x1-30001"></a>List of Figures</h3>
+   <div class="tableofcontents"><span class="lofToc" >1&#x00A0;<a 
+href="#x1-10001r1">Software Description</a></span><br />
+   </div>
+                                                                                  
+                                                                                  
+   <h3 class="likesectionHead"><a 
+ id="x1-40001"></a>List of Tables</h3>
+   <div class="tableofcontents"><span class="lotToc" >1&#x00A0;<a 
+href="#x1-1001r1">Revision History</a></span><br /><span class="lotToc" >2&#x00A0;<a 
+href="#x1-25001r2">Traceability Matrix</a></span><br />
+   </div>
+<!--l. 63--><p class="indent" >
+                                                                                  
+                                                                                  
+   <h3 class="sectionHead"><span class="titlemark">2   </span> <a 
+ id="x1-50002"></a>Introduction</h3>
+<!--l. 66--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">2.1   </span> <a 
+ id="x1-60002.1"></a>Purpose</h4>
+<!--l. 67--><p class="noindent" >The goal of this project is to create a viable set of schedules for the user based on the inputted
+courses. All corresponding core&#8217;s, labs, and tutorials must be included in each timetable. The
+automated testing shall include unit testing performed by the Mocha framework for javascript.
+Functional testing shall consist of input testing, along with conflict tests, and perfect input tests.
+Structural testing shall include performance tests, such as a large number of courses as input, as
+well as dataset traversal tests. Fault and Mutation testing will occur throughout development.
+Manual testing, such as static testing, shall be done primarily by group code walkthrough&#8217;s &amp;
+inspections, in order to check syntax and logic, and gain a better understanding of the
+program code as a whole. Dynamic testing shall include using a number of predetermined
+schedules from various programs, and using the courses on each schedule as input, and
+determining that each necessary core, lab, and tutorial are listed in the generated
+timetable.
+<!--l. 69--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">2.2   </span> <a 
+ id="x1-70002.2"></a>Objectives</h4>
+<!--l. 70--><p class="noindent" >This test plan will allow the team to head into the testing phase in an organized and informed
+manner, and with a clear goal in mind. These tests ensure that the product will be
+working as it should be when released for users. The plan will also ensure that testing
+is conducted properly, and any interested parties can learn about the testing of the
+product.&#x00A0;
+<!--l. 72--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">2.3   </span> <a 
+ id="x1-80002.3"></a>References</h4>
+<!--l. 73--><p class="noindent" >Project inspiration: <a 
+href="http://timetablegenerator.io" class="url" ><span 
+class="cmtt-10x-x-109">http://timetablegenerator.io</span></a> <br 
+class="newline" />Open sourced similar project: <a 
+href="https://github.com/ash47/TimetableGenerator" class="url" ><span 
+class="cmtt-10x-x-109">https://github.com/ash47/TimetableGenerator</span></a>
+<!--l. 76--><p class="indent" >
+                                                                                  
+                                                                                  
+   <h3 class="sectionHead"><span class="titlemark">3   </span> <a 
+ id="x1-90003"></a>Plan</h3>
+<!--l. 81--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">3.1   </span> <a 
+ id="x1-100003.1"></a>Software Description</h4>
+<!--l. 82--><p class="noindent" >The program uses Node js for the backend, and HTML/CSS for the front end. The main modules
+in the program are the index.js module, which contains the code for the main page, the
+checkCourse.js module, which checks and ensures all user inputs are valid and viable,
+the scheduler.js module, which is the main algorithm for creating the timetables, the
+Course.js module, which defines the course objects used throughout the program, and all
+the corresponding ejs files, which contain the HTML code for the front end of each
+page.
+<!--l. 85--><p class="indent" >   <hr class="figure"><div class="figure" 
+>
+                                                                                  
+                                                                                  
+<a 
+ id="x1-10001r1"></a>
+                                                                                  
+                                                                                  
+
+<!--l. 87--><p class="noindent" ><img 
+src="images/Software_Description.png" alt="PIC"  
+>
+<br /> <div class="caption" 
+><span class="id">Figure&#x00A0;1: </span><span  
+class="content">Software Description</span></div><!--tex4ht:label?: x1-10001r1 -->
+                                                                                  
+                                                                                  
+<!--l. 90--><p class="indent" >   </div><hr class="endfigure">
+   <h4 class="subsectionHead"><span class="titlemark">3.2   </span> <a 
+ id="x1-110003.2"></a>Test Team</h4>
+<!--l. 94--><p class="noindent" >The entire Genzter team will be in tasked with testing. Testing shall be evenly divided between
+members.
+<!--l. 96--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">3.3   </span> <a 
+ id="x1-120003.3"></a>Automated Testing Approach</h4>
+<!--l. 97--><p class="noindent" >As stated above, automated testing will be done using the javascript testing framework
+called <a 
+href="http://mochajs.org" >Mocha</a>. Accompanying Mocha will be an assertion library called <a 
+href="http://chaijs.com/" >Chai</a>. Unit
+tests will be set up, and the framework will be used to automatically run through all
+the unit tests, and reveal any faults that may reside in the program. The unit tests
+will include normal input, boundary cases, as well as extreme cases and conflicting
+cases. This will ensure that the program functions expectedly, and that no special
+cases were missed. In other words, this automated testing approach will make sure
+that in any case, the program will have a path to follow, and its behaviour can be
+predicted.
+<!--l. 99--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">3.4   </span> <a 
+ id="x1-130003.4"></a>Testing Tools</h4>
+<!--l. 100--><p class="noindent" >For unit testing we will be using the testing framework <a 
+href="http://mochajs.org" >Mocha</a>. System testing will be conducted
+on internet browsers. Code analysis will be done by the Genzter team.
+<!--l. 102--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">3.5   </span> <a 
+ id="x1-140003.5"></a>Testing Schedule</h4>
+<!--l. 103--><p class="noindent" >The testing schedule is included in the Gantt chart, located in the Project Schedule folder in the
+main directory.
+<!--l. 105--><p class="indent" >
+                                                                                  
+                                                                                  
+   <h3 class="sectionHead"><span class="titlemark">4   </span> <a 
+ id="x1-150004"></a>System Test Description</h3>
+<!--l. 108--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">4.1   </span> <a 
+ id="x1-160004.1"></a>Tests for Functional Requirements</h4>
+<!--l. 109--><p class="noindent" >
+   <h5 class="subsubsectionHead"><span class="titlemark">4.1.1   </span> <a 
+ id="x1-170004.1.1"></a>Test Area 1 <br 
+class="newline" />Conflict Detection Test</h5>
+<!--l. 110--><p class="noindent" >
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-17002x1">Type: Dynamic <br 
+class="newline" />Initial State: Homepage <br 
+class="newline" />Input: SFWRENG 3RA3, EARTHSC 2EI3 <br 
+class="newline" />Output: Conflict error page <br 
+class="newline" />The courses in the input field will be selected and added in the UI manually. The
+     expected result, an error page, will be checked against the actual output. The courses
+     selected must have conflicting time slots. <br 
+class="newline" />
+     </li>
+     <li 
+  class="enumerate" id="x1-17004x2">Type: Dynamic <br 
+class="newline" />Initial State: Homepage <br 
+class="newline" />Input: RELIGST-2TA3, SFWRENG 3BB4 <br 
+class="newline" />Output: Conflict error page <br 
+class="newline" />The courses in the input field will be selected and added in the UI manually. The
+     expected result, an error page, will be checked against the actual output. The courses
+     selected must have conflicting time slots. <br 
+class="newline" />
+     </li>
+     <li 
+  class="enumerate" id="x1-17006x3">Type: Dynamic <br 
+class="newline" />Initial State: Homepage <br 
+class="newline" />Input: BIOLOGY 2F03, SFWRENG 3MX3 <br 
+class="newline" />Output: Conflict error page <br 
+class="newline" />The courses in the input field will be selected and added in the UI manually. The
+     expected result, an error page, will be checked against the actual output. The courses
+     selected must have conflicting time slots. <br 
+class="newline" />
+                                                                                  
+                                                                                  
+     </li>
+     <li 
+  class="enumerate" id="x1-17008x4">Type: Dynamic <br 
+class="newline" />Initial State: Homepage <br 
+class="newline" />Input: MATLS 2B03, EARTHSC 2EI3 <br 
+class="newline" />Output: Conflict error page <br 
+class="newline" />The courses in the input field will be selected and added in the UI manually. The
+     expected result, an error page, will be checked against the actual output. The courses
+     selected must have conflicting time slots. <br 
+class="newline" /></li></ol>
+<!--l. 138--><p class="noindent" >
+   <h5 class="subsubsectionHead"><span class="titlemark">4.1.2   </span> <a 
+ id="x1-180004.1.2"></a>Test Area 2: Output Timetable</h5>
+<!--l. 139--><p class="noindent" >
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-18002x1">Type: Manual <br 
+class="newline" />Initial State: Homepage <br 
+class="newline" />Input: SFWRENG 3XA3, SFWRENG 3BB4, SFWRENG 3DB3, SFWRENG 3MX3,
+     COMMERCE 1AA3 <br 
+class="newline" />Output: Valid Schedule in a timetable format. <br 
+class="newline" />The courses in the input field will be selected and added in the UI manually. The
+     expected result, a color coded schedule, will be checked against the actual output.
+     Generated timetable must have every core, tutorial, lab etc. required for each course.
+     It will be manually checked against the dataset and our own timetables <br 
+class="newline" />
+     </li>
+     <li 
+  class="enumerate" id="x1-18004x2">Type: Manual <br 
+class="newline" />Initial State: Homepage <br 
+class="newline" />Input:      ENGINEER-1C03,      MATH-1ZC3,      MATH-1ZB3,      ECON-1BB3,
+     PHYSICS-1E03, MATLS-1M03 <br 
+class="newline" />Output: Valid Schedule in a timetable format. <br 
+class="newline" />The courses in the input field will be selected and added in the UI manually. The
+     expected result, a color coded schedule, will be checked against the actual output.
+     Generated timetable must have every core, tutorial, lab etc. required for each course.
+     It will be manually checked against the dataset and our own timetables <br 
+class="newline" />
+     </li>
+     <li 
+  class="enumerate" id="x1-18006x3">Type: Manual <br 
+class="newline" />Initial State: Homepage <br 
+class="newline" />Input: RELIGST-2TA3, RELIGST-2QQ3, POLSCI-2I03, POLSCI-4CA3<br 
+class="newline" />Output: Valid Schedule in a timetable format. <br 
+class="newline" />The courses in the input field will be selected and added in the UI manually. The
+     expected result, a color coded schedule, will be checked against the actual output.
+     Generated timetable must have every core, tutorial, lab etc. required for each course.
+     It will be manually checked against the dataset and our own timetables <br 
+class="newline" />
+     </li>
+     <li 
+  class="enumerate" id="x1-18008x4">Type: Manual <br 
+class="newline" />Initial State: Homepage <br 
+class="newline" />Input:EARTHSC-2EI3,       EARTHSC-2C03,       GEOG-2UI3,       GEOG-2GI3,
+     BIOLOGY-2F03<br 
+class="newline" />Output: Valid Schedule in a timetable format. <br 
+class="newline" />The courses in the input field will be selected and added in the UI manually. The
+     expected result, a color coded schedule, will be checked against the actual output.
+     Generated timetable must have every core, tutorial, lab etc. required for each course.
+     It will be manually checked against the dataset and our own timetables <br 
+class="newline" /></li></ol>
+<!--l. 165--><p class="noindent" >
+   <h5 class="subsubsectionHead"><span class="titlemark">4.1.3   </span> <a 
+ id="x1-190004.1.3"></a>Regression Testing</h5>
+<!--l. 166--><p class="noindent" >Regression testing will continually happen to ensure all features continue to function ideally, no
+matter the changes occurring to the program.
+<!--l. 168--><p class="noindent" >
+   <h5 class="subsubsectionHead"><span class="titlemark">4.1.4   </span> <a 
+ id="x1-200004.1.4"></a>Parallel Testing</h5>
+<!--l. 169--><p class="noindent" >Please refer to <a 
+href="#x1-290006">this section</a>
+<!--l. 171--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">4.2   </span> <a 
+ id="x1-210004.2"></a>Tests for Non-functional Requirements</h4>
+<!--l. 172--><p class="noindent" >
+   <h5 class="subsubsectionHead"><span class="titlemark">4.2.1   </span> <a 
+ id="x1-220004.2.1"></a>Test Area 3: Speed Performance</h5>
+<!--l. 173--><p class="noindent" >
+                                                                                  
+                                                                                  
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-22002x1">Type: Manual <br 
+class="newline" />Initial State: Homepage <br 
+class="newline" />Input: SFWRENG 3XA3, SFWRENG 3BB4, SFWRENG 3DB3, SFWRENG 3MX3,
+     COMMERCE 1AA3 <br 
+class="newline" />Output: Schedule in a timetable format. <br 
+class="newline" />The input courses shall be selected, and the the generator is timed from when the
+     &#8221;Generate&#8221; button is pressed. <br 
+class="newline" />
+     </li>
+     <li 
+  class="enumerate" id="x1-22004x2">Type: Manual <br 
+class="newline" />Initial State: Homepage <br 
+class="newline" />Input:      ENGINEER-1C03,      MATH-1ZC3,      MATH-1ZB3,      ECON-1BB3,
+     PHYSICS-1E03, MATLS-1M03 <br 
+class="newline" />Output: Schedule in a timetable format. <br 
+class="newline" />The input courses shall be selected, and the the generator is timed from when the
+     &#8221;Generate&#8221; button is pressed. <br 
+class="newline" /></li></ol>
+<!--l. 188--><p class="noindent" >
+   <h5 class="subsubsectionHead"><span class="titlemark">4.2.2   </span> <a 
+ id="x1-230004.2.2"></a>Test Area 4: UI</h5>
+<!--l. 189--><p class="noindent" >
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-23002x1">Type: Manual <br 
+class="newline" />Initial State: Homepage <br 
+class="newline" />Input: Any McMaster Course <br 
+class="newline" />Output: Add course to list of courses <br 
+class="newline" />Any McMaster course is selected, and the &#8221;Add&#8221; button is pressed. This is to test
+     the ability of the UI to retrieve input from the user. <br 
+class="newline" />
+     </li>
+     <li 
+  class="enumerate" id="x1-23004x2">Type: Manual <br 
+class="newline" />Initial State: Homepage with list of courses chosen<br 
+class="newline" />Input: Pressing the &#8221;Remove&#8221; button <br 
+class="newline" />Output: Removal of the selected course <br 
+class="newline" />Starting off with a list of courses, the &#8221;Remove&#8221; button will be pressed to test the
+     ability of the UI to modify the course list at the request of the user. <br 
+class="newline" />
+                                                                                  
+                                                                                  
+     </li>
+     <li 
+  class="enumerate" id="x1-23006x3">Type: Manual <br 
+class="newline" />Initial State: Homepage with list of courses chosen<br 
+class="newline" />Input: Pressing the &#8221;Generate&#8221; button <br 
+class="newline" />Output: Timetable <br 
+class="newline" />Starting off with a list of courses, the &#8221;Generate&#8221; button will be pressed to test the
+     ability of the UI to display output at the request of the user. <br 
+class="newline" /></li></ol>
+<!--l. 211--><p class="noindent" >
+   <h5 class="subsubsectionHead"><span class="titlemark">4.2.3   </span> <a 
+ id="x1-240004.2.3"></a>Test Area 5: Maintainability</h5>
+<!--l. 212--><p class="noindent" >
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-24002x1">Type: Static <br 
+class="newline" />Initial State: Not running <br 
+class="newline" />Input: Code walkthrough and inspection<br 
+class="newline" />Output: N/A <br 
+class="newline" />This test is a static test for confirming the syntax and structural integrity of the
+     backend of the program.<br 
+class="newline" /></li></ol>
+<!--l. 221--><p class="noindent" >
+   <h5 class="subsubsectionHead"><span class="titlemark">4.2.4   </span> <a 
+ id="x1-250004.2.4"></a>Traceability</h5>
+   <div class="table">
+                                                                                  
+                                                                                  
+<!--l. 222--><p class="indent" >   <a 
+ id="x1-25001r2"></a><hr class="float"><div class="float" 
+>
+                                                                                  
+                                                                                  
+<div class="center" 
+>
+<!--l. 223--><p class="noindent" >
+<div class="tabular"> <table id="TBL-3" class="tabular" 
+cellspacing="0" cellpadding="0" rules="groups" 
+><colgroup id="TBL-3-1g"><col 
+id="TBL-3-1"></colgroup><colgroup id="TBL-3-2g"><col 
+id="TBL-3-2"></colgroup><colgroup id="TBL-3-3g"><col 
+id="TBL-3-3"></colgroup><colgroup id="TBL-3-4g"><col 
+id="TBL-3-4"></colgroup><colgroup id="TBL-3-5g"><col 
+id="TBL-3-5"></colgroup><colgroup id="TBL-3-6g"><col 
+id="TBL-3-6"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-1-"><td  style="white-space:nowrap; text-align:center;" id="TBL-3-1-1"  
+class="td11">Requirement</td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-1-2"  
+class="td11">TA1</td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-1-3"  
+class="td11">TA2</td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-1-4"  
+class="td11">TA3</td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-1-5"  
+class="td11">TA4</td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-1-6"  
+class="td11">TA5</td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-2-"><td  style="white-space:nowrap; text-align:center;" id="TBL-3-2-1"  
+class="td11">    3.1       </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-2-2"  
+class="td11"> X  </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-2-3"  
+class="td11">    </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-2-4"  
+class="td11">    </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-2-5"  
+class="td11">    </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-2-6"  
+class="td11">    </td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-3-"><td  style="white-space:nowrap; text-align:center;" id="TBL-3-3-1"  
+class="td11"> 3.2 </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-3-2"  
+class="td11"> </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-3-3"  
+class="td11"> X </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-3-4"  
+class="td11"> X </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-3-5"  
+class="td11"> X </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-3-6"  
+class="td11"></td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-4-"><td  style="white-space:nowrap; text-align:center;" id="TBL-3-4-1"  
+class="td11">    3.3       </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-4-2"  
+class="td11">    </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-4-3"  
+class="td11"> X  </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-4-4"  
+class="td11">    </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-4-5"  
+class="td11">    </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-4-6"  
+class="td11">    </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-5-"><td  style="white-space:nowrap; text-align:center;" id="TBL-3-5-1"  
+class="td11">    4.1.1      </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-5-2"  
+class="td11">    </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-5-3"  
+class="td11">    </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-5-4"  
+class="td11">    </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-5-5"  
+class="td11"> X  </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-5-6"  
+class="td11">    </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-6-"><td  style="white-space:nowrap; text-align:center;" id="TBL-3-6-1"  
+class="td11">    4.1.2      </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-6-2"  
+class="td11">    </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-6-3"  
+class="td11">    </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-6-4"  
+class="td11"> X  </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-6-5"  
+class="td11">    </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-6-6"  
+class="td11">    </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-7-"><td  style="white-space:nowrap; text-align:center;" id="TBL-3-7-1"  
+class="td11">    4.1.4      </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-7-2"  
+class="td11">    </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-7-3"  
+class="td11">    </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-7-4"  
+class="td11">    </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-7-5"  
+class="td11">    </td><td  style="white-space:nowrap; text-align:center;" id="TBL-3-7-6"  
+class="td11"> X  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-8-"><td  style="white-space:nowrap; text-align:center;" id="TBL-3-8-1"  
+class="td11">           </td></tr></table></div></div>
+<br /> <div class="caption" 
+><span class="id">Table&#x00A0;2: </span><span  
+class="content">Traceability Matrix</span></div><!--tex4ht:label?: x1-25001r2 -->
+                                                                                  
+                                                                                  
+   </div><hr class="endfloat" />
+   </div>
+<!--l. 244--><p class="indent" >
+                                                                                  
+                                                                                  
+   <h3 class="sectionHead"><span class="titlemark">5   </span> <a 
+ id="x1-260005"></a>PoC Test</h3>
+<!--l. 248--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">5.1   </span> <a 
+ id="x1-270005.1"></a>Conflict Detection</h4>
+<!--l. 249--><p class="noindent" >
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-27002x1">Type: Dynamic <br 
+class="newline" />Initial State: Homepage <br 
+class="newline" />Input: BIOLOGY 2F03, SFWRENG 3MX3 <br 
+class="newline" />Output: Conflict error page <br 
+class="newline" />The courses in the input field will be selected and added in the UI manually. The
+     expected result, an error page, will be checked against the actual output. The courses
+     selected must have conflicting time slots. <br 
+class="newline" /></li></ol>
+<!--l. 257--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">5.2   </span> <a 
+ id="x1-280005.2"></a>Schedule Output</h4>
+<!--l. 258--><p class="noindent" >
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-28002x1">Type: Manual <br 
+class="newline" />Initial State: Homepage <br 
+class="newline" />Input: SFWRENG 3XA3, SFWRENG 3BB4 <br 
+class="newline" />Output: Valid Schedule in a timetable format. <br 
+class="newline" />The courses in the input field will be selected and added in the UI manually. The
+     expected result, a color coded schedule, will be checked against the actual output.
+     Generated timetable must have every core, tutorial, lab etc. required for each course.
+     It will be manually checked against the dataset and our own timetables <br 
+class="newline" /></li></ol>
+<!--l. 266--><p class="noindent" >
+   <h3 class="sectionHead"><span class="titlemark">6   </span> <a 
+ id="x1-290006"></a>Comparison to Existing Implementation</h3>
+<!--l. 267--><p class="noindent" >The project will be benchmarked against two existing implementations, <a 
+href="http://timetablegenerator.io" class="url" ><span 
+class="cmtt-10x-x-109">http://timetablegenerator.io</span></a>
+and <a 
+href="https://github.com/ash47/TimetableGenerator" class="url" ><span 
+class="cmtt-10x-x-109">https://github.com/ash47/TimetableGenerator</span></a>. Mainly, we will be comparing our
+project with <a 
+href="http://timetablegenerator.io" class="url" ><span 
+class="cmtt-10x-x-109">http://timetablegenerator.io</span></a> because it uses the McMaster database as well, so
+                                                                                  
+                                                                                  
+we can fully compare the generated timetables. The outputs are fairly similar, so comparison
+should not be very difficult. The comparison will be done manually by the testing
+team.
+   <h3 class="sectionHead"><span class="titlemark">7   </span> <a 
+ id="x1-300007"></a>Unit Testing Plan</h3>
+<!--l. 269--><p class="noindent" >Unit tests will be defined by specific modules and their functionality. So for example, from
+the software description figure, index will have a set of unit tests, and checkCourse
+will have its own, and so forth. Each module will have its own type of tests. We may
+need to implement stubs, to imitate connection to the database, to ensure the right
+functions are being called, etc. As for code coverage, equivalence will definitely be used
+throughout the majority of the test cases. Boundary cases will be used. An example of
+such a boundary case would be using a full year, six unit course as input, and testing
+the behaviour of the program. This is a boundary case because the program has had
+some trouble with full year courses. Lastly, control-flow testing will be implemented
+in order to extensively test as much lines of code as possible, and ensure that every
+path and edge is covered. As for specific details, that is still unclear at the moment,
+but will be updated and posted as soon as a defined and detailed plan is created.
+ 
+</body></html> 
+
+                                                                                  
+
+

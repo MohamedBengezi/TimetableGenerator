@@ -1,0 +1,144 @@
+\documentclass[12pt]{article}
+
+\usepackage{graphicx}
+\usepackage{paralist}
+\usepackage{amsfonts}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{tabto}
+
+\hypersetup{colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    filecolor=blue,
+    urlcolor=blue,
+    unicode=false}
+
+\oddsidemargin 0mm
+\evensidemargin 0mm
+\textwidth 160mm
+\textheight 200mm
+
+\pagestyle {plain}
+\pagenumbering{arabic}
+
+\newcounter{stepnum}
+
+\title{Software Development Plan: Revision 0}
+\author{Group 2 - Genzter \\
+		\\ Binu, Amit - binua - 400023175
+		\\ Bengezi, Mohamed - bengezim - 400021279
+		\\ Samarasinghe, Sachin - samarya - 001430998
+		\\ September 29, 2017
+		\\Professor: Dr. Bokhari
+		\\ Lab: L01}
+
+\begin {document}
+\maketitle
+
+\newpage
+
+{\centering
+  \tableofcontents\par
+}
+\addtocontents{toc}{\protect\vspace{2.5em}}
+
+\newpage
+\section{Revision History}
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{ | c | c | c | c | }
+\hline
+ Date & Version & Description & Author \\ 
+\hline
+ 29/SEP/17 & 0.0 & Created development plan & Mohamed Bengezi \\  
+\hline
+  & & & \\
+\hline
+ & & & \\
+\hline 
+ & & & \\ 
+\hline 
+\end{tabular}
+\end{center}
+\caption{Revision History}
+\end{table}
+
+\newpage
+\section{Introduction}
+\subsection{Purpose}
+\tab The purpose of this Software Development Plan is to compile all information that is imperative to the development and completion of the project. Included in this document are the team meeting plans, communication plans, member roles, proof of concept, among other documents. This document will continually be revisited and revised. As the project develops and matures, much of the information in this document will change, and as such, it will need continued maintenance.
+
+\newpage
+
+\section{Team Meeting Plan}
+\subsection{Details of Meetings}
+Meetings will occur 3 times a week. Two of these meetings will take place during the lab section. The third meeting will take place on Wednesday's, at Thode library, after classes. This meeting will be used primarily for technical work, such as implementation and testing.  During each meeting, members will rotate filling the position of Meeting Chair. the Meeting Chair will be in charge of writing the agenda for that meeting, which is discussed below. 
+
+\subsection{Meeting Agendas}
+As stated above, agendas will be completed by the meeting chair. Meeting agendas will be included in the Meeting Minutes, which will be completed during meetings. This is the \href{run:./docs/MeetingMinutesTemplates.pdf}{Meeting Minutes Template} we will be using. We will also include a summary of decisions made during the meeting, as well as who needs to do what next. The meetings will follow Harvard guidelines, which were discussed in class.
+
+\section{Team Communication Plan}
+The team will primarily use a Facebook group chat to communicate, but will also exchange emails as well as phone numbers.
+The group chat will be used if any issues come up outside of meetings, or if any group member needs assistance with something non-urgent. For meetings, the Meeting Chair will use both the chat and cell numbers in order to ensure everyone is on the same page. Emails will be used to send/receive data regarding the project.
+
+\newpage
+
+\section{Team Member Roles}
+Team member roles will vary, but the following table can provide a general description of each member's current roles. 
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{ | c | p{65mm} |  }
+\hline
+ Person & Role  \\ 
+\hline
+Mohamed Bengezi & - Documentation Lead \newline - Designer \newline - Developer \newline - Test Cases  \\  
+\hline
+ Amit Binu & - Development Lead \newline - Designer \newline - Documentation assistance \newline - Test Cases  \\
+\hline
+ Sachin Samarasinghe & - Information/Research Lead \newline - Developer \newline - Code Review \newline - Test Cases
+\\
+\hline 
+\end{tabular}
+\end{center}
+\caption{Team Member Roles}
+\end{table}
+
+\newpage
+\section{Git Workflow Plan}
+\tab A Git workflow plan will be used to develop the software in an organized and structured manner. A centralized Git repository will be used to store and keep track of development of the source code. There will be two main brances in the repository, ``develop" and ``master". The ``develop" branch will keep track of the code that is in development. Furthermore, the "develop" branch will contain sub branches that keep track of different features. Once a feature is completed, the specific sub branch that kept track of that feature will be merged to the ”develop" branch. The ``master" branch will be used to keep track of milestones. A milestone is a specific set of features and functions that software must have and perform. Milestones will be used throughout the development process. Once the code corresponding to a specific milestone is stable, it will be merged to the ``master" branch. If any additional steps such as testing is required before the merge, they will be performed on a release branch which will be forked from the stable ``develop" branch. Tags will be used to track significant commits. They will be used to label every milestone, significant development commnits and features.
+
+\newpage
+\section{Proof of Concept}
+\subsection{Technical Feasibility}
+This project is a feasible undertaking, because the idea in itself is a simple one. Although there will be a slight learning curve with respect to some of the technology involved, the implementation of the project is viable. All group members are technically equipped in regards to a majority of the technologies required. As for required hardware, there are many school resources available in addition to our own computers and laptops, all of which are well equipped to run the required software. 
+
+\subsection{Identification of Risks}
+In general, the implementation will mostly include incorporating user input with information retrieval from the JSON file that contains the course data. One part of the implementation that poses the biggest challenge is generating timetables that contain no conflicts, in an efficient manner. This is a challenge because it will be difficult to keep track of each time slot that is taken. With normal timetable generators, the user manually fills in the schedule, but with this one, the schedules will be generated automatically. \\
+
+Testing will not be difficult. We will manually create a set of schedules that do not contain any conflicts, and use them as a benchmark against the generated set of schedules. This will be done repeatedly, with different courses selected for each set of tests. \\
+
+As for required libraries and technologies, installation will not be difficult at all, seeing as all are free and work with the software environment that we have setup. Portability will not be a concern, seeing as the project will be hosted on the web, and so any user with access to internet will not have any issues using the project.
+
+\newpage
+\subsection{Demonstration Plan}
+For the demonstration plan, we will develop an algorithm that takes in two courses, and generates a set of viable (no conflicts) timetables. This will infer the viability of developing a similar algorithm for 5 or 6 courses.
+\section{Technology}
+The programming languages used will be HTML, JavaScript, and CSS. More specifically, we will be using Node.js primarily for the back-end of the project. As for the IDE, we will be working with JetBrains WebStorm, which is specifically designed for Node.js projects. The testing framework used will be \href{https://mochajs.org/}{Mocha}. Mocha is "a feature-rich JavaScript test framework running on Node.js and in the browser, making asynchronous testing simple and fun" \cite{1}. In regards to documentation, all documentation will be written and compiled in \LaTeX , and the resulting PDF will be used.
+\section{Coding Style}
+This project will be using the \href{https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Coding_Style}{Mozilla coding style}.
+\section{Project Schedule}
+The project schedule will be included in the GanttProject file. It will be regularly updated, and include all milestones. 
+
+
+
+\begin{thebibliography}{9}
+\bibitem{1} 
+Mocha Framework.
+\textit{Mocha JS Homepage}
+\url{https://mochajs.org/}
+
+
+ 
+\end{thebibliography}
+\end {document}
