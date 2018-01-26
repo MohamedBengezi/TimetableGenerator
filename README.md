@@ -15,8 +15,13 @@ ReferenceMaterial - Materials used for reference
 
 ## How to run this application ?
 
+	If you have Node: 
+
 	* Clone / Download the project.
 
 	* Open the 'Run.bat' file in the root folder.
 
 	* Open 'http://localhost:3000/' in your browser.
+	
+	or 
+    * Go to http://timetable-generator.firebaseapp.com
