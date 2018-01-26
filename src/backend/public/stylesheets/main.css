@@ -15,6 +15,7 @@ html , body{
     height: 70px;
     position: fixed;
     top:0px;
+    clear: both;
 }
 #about{
     border: 2px solid black;
@@ -42,12 +43,18 @@ html , body{
 }
 #title{
     text-align: center;
-    font-size: 3.3rem;
+    font-size: 2.5rem;
     color: #f6f6f6;
     font-family: 'Righteous', cursive;
     letter-spacing: 3px;
 }
-
+#author{
+    text-align: right;
+    font-size: 1.3rem;
+    color: #f6f6f6;
+    font-family: 'Righteous', cursive;
+    letter-spacing: 1px;
+}
 #generate{
     margin-left: 20px;
     width: 130px;
@@ -110,7 +117,7 @@ html , body{
 #output{
     border: 2px solid black;
     background: #f6f6f6;
-    height: 42%;
+    height: 38%;
     width: 40%;
     overflow: auto;
     margin-top: 10px;

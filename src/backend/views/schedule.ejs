@@ -4,6 +4,7 @@
 <head>
     <title>Schedule</title>
     <link rel="icon" href="https://www.iconsfind.com/wp-content/uploads/2015/11/20151104_563963802fd08-210x210.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="/javascripts/jquery.js"></script>
     <script src="/javascripts/schedule.js"></script>
 </head>
@@ -11,7 +12,12 @@
 
     <% var counter1 = 1; schedule.forEach(function (version) { %>
 <ul>
-    <h1>--- Semester <%= counter1%> --- <% var idName ='schedule' + counter1++ %></h1>
+    <div>
+        <h1>Semester <%= counter1%> <% var idName ='schedule' + counter1++ %></h1>
+        <button type="button" class="btn btn-primary" id="generate<%= counter1 %>">Generate Again </button>
+    </div>
+    <br>
+
     <table id=<%= idName%> style="width:100%" border="1">
         <tr>
             <th>Time</th>
@@ -38,7 +44,7 @@
                     <% }%>
                 </td>
                 <% for (var j =0; j < 6; j++){ var id="day"+j;%>
-                <td class= <%= id%> style="text-align: center"></td>
+                <td class= <%= id%> style="text-align:center"></td>
                 <%}%>
             </tr>
 

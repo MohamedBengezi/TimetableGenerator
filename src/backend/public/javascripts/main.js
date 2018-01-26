@@ -47,6 +47,11 @@ $(document).ready(function () {
 
 
     $.ajax({
+        url:'/test',
+        type:"GET"
+    });
+
+    $.ajax({
         url:'/getlink',
         type:"POST"
     }).done(function (result) {

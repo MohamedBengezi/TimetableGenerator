@@ -1,0 +1,81 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   'git+https://github.com/jsdoc3/jsdoc.git' ]
+2 info using npm@3.10.10
+3 info using node@v6.11.2
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData git+https://github.com/jsdoc3/jsdoc.git
+8 silly fetchOtherPackageData git+https://github.com/jsdoc3/jsdoc.git
+9 silly cache add args [ 'git+https://github.com/jsdoc3/jsdoc.git', null ]
+10 verbose cache add spec git+https://github.com/jsdoc3/jsdoc.git
+11 silly cache add parsed spec Result {
+11 silly cache add   raw: 'git+https://github.com/jsdoc3/jsdoc.git',
+11 silly cache add   scope: null,
+11 silly cache add   escapedName: null,
+11 silly cache add   name: null,
+11 silly cache add   rawSpec: 'git+https://github.com/jsdoc3/jsdoc.git',
+11 silly cache add   spec: 'git+https://github.com/jsdoc3/jsdoc.git',
+11 silly cache add   type: 'hosted',
+11 silly cache add   hosted:
+11 silly cache add    { type: 'github',
+11 silly cache add      ssh: 'git@github.com:jsdoc3/jsdoc.git',
+11 silly cache add      sshUrl: 'git+ssh://git@github.com/jsdoc3/jsdoc.git',
+11 silly cache add      httpsUrl: 'git+https://github.com/jsdoc3/jsdoc.git',
+11 silly cache add      gitUrl: 'git://github.com/jsdoc3/jsdoc.git',
+11 silly cache add      shortcut: 'github:jsdoc3/jsdoc',
+11 silly cache add      directUrl: 'https://raw.githubusercontent.com/jsdoc3/jsdoc/master/package.json' } }
+12 verbose addRemoteGit caching git+https://github.com/jsdoc3/jsdoc.git
+13 verbose addRemoteGit git+https://github.com/jsdoc3/jsdoc.git is a repository hosted by github
+14 silly tryClone cloning git+https://github.com/jsdoc3/jsdoc.git via git+https://github.com/jsdoc3/jsdoc.git
+15 verbose tryClone git-https-github-com-jsdoc3-jsdoc-git-82221c39 not in flight; caching
+16 verbose correctMkdir C:\Users\benge\AppData\Roaming\npm-cache\_git-remotes correctMkdir not in flight; initializing
+17 verbose makeDirectory C:\Users\benge\AppData\Roaming\npm-cache\_git-remotes creation not in flight; initializing
+18 verbose makeCacheDir UID & GID are irrelevant on win32
+19 error git clone --template=C:\Users\benge\AppData\Roaming\npm-cache\_git-remotes\_templates --mirror https://github.com/jsdoc3/jsdoc.git C:\Users\benge\AppData\Roaming\npm-cache\_git-remotes\git-https-github-com-jsdoc3-jsdoc-git-82221c39: undefined
+19 error git clone --template=C:\Users\benge\AppData\Roaming\npm-cache\_git-remotes\_templates --mirror https://github.com/jsdoc3/jsdoc.git C:\Users\benge\AppData\Roaming\npm-cache\_git-remotes\git-https-github-com-jsdoc3-jsdoc-git-82221c39: undefined
+20 silly fetchPackageMetaData Error: not found: git
+20 silly fetchPackageMetaData     at getNotFoundError (C:\Program Files\nodejs\node_modules\npm\node_modules\which\which.js:14:12)
+20 silly fetchPackageMetaData     at F (C:\Program Files\nodejs\node_modules\npm\node_modules\which\which.js:69:19)
+20 silly fetchPackageMetaData     at E (C:\Program Files\nodejs\node_modules\npm\node_modules\which\which.js:81:29)
+20 silly fetchPackageMetaData     at C:\Program Files\nodejs\node_modules\npm\node_modules\which\which.js:90:16
+20 silly fetchPackageMetaData     at C:\Program Files\nodejs\node_modules\npm\node_modules\which\node_modules\isexe\index.js:44:5
+20 silly fetchPackageMetaData     at C:\Program Files\nodejs\node_modules\npm\node_modules\which\node_modules\isexe\windows.js:29:5
+20 silly fetchPackageMetaData     at C:\Program Files\nodejs\node_modules\npm\node_modules\graceful-fs\polyfills.js:264:29
+20 silly fetchPackageMetaData     at FSReqWrap.oncomplete (fs.js:123:15)
+20 silly fetchPackageMetaData  error for git+https://github.com/jsdoc3/jsdoc.git { Error: not found: git
+20 silly fetchPackageMetaData     at getNotFoundError (C:\Program Files\nodejs\node_modules\npm\node_modules\which\which.js:14:12)
+20 silly fetchPackageMetaData     at F (C:\Program Files\nodejs\node_modules\npm\node_modules\which\which.js:69:19)
+20 silly fetchPackageMetaData     at E (C:\Program Files\nodejs\node_modules\npm\node_modules\which\which.js:81:29)
+20 silly fetchPackageMetaData     at C:\Program Files\nodejs\node_modules\npm\node_modules\which\which.js:90:16
+20 silly fetchPackageMetaData     at C:\Program Files\nodejs\node_modules\npm\node_modules\which\node_modules\isexe\index.js:44:5
+20 silly fetchPackageMetaData     at C:\Program Files\nodejs\node_modules\npm\node_modules\which\node_modules\isexe\windows.js:29:5
+20 silly fetchPackageMetaData     at C:\Program Files\nodejs\node_modules\npm\node_modules\graceful-fs\polyfills.js:264:29
+20 silly fetchPackageMetaData     at FSReqWrap.oncomplete (fs.js:123:15) code: 'ENOGIT' }
+21 silly rollbackFailedOptional Starting
+22 silly rollbackFailedOptional Finishing
+23 silly runTopLevelLifecycles Finishing
+24 silly install printInstalled
+25 verbose stack Error: not found: git
+25 verbose stack     at getNotFoundError (C:\Program Files\nodejs\node_modules\npm\node_modules\which\which.js:14:12)
+25 verbose stack     at F (C:\Program Files\nodejs\node_modules\npm\node_modules\which\which.js:69:19)
+25 verbose stack     at E (C:\Program Files\nodejs\node_modules\npm\node_modules\which\which.js:81:29)
+25 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\which\which.js:90:16
+25 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\which\node_modules\isexe\index.js:44:5
+25 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\which\node_modules\isexe\windows.js:29:5
+25 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\graceful-fs\polyfills.js:264:29
+25 verbose stack     at FSReqWrap.oncomplete (fs.js:123:15)
+26 verbose cwd C:\Users\benge\Genzter\src
+27 error Windows_NT 10.0.16299
+28 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "git+https://github.com/jsdoc3/jsdoc.git"
+29 error node v6.11.2
+30 error npm  v3.10.10
+31 error code ENOGIT
+32 error not found: git
+33 error Failed using git.
+33 error This is most likely not a problem with npm itself.
+33 error Please check if you have git installed and in your PATH.
+34 verbose exit [ 1, true ]
